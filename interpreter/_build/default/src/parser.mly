@@ -6,6 +6,7 @@ open Syntax
 %token PLUS MULT LT
 %token IF THEN ELSE TRUE FALSE
 %token LET IN EQ
+%token AMPERAMPER PAIPUPAIPU
 
 %token <int> INTV
 %token <Syntax.id> ID
@@ -21,6 +22,11 @@ toplevel :
 Expr :
     e=IfExpr { e }
   | e=LetExpr { e }
+  | e=BExpr { e }
+
+BExpr :
+    l=LTExpr AMPERAMPER r=LTExpr { BinOp(AMPERAMPER, l, r) }
+  | l=LTExpr PAIPUPAIPU r=LTExpr { BinOp(PAIPUPAIPU, l, r) }
   | e=LTExpr { e }
 
 LTExpr :
