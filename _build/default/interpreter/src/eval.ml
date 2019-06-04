@@ -55,16 +55,15 @@ let rec eval_exp env = function
 
 let rec eval_decl env ee env2 =
     match ee with
-      Exp e ->   
-        let v = eval_exp env e in (env, Environment.extend "-" v env2)
+      Exp e ->
+        let v = eval_exp env e in (env, Environment.extendback "-" v env2)
     | Decl (id, e) ->
         let v = eval_exp env e in 
-          if v = Except then (env, Environment.extend "-" Except env2) else (Environment.extend id v env, Environment.extend id v env2)
+          if v = Except then (env, Environment.extendback "-" Except env2) else (Environment.extend id v env, Environment.extendback id v env2)
     | DeclDecl(id, e1, e2) -> 
         let value = eval_exp env e1 in
           let newenv = Environment.extend id value env in
-            eval_decl newenv e2 (Environment.extend id value env2)
-    | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();(env, Environment.extend "-" Except env2)
+            eval_decl newenv e2 (Environment.extendback id value env2)
+    | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();(env, Environment.extendback "-" Except env2)
   
   (* | DeclDecl(id1, id2, e1, e2) -> *)
-

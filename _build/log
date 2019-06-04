@@ -1,11 +1,4 @@
-# dune build --profile=
+# dune exec miniml --profile=
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/duneae36c3.output 2> /dev/null
-$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune21d950.output
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/cui.ml) > _build/default/interpreter/src/.miniml.objs/cui.ml.d
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w -40 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Cui.cmo -c -impl interpreter/src/cui.ml)
-> File "interpreter/src/cui.ml", line 22, characters 14-18:
-> Error: This expression has type Miniml.Eval.exval Miniml.Environment.t
->        but an expression was expected of type
->          (string * Miniml.Eval.exval) list
-[2]
+$ /usr/bin/nproc > /tmp/dunecf9229.output 2> /dev/null
+$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dunef0fdf4.output
