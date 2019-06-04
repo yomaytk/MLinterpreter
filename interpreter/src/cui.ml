@@ -13,6 +13,17 @@ let rec print_val env =
           print_val rest
         end
 
+let rec print_val env = 
+  match env with
+      [] -> ()
+    | (id, v)::rest -> 
+      if v != Except then 
+        begin
+          match id with
+              Var x -> print_string x
+            | _ -> ()
+        end
+
 let rec read_eval_print env =
   print_string "# ";
   flush stdout;
