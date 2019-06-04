@@ -18,15 +18,17 @@ open Syntax
 
 toplevel :
     e=Expr SEMISEMI { Exp e }
-  | LET x=ID EQ e=Expr SEMISEMI { Decl (x, e) }
+  /* | LET x=ID EQ e=Expr SEMISEMI { Decl (x, e) } */
+  | e=LetLetExpr SEMISEMI { e }
+  | e=LetExpr SEMISEMI { e }
   | WHAT { Rongai }
   | SEMISEMI { Rongai }
 
-
 Expr :
     e=IfExpr { e }
-  | e=LetExpr { e }
+  | e=LetInExpr { e }
   | e=BExpr { e }
+  /* | e= */
 
 BExpr :
     l=LTExpr AMPERAMPER r=LTExpr { BinOp(AMPERAMPER, l, r) }
@@ -55,5 +57,12 @@ AExpr :
 IfExpr :
     IF c=Expr THEN t=Expr ELSE e=Expr { IfExp (c, t, e) }
 
-LetExpr :
-    LET x=ID EQ e1=Expr IN e2=Expr { LetExp (x, e1, e2) }
+LetInExpr :
+    LET x=ID EQ e1=Expr IN e2=Expr { LetInExp (x, e1, e2) }
+
+LetExpr : 
+    LET x=ID EQ e=Expr { Decl(x, e) }
+
+LetLetExpr :
+    LET x=ID EQ e1=Expr e2=LetLetExpr { DeclDecl (x, e1, e2) }
+  | e=LetExpr { e }

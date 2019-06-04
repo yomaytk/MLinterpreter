@@ -46,14 +46,25 @@ let rec eval_exp env = function
         BoolV true -> eval_exp env exp2
       | BoolV false -> eval_exp env exp3
       | _ -> print_string "Fatal error: Exception Test expression must be boolean: if";print_newline();Except)
-  | LetExp (id, exp1, exp2) ->
+  | LetInExp (id, exp1, exp2) ->
     let value = eval_exp env exp1 in
     eval_exp (Environment.extend id value env) exp2
+  (* | LetLetExp (id, exp1, exp2) ->
+    let value = eval_exp env exp1 in
+      eval_exp (Environment.extend id value env) exp2 *)
 
-let eval_decl env = function
-    Exp e -> let v = eval_exp env e in ("-", env, v)
-  | Decl (id, e) ->
-    let v = eval_exp env e in 
-      if v = Except then ("-", env, v) else (id, Environment.extend id v env, v)
-  | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();("-", env, Except)
+let rec eval_decl env ee envlist =
+    match ee with
+      Exp e ->   
+        let v = eval_exp env e in (env, ("-", v)::envlist)
+    | Decl (id, e) ->
+        let v = eval_exp env e in 
+          if v = Except then (env, ("-", v)::envlist) else (Environment.extend id v env, (id, v)::envlist)
+    | DeclDecl(id, e1, e2) -> 
+        let value = eval_exp env e1 in
+          let newenv = Environment.extend id value env in
+            eval_decl newenv e2 envlist
+    | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();("-", env, Except)
+  
+  (* | DeclDecl(id1, id2, e1, e2) -> *)
 

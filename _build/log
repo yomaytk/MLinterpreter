@@ -1,4 +1,4 @@
 # dune exec miniml --profile=
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/dune8542c1.output 2> /dev/null
-$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dunef5692e.output
+$ /usr/bin/nproc > /tmp/duned3203b.output 2> /dev/null
+$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/duneb1e590.output
