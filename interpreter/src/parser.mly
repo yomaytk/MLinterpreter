@@ -7,6 +7,7 @@ open Syntax
 %token IF THEN ELSE TRUE FALSE
 %token LET IN EQ
 %token AMPERAMPER PAIPUPAIPU
+%token WHAT
 
 %token <int> INTV
 %token <Syntax.id> ID
@@ -18,6 +19,9 @@ open Syntax
 toplevel :
     e=Expr SEMISEMI { Exp e }
   | LET x=ID EQ e=Expr SEMISEMI { Decl (x, e) }
+  | WHAT { Rongai }
+  | SEMISEMI { Rongai }
+
 
 Expr :
     e=IfExpr { e }

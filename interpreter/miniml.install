@@ -6,3 +6,6 @@ lib: [
 bin: [
   "_build/install/default/bin/miniml"
 ]
+doc: [
+  "_build/install/default/doc/miniml/README.md"
+]

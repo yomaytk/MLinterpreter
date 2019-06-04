@@ -6,6 +6,8 @@ open Syntax
 %token PLUS MULT LT
 %token IF THEN ELSE TRUE FALSE
 %token LET IN EQ
+%token AMPERAMPER PAIPUPAIPU
+%token WHAT
 
 %token <int> INTV
 %token <Syntax.id> ID
@@ -17,10 +19,19 @@ open Syntax
 toplevel :
     e=Expr SEMISEMI { Exp e }
   | LET x=ID EQ e=Expr SEMISEMI { Decl (x, e) }
+  | WHAT { Rongai }
+  | LPAREN { Rongai }
+  | SEMISEMI { Rongai }
+
 
 Expr :
     e=IfExpr { e }
   | e=LetExpr { e }
+  | e=BExpr { e }
+
+BExpr :
+    l=LTExpr AMPERAMPER r=LTExpr { BinOp(AMPERAMPER, l, r) }
+  | l=LTExpr PAIPUPAIPU r=LTExpr { BinOp(PAIPUPAIPU, l, r) }
   | e=LTExpr { e }
 
 LTExpr :

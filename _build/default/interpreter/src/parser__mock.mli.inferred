@@ -1,9 +1,11 @@
 type token =
-    TRUE
+    WHAT
+  | TRUE
   | THEN
   | SEMISEMI
   | RPAREN
   | PLUS
+  | PAIPUPAIPU
   | MULT
   | LT
   | LPAREN
@@ -15,6 +17,7 @@ type token =
   | FALSE
   | EQ
   | ELSE
+  | AMPERAMPER
 val menhir_begin_marker : int
 val xv_toplevel : Syntax.program
 val xv_PExpr : Syntax.exp
@@ -23,5 +26,6 @@ val xv_LetExpr : Syntax.exp
 val xv_LTExpr : Syntax.exp
 val xv_IfExpr : Syntax.exp
 val xv_Expr : Syntax.exp
+val xv_BExpr : Syntax.exp
 val xv_AExpr : Syntax.exp
 val menhir_end_marker : int

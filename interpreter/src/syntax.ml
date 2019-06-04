@@ -14,6 +14,7 @@ type exp =
 type program =
     Exp of exp
   | Decl of id * exp
+  | Rongai
 
 type tyvar = int
 type ty =

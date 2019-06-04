@@ -1,7 +1,7 @@
 (* ML interpreter / type reconstruction *)
 type id = string
 
-type binOp = Plus | Mult | Lt
+type binOp = Plus | Mult | Lt | AMPERAMPER | PAIPUPAIPU
 
 type exp =
     Var of id
@@ -14,6 +14,7 @@ type exp =
 type program =
     Exp of exp
   | Decl of id * exp
+  | Rongai
 
 type tyvar = int
 type ty =

@@ -35,6 +35,9 @@ rule main = parse
       with
       _ -> Parser.ID id
     }
+
+| _ { Parser.WHAT }
+
 | eof { exit 0 }
 
 

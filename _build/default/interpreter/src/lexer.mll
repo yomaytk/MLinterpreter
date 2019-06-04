@@ -24,7 +24,9 @@ rule main = parse
 | "+" { Parser.PLUS }
 | "*" { Parser.MULT }
 | "<" { Parser.LT }
-| "=" { Parser.EQ}
+| "=" { Parser.EQ }
+| "&&" { Parser.AMPERAMPER }
+| "||" { Parser.PAIPUPAIPU }
 
 | ['a'-'z'] ['a'-'z' '0'-'9' '_' '\'']*
     { let id = Lexing.lexeme lexbuf in
@@ -32,7 +34,10 @@ rule main = parse
         List.assoc id reservedWords
       with
       _ -> Parser.ID id
-     }
+    }
+
+| _ { Parser.WHAT }
+
 | eof { exit 0 }
 
 

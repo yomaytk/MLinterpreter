@@ -55,4 +55,5 @@ let eval_decl env = function
   | Decl (id, e) ->
     let v = eval_exp env e in 
       if v = Except then ("-", env, v) else (id, Environment.extend id v env, v)
+  | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();("-", env, Except)
 
