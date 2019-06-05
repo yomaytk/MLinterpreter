@@ -7,7 +7,7 @@ let rec read_eval_print env =
   let decl = Parser.toplevel Lexer.main (Lexing.from_channel stdin) in
   let env2 = Environment.empty in
   let (newenv, localenv) = eval_decl env decl env2 in
-  Environment.print_env pp_val localenv;
+  Environment.print_env pp_val localenv except_j;
   read_eval_print newenv
 
 let initial_env =

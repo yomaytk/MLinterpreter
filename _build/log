@@ -1,4 +1,6 @@
 # dune exec miniml --profile=
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/dunecf9229.output 2> /dev/null
-$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dunef0fdf4.output
+$ /usr/bin/nproc > /tmp/dune9326bd.output 2> /dev/null
+$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune7603ac.output
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/environment.ml) > _build/default/interpreter/src/.miniml.objs/environment.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w -40 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Environment.cmx -c -impl interpreter/src/environment.ml)

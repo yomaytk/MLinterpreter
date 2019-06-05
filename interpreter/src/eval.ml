@@ -16,7 +16,9 @@ let rec string_of_exval = function
   | BoolV b -> string_of_bool b
   | Except -> "except"
 
-let pp_val v = print_string (string_of_exval v)
+let pp_val v = if v!= Except then print_string (string_of_exval v)
+
+let except_j v = if v!= Except then true else false
 
 let rec apply_prim op arg1 arg2 = match op, arg1, arg2 with
     Plus, IntV i1, IntV i2 -> IntV (i1 + i2)

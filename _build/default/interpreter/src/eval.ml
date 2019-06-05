@@ -16,7 +16,9 @@ let rec string_of_exval = function
   | BoolV b -> string_of_bool b
   | Except -> "except"
 
-let pp_val v = print_string (string_of_exval v)
+let pp_val v = if v!= Except then print_string (string_of_exval v)
+
+let except_j v = if v!= Except then true else false
 
 let rec apply_prim op arg1 arg2 = match op, arg1, arg2 with
     Plus, IntV i1, IntV i2 -> IntV (i1 + i2)
@@ -49,9 +51,7 @@ let rec eval_exp env = function
   | LetInExp (id, exp1, exp2) ->
     let value = eval_exp env exp1 in
     eval_exp (Environment.extend id value env) exp2
-  (* | LetLetExp (id, exp1, exp2) ->
-    let value = eval_exp env exp1 in
-      eval_exp (Environment.extend id value env) exp2 *)
+
 
 let rec eval_decl env ee env2 =
     match ee with
@@ -65,5 +65,4 @@ let rec eval_decl env ee env2 =
           let newenv = Environment.extend id value env in
             eval_decl newenv e2 (Environment.extendback id value env2)
     | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();(env, Environment.extendback "-" Except env2)
-  
-  (* | DeclDecl(id1, id2, e1, e2) -> *)
+    

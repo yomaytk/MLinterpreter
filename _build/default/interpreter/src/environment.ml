@@ -20,12 +20,21 @@ let rec fold_right f env a =
     [] -> a
   | (_, v)::rest -> f v (fold_right f rest a)
 
-let rec print_env f env = 
+let rec print_env f env ff = 
   match env with
       [] -> ()
-    | (id, v)::rest -> Printf.printf "val %s = " id;f v;print_newline();print_env f rest
+    | (id, v)::rest -> 
+        if ff v then
+          begin
+            Printf.printf "val %s = " id;
+            f v;
+            print_newline();
+            print_env f rest ff
+          end
+        else
+          begin
+            print_env f rest ff
+          end
 (* let rec length = function
     [] -> 0
   | _ :: rest -> 1 + length rest *)
-(* if v != Except then   
-    (Printf.printf "val %s = " id;pp_val v;print_newline()); *)
