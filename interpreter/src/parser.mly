@@ -8,6 +8,7 @@ open Syntax
 %token LET IN EQ
 %token AMPERAMPER PAIPUPAIPU
 %token FUN RARROW
+%token AND
 %token WHAT
 
 %token <int> INTV
@@ -19,9 +20,9 @@ open Syntax
 
 toplevel :
     e=Expr SEMISEMI { Exp e }
-  /* | LET x=ID EQ e=Expr SEMISEMI { Decl (x, e) } */
-  | e=LetLetExpr SEMISEMI { e }
+  | e=RecLetExpr SEMISEMI { e }
   | e=LetExpr SEMISEMI { e }
+  | e=LetAndExpr SEMISEMI { e }
   | WHAT { Rongai }
   | SEMISEMI { Rongai }
 
@@ -30,6 +31,7 @@ Expr :
   | e=LetInExpr { e }
   | e=BExpr { e }
   | e=FunExpr { e }
+  | e=LetAndInExpr { e }
 
 BExpr :
     l=LTExpr AMPERAMPER r=LTExpr { BinOp(AMPERAMPER, l, r) }
@@ -66,11 +68,24 @@ LetInExpr :
     LET x=ID EQ e1=Expr IN e2=Expr { LetInExp (x, e1, e2) }
 
 LetExpr : 
-    LET x=ID EQ e=Expr { Decl(x, e) }
+    LET x=ID EQ e=Expr { Decl (x, e) }
 
-LetLetExpr :
-    LET x=ID EQ e1=Expr e2=LetLetExpr { RecDecl (x, e1, e2) }
+RecLetExpr :
+    LET x=ID EQ e1=Expr e2=RecLetExpr { RecDecl (x, e1, e2) }
   | e=LetExpr { e }
 
 FunExpr : 
   FUN e1=ID RARROW e2=Expr { FunExp (e1, e2) }
+
+LetAndExpr :
+    LET x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) }
+
+AndExpr :
+    x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) }
+  | x=ID EQ e=Expr { Decl (x, e) }
+
+LetAndInExpr :
+    LET x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
+  | x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
+  | x=ID EQ e1=Expr IN e2=Expr { LetInExp (x, e1, e2) }
+

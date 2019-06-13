@@ -12,11 +12,13 @@ type exp =
   | LetInExp of id * exp * exp
   | FunExp of id * exp
   | AppExp of exp * exp
+  | LetAndInExp of id * exp * exp
 
 type program =
     Exp of exp
   | Decl of id * exp
   | RecDecl of id * exp * program
+  | AndLet of id * exp * program
   | Rongai
 
 type tyvar = int

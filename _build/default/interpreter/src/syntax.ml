@@ -10,11 +10,15 @@ type exp =
   | BinOp of binOp * exp * exp
   | IfExp of exp * exp * exp
   | LetInExp of id * exp * exp
+  | FunExp of id * exp
+  | AppExp of exp * exp
+  | LetAndInExp of id * exp * exp
 
 type program =
     Exp of exp
   | Decl of id * exp
-  | DeclDecl of id * exp * program
+  | RecDecl of id * exp * program
+  | AndLet of id * exp * program
   | Rongai
 
 type tyvar = int

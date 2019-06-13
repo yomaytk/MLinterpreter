@@ -11,14 +11,28 @@ exception Error of string
 
 let err s = raise (Error s)
 
+let andletlist = ref []
+
+let rec andlistadd list tmpenv = 
+  let env = tmpenv in
+  match list with
+      [] -> andletlist := []; env
+    | (id, v) :: rest -> andlistadd rest (Environment.extend id v env)
+
+let rec findid list id = 
+  match list with
+      [] -> true
+    | (x, v):: rest ->
+        if id = x then false else findid rest id
+
 (* pretty printing *)
-let rec string_of_exvall = function
+let rec string_of_exval = function
     IntV i -> string_of_int i
   | BoolV b -> string_of_bool b
   | ProcV _ -> "<fun>"
   | Except -> "error"
 
-let pp_val v = if v!= Except then print_string (string_of_exvall v)
+let pp_val v = if v!= Except then print_string (string_of_exval v)
 
 let pp_id (i : id) = Printf.printf "val %s = " i
 
@@ -56,7 +70,16 @@ let rec eval_exp env = function
       | _ -> print_string "Error: Exception Test expression must be boolean: if";print_newline();Except)
   | LetInExp (id, exp1, exp2) ->
     let value = eval_exp env exp1 in
-    eval_exp (Environment.extend id value env) exp2
+    let newenv = andlistadd !andletlist env in
+    eval_exp (Environment.extend id value newenv) exp2
+  | LetAndInExp (id, exp1, exp2) ->
+    let bound = findid !andletlist id in
+      if bound then Except
+      else 
+        begin
+          let value = eval_exp env exp1 in
+          andletlist := (id, value)::!andletlist;eval_exp env exp2
+        end
   | FunExp (id, exp) -> ProcV(id, exp, env)
   | AppExp (e1, e2) ->
     let funval = eval_exp env e1 in
@@ -73,10 +96,19 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
         let v = eval_exp env e in (env, env2 @ [("-", v)], v)
     | Decl (id, e) ->
         let v = eval_exp env e in 
-          if v = Except then (env, [("-", v)], v) else (Environment.extend id v env, env2 @ [(id, v)], v)
+        let newenv = andlistadd !andletlist env in
+          if v = Except then (newenv, [("-", v)], v) else (Environment.extend id v newenv, env2 @ [(id, v)], v)
     | RecDecl(id, e1, e2) -> 
         let v = eval_exp env e1 in
           let newenv = Environment.extend id v env in
             eval_decl newenv e2 (env2 @ [(id, v)])
+    | AndLet(id, e1, e2) ->
+        let bound = findid !andletlist id in
+        if bound then (env, env2, Except)
+        else
+          begin
+            let v1 = eval_exp env e1 in
+            andletlist := (id, v1) :: !andletlist; eval_decl env e2 (env2 @ [(id, v1)])
+          end
     | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();(env, [("-", Except)], Except)
     
