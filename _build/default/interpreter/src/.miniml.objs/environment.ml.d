@@ -1,1 +1,1 @@
-interpreter/src/environment.ml: List Printf Syntax
+interpreter/src/environment.ml: List Syntax

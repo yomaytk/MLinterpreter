@@ -1,6 +1,16 @@
-# dune exec miniml --profile=
+# dune build --profile=
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/dune9326bd.output 2> /dev/null
-$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune7603ac.output
+$ /usr/bin/nproc > /tmp/dunec5c480.output 2> /dev/null
+$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dunee0e5bb.output
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -intf interpreter/src/environment.mli) > _build/default/interpreter/src/.miniml.objs/environment.mli.d
 $ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/environment.ml) > _build/default/interpreter/src/.miniml.objs/environment.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w -40 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Environment.cmi -c -intf interpreter/src/environment.mli)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w -40 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Eval.cmo -c -impl interpreter/src/eval.ml)
 $ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w -40 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Environment.cmx -c -impl interpreter/src/environment.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w -40 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Cui.cmo -c -impl interpreter/src/cui.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w -40 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Eval.cmx -c -impl interpreter/src/eval.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w -40 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Cui.cmx -c -impl interpreter/src/cui.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w -40 -g -a -o interpreter/src/miniml.cmxa interpreter/src/.miniml.objs/native/miniml.cmx interpreter/src/.miniml.objs/native/miniml__Syntax.cmx interpreter/src/.miniml.objs/native/miniml__Environment.cmx interpreter/src/.miniml.objs/native/miniml__Eval.cmx interpreter/src/.miniml.objs/native/miniml__Parser.cmx interpreter/src/.miniml.objs/native/miniml__Lexer.cmx interpreter/src/.miniml.objs/native/miniml__Cui.cmx interpreter/src/.miniml.objs/native/miniml__MySet.cmx interpreter/src/.miniml.objs/native/miniml__Typing.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w -40 -g -bin-annot -I interpreter/.main.eobjs/byte -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -o interpreter/.main.eobjs/byte/main.cmo -c -impl interpreter/main.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w -40 -g -I interpreter/.main.eobjs/byte -I interpreter/.main.eobjs/native -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -o interpreter/.main.eobjs/native/main.cmx -c -impl interpreter/main.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w -40 -g -o interpreter/main.exe -I interpreter/src interpreter/src/miniml.cmxa interpreter/.main.eobjs/native/main.cmx)

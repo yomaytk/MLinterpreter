@@ -18,7 +18,9 @@ let rec string_of_exval = function
 
 let pp_val v = if v!= Except then print_string (string_of_exval v)
 
-let except_j v = if v!= Except then true else false
+let pp_id (i : id) = Printf.printf "val %s = " i
+
+let except_judge v = if v!= Except then true else false
 
 let rec apply_prim op arg1 arg2 = match op, arg1, arg2 with
     Plus, IntV i1, IntV i2 -> IntV (i1 + i2)
@@ -53,16 +55,16 @@ let rec eval_exp env = function
     eval_exp (Environment.extend id value env) exp2
 
 
-let rec eval_decl env ee env2 =
+let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
     match ee with
       Exp e ->
-        let v = eval_exp env e in (env, Environment.extendback "-" v env2)
+        let v = eval_exp env e in (env, env2 @ [("-", v)])
     | Decl (id, e) ->
         let v = eval_exp env e in 
-          if v = Except then (env, Environment.extendback "-" Except env2) else (Environment.extend id v env, Environment.extendback id v env2)
+          if v = Except then (env, [("-", v)]) else (Environment.extend id v env, env2 @ [(id, v)])
     | DeclDecl(id, e1, e2) -> 
-        let value = eval_exp env e1 in
-          let newenv = Environment.extend id value env in
-            eval_decl newenv e2 (Environment.extendback id value env2)
-    | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();(env, Environment.extendback "-" Except env2)
+        let v = eval_exp env e1 in
+          let newenv = Environment.extend id v env in
+            eval_decl newenv e2 (env2 @ [(id, v)])
+    | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();(env, [("-", Except)])
     
