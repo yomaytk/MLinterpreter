@@ -5,7 +5,7 @@ let rec read_eval_print env =
   print_string "# ";
   flush stdout;
   let decl = Parser.toplevel Lexer.main (Lexing.from_channel stdin) in
-  let (newenv, localenv) = eval_decl env decl [] in
+  let (newenv, localenv, value) = eval_decl env decl [] in
     let rec print_localenv tmp_localenv = 
       match tmp_localenv with
           [] -> ()
@@ -24,4 +24,4 @@ let rec read_eval_print env =
 let initial_env =
   Environment.extend "i" (IntV 1)
     (Environment.extend "v" (IntV 5)
-      (Environment.extend "x" (IntV 10) Environment.empty))
+(Environment.extend "x" (IntV 10) Environment.empty))
