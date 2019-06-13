@@ -7,6 +7,7 @@ open Syntax
 %token IF THEN ELSE TRUE FALSE
 %token LET IN EQ
 %token AMPERAMPER PAIPUPAIPU
+%token FUN RARROW
 %token WHAT
 
 %token <int> INTV
@@ -28,7 +29,7 @@ Expr :
     e=IfExpr { e }
   | e=LetInExpr { e }
   | e=BExpr { e }
-  /* | e= */
+  | e=FunExpr { e }
 
 BExpr :
     l=LTExpr AMPERAMPER r=LTExpr { BinOp(AMPERAMPER, l, r) }
@@ -44,7 +45,11 @@ PExpr :
   | e=MExpr { e }
 
 MExpr :
-    l=MExpr MULT r=AExpr { BinOp (Mult, l, r) }
+    e1=MExpr MULT e2=AExpr { BinOp (Mult, e1, e2) }
+  | e=AppExpr { e }
+
+AppExpr : 
+    e1=AppExpr e2=AExpr { AppExp (e1, e2) }
   | e=AExpr { e }
 
 AExpr :
@@ -64,5 +69,8 @@ LetExpr :
     LET x=ID EQ e=Expr { Decl(x, e) }
 
 LetLetExpr :
-    LET x=ID EQ e1=Expr e2=LetLetExpr { DeclDecl (x, e1, e2) }
+    LET x=ID EQ e1=Expr e2=LetLetExpr { RecDecl (x, e1, e2) }
   | e=LetExpr { e }
+
+FunExpr : 
+  FUN e1=ID RARROW e2=Expr { FunExp (e1, e2) }

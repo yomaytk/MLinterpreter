@@ -16,11 +16,13 @@ let rec read_eval_print env =
               end
             else
               begin
-                print_localenv rest
+                print_localenv rest1
               end)
     in print_localenv localenv;
   read_eval_print newenv
-
+(* Printf.printf "val %s = " id;
+            f v;
+            print_newline(); *)
 let initial_env =
   Environment.extend "i" (IntV 1)
     (Environment.extend "v" (IntV 5)
