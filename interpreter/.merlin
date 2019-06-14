@@ -1,6 +1,0 @@
-EXCLUDE_QUERY_DIR
-B ../_build/default/interpreter/.main.eobjs/byte
-B ../_build/default/interpreter/src/.miniml.objs/byte
-S .
-S src
-FLG -w -40

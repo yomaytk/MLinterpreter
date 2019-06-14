@@ -13,6 +13,7 @@ type exp =
   | FunExp of id * exp
   | AppExp of exp * exp
   | LetAndInExp of id * exp * exp
+  | LetEndInExp of id * exp * exp
 
 type program =
     Exp of exp

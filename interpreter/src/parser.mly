@@ -34,8 +34,8 @@ Expr :
   | e=LetAndInExpr { e }
 
 BExpr :
-    l=LTExpr AMPERAMPER r=LTExpr { BinOp(AMPERAMPER, l, r) }
-  | l=LTExpr PAIPUPAIPU r=LTExpr { BinOp(PAIPUPAIPU, l, r) }
+    l=LTExpr AMPERAMPER r=BExpr { BinOp(AMPERAMPER, l, r) }
+  | l=LTExpr PAIPUPAIPU r=BExpr { BinOp(PAIPUPAIPU, l, r) }
   | e=LTExpr { e }
 
 LTExpr :
@@ -87,5 +87,5 @@ AndExpr :
 LetAndInExpr :
     LET x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
   | x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
-  | x=ID EQ e1=Expr IN e2=Expr { LetInExp (x, e1, e2) }
+  | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) }
 
