@@ -42,91 +42,124 @@ open TySyntax
 
 # 44 "tyParser.ml"
 
-let rec _menhir_goto_TFun : _menhir_env -> 'ttv_tail -> _menhir_state -> (TySyntax.ty) -> 'ttv_return =
+let rec _menhir_goto_TFun : _menhir_env -> 'ttv_tail -> _menhir_state -> 'tv_TFun -> 'ttv_return =
   fun _menhir_env _menhir_stack _menhir_s _v ->
     let _menhir_stack = (_menhir_stack, _menhir_s, _v) in
     match _menhir_s with
     | MenhirState7 ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let ((_menhir_stack, _menhir_s, (t1 : (TySyntax.ty))), _, (t2 : (TySyntax.ty))) = _menhir_stack in
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : (('freshtv29 * _menhir_state * 'tv_TLit)) * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+        ((let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : (('freshtv27 * _menhir_state * 'tv_TLit)) * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+        ((let ((_menhir_stack, _menhir_s, (t1 : 'tv_TLit)), _, (t2 : 'tv_TFun)) = _menhir_stack in
         let _2 = () in
-        let _v : (TySyntax.ty) = 
+        let _v : 'tv_TFun = 
 # 20 "tyParser.mly"
                           ( TyFun (t1, t2) )
-# 58 "tyParser.ml"
+# 60 "tyParser.ml"
          in
-        _menhir_goto_TFun _menhir_env _menhir_stack _menhir_s _v
+        _menhir_goto_TFun _menhir_env _menhir_stack _menhir_s _v) : 'freshtv28)) : 'freshtv30)
     | MenhirState2 ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        assert (not _menhir_env._menhir_error);
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : ('freshtv37 * _menhir_state) * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+        ((assert (not _menhir_env._menhir_error);
         let _tok = _menhir_env._menhir_token in
-        (match _tok with
+        match _tok with
         | RPAREN ->
-            let _menhir_stack = Obj.magic _menhir_stack in
-            let _menhir_env = _menhir_discard _menhir_env in
-            let _menhir_stack = Obj.magic _menhir_stack in
-            let ((_menhir_stack, _menhir_s), _, (t : (TySyntax.ty))) = _menhir_stack in
+            let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : ('freshtv33 * _menhir_state) * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+            ((let _menhir_env = _menhir_discard _menhir_env in
+            let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : ('freshtv31 * _menhir_state) * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+            ((let ((_menhir_stack, _menhir_s), _, (t : 'tv_TFun)) = _menhir_stack in
             let _3 = () in
             let _1 = () in
-            let _v : (TySyntax.ty) = 
+            let _v : 'tv_TLit = 
 # 26 "tyParser.mly"
                          ( t )
-# 76 "tyParser.ml"
+# 81 "tyParser.ml"
              in
-            _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v
+            _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v) : 'freshtv32)) : 'freshtv34)
         | _ ->
             assert (not _menhir_env._menhir_error);
             _menhir_env._menhir_error <- true;
-            let _menhir_stack = Obj.magic _menhir_stack in
-            let (_menhir_stack, _menhir_s, _) = _menhir_stack in
-            _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s)
+            let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : ('freshtv35 * _menhir_state) * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+            ((let (_menhir_stack, _menhir_s, _) = _menhir_stack in
+            _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s) : 'freshtv36)) : 'freshtv38)
     | MenhirState0 ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        assert (not _menhir_env._menhir_error);
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : 'freshtv51 * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+        ((assert (not _menhir_env._menhir_error);
         let _tok = _menhir_env._menhir_token in
         match _tok with
         | EOF ->
-            let _menhir_stack = Obj.magic _menhir_stack in
-            let _menhir_stack = Obj.magic _menhir_stack in
-            let (_menhir_stack, _menhir_s, (t : (TySyntax.ty))) = _menhir_stack in
+            let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : 'freshtv47 * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+            ((let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : 'freshtv45 * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+            ((let (_menhir_stack, _menhir_s, (t : 'tv_TFun)) = _menhir_stack in
             let _2 = () in
             let _v : (
 # 12 "tyParser.mly"
       (TySyntax.ty)
-# 98 "tyParser.ml"
+# 107 "tyParser.ml"
             ) = 
 # 16 "tyParser.mly"
                ( t )
-# 102 "tyParser.ml"
+# 111 "tyParser.ml"
              in
-            let _menhir_stack = Obj.magic _menhir_stack in
-            let _menhir_stack = Obj.magic _menhir_stack in
-            let (_1 : (
+            let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : 'freshtv43) = _menhir_stack in
+            let (_menhir_s : _menhir_state) = _menhir_s in
+            let (_v : (
 # 12 "tyParser.mly"
       (TySyntax.ty)
-# 109 "tyParser.ml"
+# 119 "tyParser.ml"
             )) = _v in
-            Obj.magic _1
+            ((let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : 'freshtv41) = Obj.magic _menhir_stack in
+            let (_menhir_s : _menhir_state) = _menhir_s in
+            let (_v : (
+# 12 "tyParser.mly"
+      (TySyntax.ty)
+# 127 "tyParser.ml"
+            )) = _v in
+            ((let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : 'freshtv39) = Obj.magic _menhir_stack in
+            let (_menhir_s : _menhir_state) = _menhir_s in
+            let ((_1 : (
+# 12 "tyParser.mly"
+      (TySyntax.ty)
+# 135 "tyParser.ml"
+            )) : (
+# 12 "tyParser.mly"
+      (TySyntax.ty)
+# 139 "tyParser.ml"
+            )) = _v in
+            (Obj.magic _1 : 'freshtv40)) : 'freshtv42)) : 'freshtv44)) : 'freshtv46)) : 'freshtv48)
         | _ ->
             assert (not _menhir_env._menhir_error);
             _menhir_env._menhir_error <- true;
-            let _menhir_stack = Obj.magic _menhir_stack in
-            let (_menhir_stack, _menhir_s, _) = _menhir_stack in
-            _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s
+            let (_menhir_env : _menhir_env) = _menhir_env in
+            let (_menhir_stack : 'freshtv49 * _menhir_state * 'tv_TFun) = Obj.magic _menhir_stack in
+            ((let (_menhir_stack, _menhir_s, _) = _menhir_stack in
+            _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s) : 'freshtv50)) : 'freshtv52)
 
-and _menhir_goto_TLit : _menhir_env -> 'ttv_tail -> _menhir_state -> (TySyntax.ty) -> 'ttv_return =
+and _menhir_goto_TLit : _menhir_env -> 'ttv_tail -> _menhir_state -> 'tv_TLit -> 'ttv_return =
   fun _menhir_env _menhir_stack _menhir_s _v ->
     let _menhir_stack = (_menhir_stack, _menhir_s, _v) in
-    let _menhir_stack = Obj.magic _menhir_stack in
-    assert (not _menhir_env._menhir_error);
+    let (_menhir_env : _menhir_env) = _menhir_env in
+    let (_menhir_stack : 'freshtv25 * _menhir_state * 'tv_TLit) = Obj.magic _menhir_stack in
+    ((assert (not _menhir_env._menhir_error);
     let _tok = _menhir_env._menhir_token in
     match _tok with
     | ARROW ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let _menhir_env = _menhir_discard _menhir_env in
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : 'freshtv15 * _menhir_state * 'tv_TLit) = Obj.magic _menhir_stack in
+        ((let _menhir_env = _menhir_discard _menhir_env in
         let _tok = _menhir_env._menhir_token in
-        (match _tok with
+        match _tok with
         | BOOL ->
             _menhir_run4 _menhir_env (Obj.magic _menhir_stack) MenhirState7
         | INT ->
@@ -138,69 +171,82 @@ and _menhir_goto_TLit : _menhir_env -> 'ttv_tail -> _menhir_state -> (TySyntax.t
         | _ ->
             assert (not _menhir_env._menhir_error);
             _menhir_env._menhir_error <- true;
-            _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) MenhirState7)
+            _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) MenhirState7) : 'freshtv16)
     | LIST ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let _menhir_env = _menhir_discard _menhir_env in
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let (_menhir_stack, _menhir_s, (t : (TySyntax.ty))) = _menhir_stack in
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : 'freshtv19 * _menhir_state * 'tv_TLit) = Obj.magic _menhir_stack in
+        ((let _menhir_env = _menhir_discard _menhir_env in
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : 'freshtv17 * _menhir_state * 'tv_TLit) = Obj.magic _menhir_stack in
+        ((let (_menhir_stack, _menhir_s, (t : 'tv_TLit)) = _menhir_stack in
         let _2 = () in
-        let _v : (TySyntax.ty) = 
+        let _v : 'tv_TLit = 
 # 27 "tyParser.mly"
                 ( TyList t )
-# 152 "tyParser.ml"
+# 187 "tyParser.ml"
          in
-        _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v
+        _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v) : 'freshtv18)) : 'freshtv20)
     | EOF | RPAREN ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let (_menhir_stack, _menhir_s, (t : (TySyntax.ty))) = _menhir_stack in
-        let _v : (TySyntax.ty) = 
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : 'freshtv21 * _menhir_state * 'tv_TLit) = Obj.magic _menhir_stack in
+        ((let (_menhir_stack, _menhir_s, (t : 'tv_TLit)) = _menhir_stack in
+        let _v : 'tv_TFun = 
 # 19 "tyParser.mly"
            ( t )
-# 161 "tyParser.ml"
+# 197 "tyParser.ml"
          in
-        _menhir_goto_TFun _menhir_env _menhir_stack _menhir_s _v
+        _menhir_goto_TFun _menhir_env _menhir_stack _menhir_s _v) : 'freshtv22)
     | _ ->
         assert (not _menhir_env._menhir_error);
         _menhir_env._menhir_error <- true;
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let (_menhir_stack, _menhir_s, _) = _menhir_stack in
-        _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : 'freshtv23 * _menhir_state * 'tv_TLit) = Obj.magic _menhir_stack in
+        ((let (_menhir_stack, _menhir_s, _) = _menhir_stack in
+        _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s) : 'freshtv24)) : 'freshtv26)
 
 and _menhir_errorcase : _menhir_env -> 'ttv_tail -> _menhir_state -> 'ttv_return =
   fun _menhir_env _menhir_stack _menhir_s ->
     match _menhir_s with
     | MenhirState7 ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let (_menhir_stack, _menhir_s, _) = _menhir_stack in
-        _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : ('freshtv9 * _menhir_state * 'tv_TLit)) = Obj.magic _menhir_stack in
+        ((let (_menhir_stack, _menhir_s, _) = _menhir_stack in
+        _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s) : 'freshtv10)
     | MenhirState2 ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        let (_menhir_stack, _menhir_s) = _menhir_stack in
-        _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : 'freshtv11 * _menhir_state) = Obj.magic _menhir_stack in
+        ((let (_menhir_stack, _menhir_s) = _menhir_stack in
+        _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) _menhir_s) : 'freshtv12)
     | MenhirState0 ->
-        let _menhir_stack = Obj.magic _menhir_stack in
-        raise _eRR
+        let (_menhir_env : _menhir_env) = _menhir_env in
+        let (_menhir_stack : 'freshtv13) = Obj.magic _menhir_stack in
+        (raise _eRR : 'freshtv14)
 
 and _menhir_run1 : _menhir_env -> 'ttv_tail -> _menhir_state -> (
 # 9 "tyParser.mly"
        (string)
-# 189 "tyParser.ml"
+# 229 "tyParser.ml"
 ) -> 'ttv_return =
   fun _menhir_env _menhir_stack _menhir_s _v ->
     let _menhir_env = _menhir_discard _menhir_env in
-    let _menhir_stack = Obj.magic _menhir_stack in
-    let (name : (
+    let (_menhir_env : _menhir_env) = _menhir_env in
+    let (_menhir_stack : 'freshtv7) = Obj.magic _menhir_stack in
+    let (_menhir_s : _menhir_state) = _menhir_s in
+    let ((name : (
 # 9 "tyParser.mly"
        (string)
-# 197 "tyParser.ml"
+# 239 "tyParser.ml"
+    )) : (
+# 9 "tyParser.mly"
+       (string)
+# 243 "tyParser.ml"
     )) = _v in
-    let _v : (TySyntax.ty) = 
+    ((let _v : 'tv_TLit = 
 # 25 "tyParser.mly"
                ( TyVar name )
-# 202 "tyParser.ml"
+# 248 "tyParser.ml"
      in
-    _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v
+    _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v) : 'freshtv8)
 
 and _menhir_run2 : _menhir_env -> 'ttv_tail -> _menhir_state -> 'ttv_return =
   fun _menhir_env _menhir_stack _menhir_s ->
@@ -224,26 +270,30 @@ and _menhir_run2 : _menhir_env -> 'ttv_tail -> _menhir_state -> 'ttv_return =
 and _menhir_run3 : _menhir_env -> 'ttv_tail -> _menhir_state -> 'ttv_return =
   fun _menhir_env _menhir_stack _menhir_s ->
     let _menhir_env = _menhir_discard _menhir_env in
-    let _menhir_stack = Obj.magic _menhir_stack in
-    let _1 = () in
-    let _v : (TySyntax.ty) = 
+    let (_menhir_env : _menhir_env) = _menhir_env in
+    let (_menhir_stack : 'freshtv5) = Obj.magic _menhir_stack in
+    let (_menhir_s : _menhir_state) = _menhir_s in
+    ((let _1 = () in
+    let _v : 'tv_TLit = 
 # 23 "tyParser.mly"
         ( TyInt )
-# 233 "tyParser.ml"
+# 281 "tyParser.ml"
      in
-    _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v
+    _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v) : 'freshtv6)
 
 and _menhir_run4 : _menhir_env -> 'ttv_tail -> _menhir_state -> 'ttv_return =
   fun _menhir_env _menhir_stack _menhir_s ->
     let _menhir_env = _menhir_discard _menhir_env in
-    let _menhir_stack = Obj.magic _menhir_stack in
-    let _1 = () in
-    let _v : (TySyntax.ty) = 
+    let (_menhir_env : _menhir_env) = _menhir_env in
+    let (_menhir_stack : 'freshtv3) = Obj.magic _menhir_stack in
+    let (_menhir_s : _menhir_state) = _menhir_s in
+    ((let _1 = () in
+    let _v : 'tv_TLit = 
 # 24 "tyParser.mly"
          ( TyBool )
-# 245 "tyParser.ml"
+# 295 "tyParser.ml"
      in
-    _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v
+    _menhir_goto_TLit _menhir_env _menhir_stack _menhir_s _v) : 'freshtv4)
 
 and _menhir_discard : _menhir_env -> _menhir_env =
   fun _menhir_env ->
@@ -260,18 +310,23 @@ and _menhir_discard : _menhir_env -> _menhir_env =
 and toplevel : (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (
 # 12 "tyParser.mly"
       (TySyntax.ty)
-# 264 "tyParser.ml"
+# 314 "tyParser.ml"
 ) =
   fun lexer lexbuf ->
-    let _menhir_env = let _tok = Obj.magic () in
-    {
-      _menhir_lexer = lexer;
-      _menhir_lexbuf = lexbuf;
-      _menhir_token = _tok;
-      _menhir_error = false;
-    } in
-    Obj.magic (let _menhir_stack = ((), _menhir_env._menhir_lexbuf.Lexing.lex_curr_p) in
-    let _menhir_env = _menhir_discard _menhir_env in
+    let _menhir_env =
+      let (lexer : Lexing.lexbuf -> token) = lexer in
+      let (lexbuf : Lexing.lexbuf) = lexbuf in
+      ((let _tok = Obj.magic () in
+      {
+        _menhir_lexer = lexer;
+        _menhir_lexbuf = lexbuf;
+        _menhir_token = _tok;
+        _menhir_error = false;
+      }) : _menhir_env)
+    in
+    Obj.magic (let (_menhir_env : _menhir_env) = _menhir_env in
+    let (_menhir_stack : 'freshtv1) = ((), _menhir_env._menhir_lexbuf.Lexing.lex_curr_p) in
+    ((let _menhir_env = _menhir_discard _menhir_env in
     let _tok = _menhir_env._menhir_token in
     match _tok with
     | BOOL ->
@@ -285,9 +340,9 @@ and toplevel : (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (
     | _ ->
         assert (not _menhir_env._menhir_error);
         _menhir_env._menhir_error <- true;
-        _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) MenhirState0)
+        _menhir_errorcase _menhir_env (Obj.magic _menhir_stack) MenhirState0) : 'freshtv2))
 
 # 269 "/home/masashi/.opam/4.07.1/lib/menhir/standard.mly"
   
 
-# 294 "tyParser.ml"
+# 349 "tyParser.ml"

@@ -6,7 +6,7 @@ open Syntax
 %token PLUS MULT LT
 %token IF THEN ELSE TRUE FALSE
 %token LET IN EQ
-%token AMPERAMPER PAIPUPAIPU
+%token AAND OOR
 %token FUN RARROW
 %token AND
 %token WHAT
@@ -29,14 +29,23 @@ toplevel :
 Expr :
     e=IfExpr { e }
   | e=LetInExpr { e }
+  | e=ORExpr { e }
   | e=BExpr { e }
   | e=FunExpr { e }
   | e=LetAndInExpr { e }
 
 BExpr :
-    l=LTExpr AMPERAMPER r=LTExpr { BinOp(AMPERAMPER, l, r) }
-  | l=LTExpr PAIPUPAIPU r=LTExpr { BinOp(PAIPUPAIPU, l, r) }
+    l=LTExpr AAND r=Expr { ANDORBinOp(AAND, l, r) }
+  | l=LTExpr OOR r=Expr { ANDORBinOp(OOR, l, r) }
   | e=LTExpr { e }
+
+ORExpr :
+		l=ORExpr OOR r=ANDExpr { BinOp (OOR, l, r) }
+	| e=ANDExpr { e }
+
+ANDExpr :
+		l=ANDExpr AAND r=ORExpr { BinOp (AAND, l, r) }
+	| e=LTExpr { e }
 
 LTExpr :
     l=PExpr LT r=PExpr { BinOp (Lt, l, r) }
@@ -87,5 +96,5 @@ AndExpr :
 LetAndInExpr :
     LET x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
   | x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
-  | x=ID EQ e1=Expr IN e2=Expr { LetInExp (x, e1, e2) }
+  | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) }
 

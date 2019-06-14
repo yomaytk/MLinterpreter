@@ -47,10 +47,10 @@ let rec apply_prim op arg1 arg2 =
   | Mult, _, _ -> print_string (errm ^ "integer: *");print_newline();err "error"
   | Lt, IntV i1, IntV i2 -> BoolV (i1 < i2)
   | Lt, _, _ -> print_string (errm ^ "integer: <");print_newline();err "error"
-  | AMPERAMPER, BoolV i1, BoolV i2 -> BoolV (i1 && i2)
-  | AMPERAMPER, _, _ -> print_string (errm ^ "bool: &&");print_newline();err "error"
-  | PAIPUPAIPU, BoolV i1, BoolV i2 -> BoolV (i1 || i2)
-  | PAIPUPAIPU, _, _ -> print_string (errm ^ "bool: ||");print_newline();err "error"
+  | AAND, BoolV i1, BoolV i2 -> BoolV (i1 && i2)
+  | AAND, _, _ -> print_string (errm ^ "bool: &&");print_newline();err "error"
+  | OOR, BoolV i1, BoolV i2 -> BoolV (i1 || i2)
+  | OOR, _, _ -> print_string (errm ^ "bool: ||");print_newline();err "error"
 
 let rec eval_exp env = function
     Var x ->
@@ -62,6 +62,12 @@ let rec eval_exp env = function
     let arg1 = eval_exp env exp1 in
     let arg2 = eval_exp env exp2 in
     apply_prim op arg1 arg2
+  | ANDORBinOp (op, exp1, exp2) ->
+    let arg1 = eval_exp env exp1 in
+      (match op with
+          AAND -> if arg1 = BoolV false then BoolV false else eval_exp env (BinOp(op, exp1, exp2))
+        | OOR -> if arg1 = BoolV true then BoolV true else eval_exp env (BinOp(op, exp1, exp2))
+        | _ -> err "error")
   | IfExp (exp1, exp2, exp3) ->
     let test = eval_exp env exp1 in
     (match test with
@@ -81,7 +87,7 @@ let rec eval_exp env = function
           andletlist := (id, value)::!andletlist;eval_exp env exp2
         end
   | LetEndInExp (id, exp1, exp2) ->
-     let bound = findid !andletlist id in
+      let bound = findid !andletlist id in
       if bound then err "error"
       else
         begin
@@ -104,20 +110,20 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
       Exp e ->
         let v = eval_exp env e in (env, env2 @ [("-", v)], v)
     | Decl (id, e) ->
-       (*Printf.printf "bb";*)
-       let v = eval_exp env e in
-       let bound = findid !andletlist id in
+        (*Printf.printf "bb";*)
+        let v = eval_exp env e in
+        let bound = findid !andletlist id in
         if bound then begin Printf.printf "Error: Variable a is bound several times in this matching";print_newline(); (env, [], err "error" ) end
         else begin
-               let newenv = andlistadd !andletlist env in
-               if v = Except then (newenv, [("-", v)], v) else (Environment.extend id v newenv, env2 @ [(id, v)], v)
-             end
+                let newenv = andlistadd !andletlist env in
+                if v = Except then (newenv, [("-", v)], v) else (Environment.extend id v newenv, env2 @ [(id, v)], v)
+              end
     | RecDecl(id, e1, e2) ->
         let v = eval_exp env e1 in
           let newenv = Environment.extend id v env in
             eval_decl newenv e2 (env2 @ [(id, v)])
     | AndLet(id, e1, e2) ->
-       (*Printf.printf "aa";*)
+        (*Printf.printf "aa";*)
         let bound = findid !andletlist id in
         if bound then begin Printf.printf "Error: Variable a is bound several times in this matching"; print_newline(); (env, [], err "error") end
         else

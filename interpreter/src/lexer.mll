@@ -27,8 +27,8 @@ rule main = parse
 | "*" { Parser.MULT }
 | "<" { Parser.LT }
 | "=" { Parser.EQ }
-| "&&" { Parser.AMPERAMPER }
-| "||" { Parser.PAIPUPAIPU }
+| "&&" { Parser.AAND }
+| "||" { Parser.OOR }
 | "->" { Parser.RARROW }
 
 | ['a'-'z'] ['a'-'z' '0'-'9' '_' '\'']*

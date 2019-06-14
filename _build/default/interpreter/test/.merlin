@@ -3,7 +3,7 @@ B /home/masashi/.opam/4.07.1/lib/bytes
 B /home/masashi/.opam/4.07.1/lib/oUnit
 B /home/masashi/.opam/4.07.1/lib/ocaml
 B ../../_build/default/interpreter/src/.miniml.objs/byte
-B ../../_build/default/interpreter/test/.ex3_2_2.eobjs/byte
+B ../../_build/default/interpreter/test/.ex3_2_1.eobjs/byte
 S /home/masashi/.opam/4.07.1/lib/bytes
 S /home/masashi/.opam/4.07.1/lib/oUnit
 S /home/masashi/.opam/4.07.1/lib/ocaml
