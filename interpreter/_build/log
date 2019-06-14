@@ -1,4 +1,206 @@
-# dune exec miniml --profile=
+# dune runtest
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/dune1beb17.output 2> /dev/null
-$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune64e762.output
+$ /usr/bin/nproc > /tmp/dune76d37b.output 2> /dev/null
+$ /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -config > /tmp/dune2b1bfb.output
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/evalTestGenerator.ml) > _build/default/test/.ex3_2_2.eobjs/evalTestGenerator.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_2_1.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_2_1.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_2_2.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_2_2.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_2_3.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_2_3.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_2_4.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_2_4.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_3_1.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_3_1.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_3_2.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_3_2.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_3_3.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_3_3.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_3_4.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_3_4.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_4_1.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_4_1.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_4_2.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_4_2.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_4_3.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_4_3.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_4_4.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_4_4.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_4_5.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_4_5.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_4_6.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_4_6.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_5_1.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_5_1.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_5_2.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_5_2.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_6_1.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_6_1.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_6_2.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_6_2.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_6_3.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_6_3.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_6_4.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_6_4.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_6_5.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_6_5.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_6_6.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_6_6.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex3_6_7.ml) > _build/default/test/.ex3_2_2.eobjs/ex3_6_7.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_2_1.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_2_1.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_3_1.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_3_1.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_3_2.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_3_2.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_3_3.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_3_3.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_3_4.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_3_4.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_3_5.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_3_5.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_3_6.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_3_6.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_3_7.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_3_7.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_4_1.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_4_1.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_4_2.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_4_2.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_4_3.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_4_3.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/ex4_4_4.ml) > _build/default/test/.ex3_2_2.eobjs/ex4_4_4.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/exec.ml) > _build/default/test/.ex3_2_2.eobjs/exec.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/lexingHelper.ml) > _build/default/test/.ex3_2_2.eobjs/lexingHelper.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/pretypingTestGenerator.ml) > _build/default/test/.ex3_2_2.eobjs/pretypingTestGenerator.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/testutil.ml) > _build/default/test/.ex3_2_2.eobjs/testutil.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/tyHelper.ml) > _build/default/test/.ex3_2_2.eobjs/tyHelper.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamllex.opt -q -o test/tyLexer.ml test/tyLexer.mll)
+$ (cd _build/default/test && /export/home/016/a0161090/.opam/4.07.0/bin/menhir tyParser.mly --base tyParser)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/tySyntax.ml) > _build/default/test/.ex3_2_2.eobjs/tySyntax.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/typingTestGenerator.ml) > _build/default/test/.ex3_2_2.eobjs/typingTestGenerator.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/cui.ml) > _build/default/src/.miniml.objs/cui.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/environment.ml) > _build/default/src/.miniml.objs/environment.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/eval.ml) > _build/default/src/.miniml.objs/eval.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamllex.opt -q -o src/lexer.ml src/lexer.mll)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/tyLexer.ml) > _build/default/test/.ex3_2_2.eobjs/tyLexer.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl test/tyParser.ml) > _build/default/test/.ex3_2_2.eobjs/tyParser.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/mySet.ml) > _build/default/src/.miniml.objs/mySet.ml.d
+$ (cd _build/default/src && /export/home/016/a0161090/.opam/4.07.0/bin/menhir parser.mly --base parser)
+> Warning: one state has shift/reduce conflicts.
+> Warning: one shift/reduce conflict was arbitrarily resolved.
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/syntax.ml) > _build/default/src/.miniml.objs/syntax.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/typing.ml) > _build/default/src/.miniml.objs/typing.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/lexer.ml) > _build/default/src/.miniml.objs/lexer.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -intf src/environment.mli) > _build/default/src/.miniml.objs/environment.mli.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -intf src/mySet.mli) > _build/default/src/.miniml.objs/mySet.mli.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -intf test/tyParser.mli) > _build/default/test/.ex3_2_2.eobjs/tyParser.mli.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -o src/.miniml.objs/miniml.cmo -c -impl src/miniml.ml-gen)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/parser.ml) > _build/default/src/.miniml.objs/parser.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -intf src/parser.mli) > _build/default/src/.miniml.objs/parser.mli.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml-gen -no-alias-deps -opaque -o src/.miniml.objs/miniml.cmx -c -impl src/miniml.ml-gen)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Syntax.cmo -c -impl src/syntax.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Typing.cmo -c -impl src/typing.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__MySet.cmi -c -intf src/mySet.mli)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Syntax.cmx -c -impl src/syntax.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Environment.cmi -c -intf src/environment.mli)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Parser.cmi -c -intf src/parser.mli)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Typing.cmx -c -impl src/typing.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__MySet.cmx -c -impl src/mySet.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Environment.cmx -c -impl src/environment.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Lexer.cmo -c -impl src/lexer.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Eval.cmo -c -impl src/eval.ml)
+> File "src/eval.ml", line 25, characters 10-11:
+> Warning 27: unused variable v.
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Cui.cmo -c -impl src/cui.ml)
+> File "src/cui.ml", line 2, characters 0-11:
+> Warning 33: unused open Miniml.Syntax.
+> File "src/cui.ml", line 8, characters 25-30:
+> Warning 27: unused variable value.
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Lexer.cmx -c -impl src/lexer.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Eval.cmx -c -impl src/eval.ml)
+> File "src/eval.ml", line 25, characters 10-11:
+> Warning 27: unused variable v.
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Cui.cmx -c -impl src/cui.ml)
+> File "src/cui.ml", line 2, characters 0-11:
+> Warning 33: unused open Miniml.Syntax.
+> File "src/cui.ml", line 8, characters 25-30:
+> Warning 27: unused variable value.
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Parser.cmx -c -impl src/parser.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/ex3_2_2.cmo -c -impl test/ex3_2_2.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -a -o src/miniml.cmxa src/.miniml.objs/miniml.cmx src/.miniml.objs/miniml__Typing.cmx src/.miniml.objs/miniml__Syntax.cmx src/.miniml.objs/miniml__Parser.cmx src/.miniml.objs/miniml__MySet.cmx src/.miniml.objs/miniml__Lexer.cmx src/.miniml.objs/miniml__Environment.cmx src/.miniml.objs/miniml__Eval.cmx src/.miniml.objs/miniml__Cui.cmx)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/lexingHelper.cmo -c -impl test/lexingHelper.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/testutil.cmo -c -impl test/testutil.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/ex3_2_2.cmx -c -impl test/ex3_2_2.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/lexingHelper.cmx -c -impl test/lexingHelper.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/exec.cmo -c -impl test/exec.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/testutil.cmx -c -impl test/testutil.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/exec.cmx -c -impl test/exec.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/evalTestGenerator.cmo -c -impl test/evalTestGenerator.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/ex3_3_2.cmo -c -impl test/ex3_3_2.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/evalTestGenerator.cmx -c -impl test/evalTestGenerator.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/ex3_3_4.cmo -c -impl test/ex3_3_4.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/ex3_3_2.cmx -c -impl test/ex3_3_2.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I test/.ex3_2_2.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o test/.ex3_2_2.eobjs/ex3_3_4.cmx -c -impl test/ex3_3_4.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o test/ex3_2_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa src/miniml.cmxa test/.ex3_2_2.eobjs/ex3_2_2.cmx)
+$ (cd _build/default/test && ./ex3_2_2.exe)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o test/ex3_3_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa src/miniml.cmxa test/.ex3_2_2.eobjs/lexingHelper.cmx test/.ex3_2_2.eobjs/exec.cmx test/.ex3_2_2.eobjs/testutil.cmx test/.ex3_2_2.eobjs/evalTestGenerator.cmx test/.ex3_2_2.eobjs/ex3_3_2.cmx)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o test/ex3_3_4.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa src/miniml.cmxa test/.ex3_2_2.eobjs/lexingHelper.cmx test/.ex3_2_2.eobjs/exec.cmx test/.ex3_2_2.eobjs/testutil.cmx test/.ex3_2_2.eobjs/evalTestGenerator.cmx test/.ex3_2_2.eobjs/ex3_3_4.cmx)
+$ (cd _build/default/test && ./ex3_3_4.exe)
+> FFError: Exception Variable not bound: y
+> FFError: Exception Variable not bound: z
+> FFError: Exception Variable not bound: a
+> FF
+> ==============================================================================
+> Failure: ex3.3.4:7:
+>
+> reason:    not equal
+> input:     let b = 1 and b = 1 in b + 5;;
+> actual:    error
+> expected:  error
+>
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Failure: ex3.3.4:6:
+>
+> reason:    not equal
+> input:     let a = 1 and a = 1;; a;;
+> actual:    error
+> expected:  error
+>
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Failure: ex3.3.4:5:
+>
+> reason:    not equal
+> input:     let x = 1 and y = 2 in let z = x and w = y in z + w;;
+> actual:    error
+> expected:  3
+>
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Failure: ex3.3.4:4:
+>
+> reason:    not equal
+> input:     let z = let x = 3 and y = 5 in x + y;;
+> z;;
+> actual:    error
+> expected:  8
+>
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Failure: ex3.3.4:3:
+>
+> reason:    not equal
+> input:     let x = 3 and y = 5 in x + y;;
+> actual:    error
+> expected:  8
+>
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Failure: ex3.3.4:2:
+>
+> reason:    not equal
+> input:     let x = 10;;
+>  let x = 100 and y = x;;
+>  y;;
+> actual:    error
+> expected:  10
+>
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Failure: ex3.3.4:1:
+>
+> reason:    not equal
+> input:     let x = 10;;
+>  let x = 100 and y = x;;
+>  x;;
+> actual:    10
+> expected:  100
+>
+> ------------------------------------------------------------------------------
+> ==============================================================================
+> Failure: ex3.3.4:0:
+>
+> reason:    not equal
+> input:     let x = 10;;
+>  let x = 100 and y = x in x + y;;
+> actual:    error
+> expected:  110
+>
+> ------------------------------------------------------------------------------
+> Ran: 8 tests in: 0.00 seconds.
+> FAILED: Cases: 8 Tried: 8 Errors: 0 Failures: 8 Skip:  0 Todo: 0 Timeouts: 0.
+[1]
+$ (cd _build/default/test && ./ex3_3_2.exe)
+> .....
+> Ran: 5 tests in: 0.01 seconds.
+> OK

@@ -1,1 +1,1 @@
-src/parser.ml: Lexing Obj Printf Syntax
+src/parser.ml: Lexing Obj Pervasives Printf Syntax

@@ -3,6 +3,7 @@ type 'a t = (Syntax.id * 'a) list
 exception Not_bound
 
 let empty = []
+
 let extend x v env = (x,v)::env
 
 let rec lookup x env =
@@ -17,3 +18,6 @@ let rec fold_right f env a =
     [] -> a
   | (_, v)::rest -> f v (fold_right f rest a)
 
+(* let rec length = function
+    [] -> 0
+  | _ :: rest -> 1 + length rest *)

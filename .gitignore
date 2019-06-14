@@ -12,3 +12,4 @@ interpreter/miniml
 interpreter/parser.automaton
 compiler/src/_build
 compiler/src/main
+interpreter/dune-project
