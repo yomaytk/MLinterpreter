@@ -40,13 +40,12 @@ BExpr :
   | e=LTExpr { e }
 
 ORExpr :
-		l=ORExpr OOR r=ANDExpr { BinOp (OOR, l, r) }
-	| e=ANDExpr { e }
+    l=ORExpr OOR r=ANDExpr { BinOp (OOR, l, r) }
+  | e=ANDExpr { e }
 
-ANDExpr :
-		l=ANDExpr AAND r=ORExpr { BinOp (AAND, l, r) }
-	| e=LTExpr { e }
-
+ANDExpr : 
+    l=ANDExpr AAND r=ORExpr { BinOp (AAND, l, r) }
+  | e=LTExpr { e }
 LTExpr :
     l=PExpr LT r=PExpr { BinOp (Lt, l, r) }
   | e=PExpr { e }
