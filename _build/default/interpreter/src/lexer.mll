@@ -10,7 +10,8 @@ let reservedWords = [
   ("let", Parser.LET);
   ("fun", Parser.FUN);
   ("and", Parser.AND);
-]
+];;
+let cnt = ref 0;;
 }
 
 rule main = parse
@@ -20,6 +21,8 @@ rule main = parse
 | "-"? ['0'-'9']+
     { Parser.INTV (int_of_string (Lexing.lexeme lexbuf)) }
 
+| "(*" { cnt := 1;comment lexbuf }
+| "*)" { comment lexbuf }
 | "(" { Parser.LPAREN }
 | ")" { Parser.RPAREN }
 | ";;" { Parser.SEMISEMI }
@@ -30,6 +33,8 @@ rule main = parse
 | "&&" { Parser.AAND }
 | "||" { Parser.OOR }
 | "->" { Parser.RARROW }
+| "( *" { Parser.WHAT}
+| "* )" { Parser.WHAT}
 
 | ['a'-'z'] ['a'-'z' '0'-'9' '_' '\'']*
     { let id = Lexing.lexeme lexbuf in
@@ -42,5 +47,12 @@ rule main = parse
 | _ { Parser.WHAT }
 
 | eof { exit 0 }
+
+and comment = parse
+    "(*" {cnt := !cnt+1;comment lexbuf}
+  | "*)" {cnt := !cnt-1;if !cnt = 0 then main lexbuf else if !cnt > 0 then comment lexbuf else Parser.WHAT }
+  | _ {comment lexbuf}
+
+  | eof { exit 0 }
 
 

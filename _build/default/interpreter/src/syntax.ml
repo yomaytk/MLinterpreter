@@ -21,7 +21,7 @@ type program =
   | Decl of id * exp
   | RecDecl of id * exp * program
   | AndLet of id * exp * program
-  | Rongai
+  | ParseFail 
 
 type tyvar = int
 type ty =

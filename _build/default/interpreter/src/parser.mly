@@ -23,8 +23,7 @@ toplevel :
   | e=RecLetExpr SEMISEMI { e }
   | e=LetExpr SEMISEMI { e }
   | e=LetAndExpr SEMISEMI { e }
-  | WHAT { Rongai }
-  | SEMISEMI { Rongai }
+  | e=WExpr SEMISEMI { ParseFail }
 
 Expr :
     e=IfExpr { e }
@@ -33,6 +32,13 @@ Expr :
   | e=BExpr { e }
   | e=FunExpr { e }
   | e=LetAndInExpr { e }
+
+WExpr :
+    e=Expr { e }
+  | e1=WExpr WHAT e2=WExpr { e1 }
+  | e=WExpr WHAT { e }
+  | WHAT e=WExpr { e }
+  | WHAT { BLit false }
 
 BExpr :
     l=LTExpr AAND r=Expr { ANDORBinOp(AAND, l, r) }

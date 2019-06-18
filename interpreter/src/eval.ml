@@ -104,7 +104,6 @@ let rec eval_exp env = function
             let newenv = Environment.extend id arg env' in eval_exp newenv exp
         | _ -> print_string "Error : Non-function value is applied";print_newline();(try err "error" with _ -> Exception)
 
-
 let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
     match ee with
       Exp e ->
@@ -131,5 +130,5 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
             let v1 = eval_exp env e1 in
             andletlist := (id, v1) :: !andletlist; eval_decl env e2 (env2 @ [(id, v1)])
           end
-    | Rongai -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();(env, [("-", Exception)], Exception)
+    | ParseFail -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";print_newline();(env, [("-", Exception)], Exception)
     
