@@ -65,7 +65,7 @@ MExpr :
   | e=AppExpr { e }
 
 AppExpr : 
-    e1=AppExpr e2=Expr { AppExp (e1, e2) }
+    e1=AppExpr e2=AExpr { AppExp (e1, e2) }
   | e=AExpr { e }
 
 AExpr :
@@ -89,14 +89,10 @@ RecLetExpr :
   | e=LetExpr { e }
 
 FunExpr : 
-    FUN e1=ID RARROW e2=Expr { FunExp (e1, e2) }
-  | FUN e1=ID e2=FunExpr { FunExp (e1, e2) }
-  | e1=ID RARROW e2=Expr { FunExp (e1, e2) }
-  | e1=ID e2=FunExpr { FunExp (e1, e2) }
-
-/* MultFunExpr :
-    e1=ID e2=MultFunExpr { e1::e2 }
-  | e=ID { [e] } */
+    FUN x=ID RARROW e2=Expr { FunExp (x, e2) }
+  | FUN x=ID e2=FunExpr { FunExp (x, e2) }
+  | x=ID e2=FunExpr { FunExp (x, e2) }
+  | x=ID RARROW e2=Expr { FunExp (x, e2) }
 
 LetAndExpr :
     LET x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) }
