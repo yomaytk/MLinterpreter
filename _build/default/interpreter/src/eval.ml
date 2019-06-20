@@ -3,7 +3,7 @@ open Syntax
 type exval =
     IntV of int
   | BoolV of bool
-  | ProcV of id list * exp * dnval Environment.t
+  | ProcV of id * exp * dnval Environment.t
   | Exception
 and dnval = exval
 
@@ -95,28 +95,15 @@ let rec eval_exp env = function
           let newenv = andlistadd !andletlist env in
           eval_exp (Environment.extend id value newenv) exp2
         end
-  | FunExp (idl, exp) -> ProcV(idl, exp, env)
-  | AppExp (e1, e2l) ->
-    let funval = eval_exp env e1 in
-    let argl = 
-    let rec solveexplist env expl = 
-      match expl with
-          [] -> []
-        | x::rest -> (eval_exp env x) :: (solveexplist env rest) 
-    in solveexplist env e2l in
-      match funval with
-          ProcV(idl, body, env') ->
-            let newenv = 
-            let rec makenewenv idlist explist =
-              (match idlist with
-                  [] -> env'
-                | x::rest -> 
-                    (match explist with
-                        [] -> err "error"
-                      | y::rest2 -> (Environment.extend x y (makenewenv rest rest2))))
-            in makenewenv idl argl in
+  | FunExp (id, exp) -> ProcV(id, exp, env)
+  | AppExp (exp1, exp2) ->
+      let funval = eval_exp env exp1 in
+      let arg = eval_exp env exp2 in
+        (match funval with
+          ProcV (id, body, env') ->
+            let newenv = Environment.extend id arg env' in
             eval_exp newenv body
-        | _ -> print_string "Error : Non-function value is applied";print_newline();(try err "error" with _ -> Exception)
+        | _ -> print_string "Error : Non-function value is applied";print_newline();(try err "error" with _ -> Exception))
 
 let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
     match ee with
