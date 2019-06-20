@@ -10,14 +10,8 @@ let rec read_eval_print env =
       match tmp_localenv with
           [] -> ()
         | (id, v) :: rest -> 
-            (if except_judge v then
-              begin
-                pp_id id;pp_val v;print_newline();print_localenv rest;
-              end
-            else
-              begin
-                print_localenv rest
-              end)
+            (if except_judge v then begin pp_id id;pp_val v;print_newline();print_localenv rest; end
+            else begin print_localenv rest end)
     in print_localenv localenv;
   read_eval_print newenv
 

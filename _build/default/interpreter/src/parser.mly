@@ -21,7 +21,6 @@ open Syntax
 toplevel :
     e=Expr SEMISEMI { Exp e }
   | e=RecLetExpr SEMISEMI { e }
-  | e=LetExpr SEMISEMI { e }
   | e=LetAndExpr SEMISEMI { e }
   | e=WExpr SEMISEMI { ParseFail }
 
@@ -66,8 +65,12 @@ MExpr :
   | e=AppExpr { e }
 
 AppExpr : 
-    e1=AppExpr e2=AExpr { AppExp (e1, e2) }
+    e1=AppExpr e2=MultAppExpr { AppExp (e1, e2) }
   | e=AExpr { e }
+
+MultAppExpr :
+    e1=AExpr e2=MultAppExpr { e1::e2 }
+  | e=AExpr { [e] }
 
 AExpr :
     i=INTV { ILit i }
@@ -90,7 +93,12 @@ RecLetExpr :
   | e=LetExpr { e }
 
 FunExpr : 
-  FUN e1=ID RARROW e2=Expr { FunExp (e1, e2) }
+    FUN e1=MultFunExpr RARROW e2=Expr { FunExp (e1, e2) }
+  /* | FUN e1=ID e2=MultFunExpr RARROW e3=Expr { FunExp (e1::e2, e3)} */
+  
+MultFunExpr :
+    e1=ID e2=MultFunExpr { e1::e2 }
+  | e=ID { [e] }
 
 LetAndExpr :
     LET x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) }

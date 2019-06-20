@@ -11,8 +11,8 @@ type exp =
   | ANDORBinOp of binOp * exp * exp
   | IfExp of exp * exp * exp
   | LetInExp of id * exp * exp
-  | FunExp of id * exp
-  | AppExp of exp * exp
+  | FunExp of id list * exp
+  | AppExp of exp * exp list
   | LetAndInExp of id * exp * exp
   | LetEndInExp of id * exp * exp
 
