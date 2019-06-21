@@ -6,9 +6,10 @@ open Syntax
 %token PLUS MULT LT
 %token IF THEN ELSE TRUE FALSE
 %token LET IN EQ
-%token AMPERAMPER PAIPUPAIPU
+%token AAND OOR
 %token FUN RARROW
 %token AND
+%token FPLUS FMULT
 %token WHAT
 
 %token <int> INTV
@@ -21,21 +22,38 @@ open Syntax
 toplevel :
     e=Expr SEMISEMI { Exp e }
   | e=RecLetExpr SEMISEMI { e }
-  | e=LetExpr SEMISEMI { e }
+(* | e=LetExpr SEMISEMI { e } *)
   | e=LetAndExpr SEMISEMI { e }
-  | WHAT { Rongai }
-  | SEMISEMI { Rongai }
+  (* | e=LetFunExpr SEMISEMI { e } *)
+  | e=WExpr SEMISEMI { ParseFail }
 
 Expr :
     e=IfExpr { e }
   | e=LetInExpr { e }
+  | e=ORExpr { e }
   | e=BExpr { e }
   | e=FunExpr { e }
+  | e=FunMExpr { e }
   | e=LetAndInExpr { e }
 
+WExpr :
+    e=Expr { e }
+  | e1=WExpr WHAT e2=WExpr { e1 }
+  | e=WExpr WHAT { e }
+  | WHAT e=WExpr { e }
+  | WHAT { BLit false }
+
 BExpr :
-    l=LTExpr AMPERAMPER r=BExpr { BinOp(AMPERAMPER, l, r) }
-  | l=LTExpr PAIPUPAIPU r=BExpr { BinOp(PAIPUPAIPU, l, r) }
+    l=LTExpr AAND r=Expr { ANDORBinOp(AAND, l, r) }
+  | l=LTExpr OOR r=Expr { ANDORBinOp(OOR, l, r) }
+  | e=LTExpr { e }
+
+ORExpr :
+    l=ORExpr OOR r=ANDExpr { BinOp (OOR, l, r) }
+  | e=ANDExpr { e }
+
+ANDExpr : 
+    l=ANDExpr AAND r=ORExpr { BinOp (AAND, l, r) }
   | e=LTExpr { e }
 
 LTExpr :
@@ -75,8 +93,20 @@ RecLetExpr :
   | e=LetExpr { e }
 
 FunExpr : 
-  FUN e1=ID RARROW e2=Expr { FunExp (e1, e2) }
+    FUN x=ID RARROW e=Expr { FunExp (x, e) }
 
+FunMExpr :
+    FUN x=ID e=FunMExpr { FunExp (x, e) }
+  (* | x=ID e=FunMExpr { FunExp (x, e) } *)
+  | x=ID RARROW e=Expr { FunExp (x, e) }
+
+LetFunExpr :
+    LET x=ID e=LetFunFunExpr { Decl (x, e) }
+                                 
+LetFunFunExpr :
+    x=ID e=LetFunFunExpr { FunExp (x, e) }                                        
+  | x=ID EQ e=Expr { FunExp (x, e) }
+                
 LetAndExpr :
     LET x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) }
 

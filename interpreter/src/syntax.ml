@@ -15,6 +15,8 @@ type exp =
   | AppExp of exp * exp
   | LetAndInExp of id * exp * exp
   | LetEndInExp of id * exp * exp
+  | FplmuBinOp of binOp * id * id
+  | FplmuFunExp of binOp * exp * exp
 
 type program =
     Exp of exp

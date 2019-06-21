@@ -33,8 +33,10 @@ rule main = parse
 | "&&" { Parser.AAND }
 | "||" { Parser.OOR }
 | "->" { Parser.RARROW }
-| "( *" { Parser.WHAT}
-| "* )" { Parser.WHAT}
+| "( *" { Parser.WHAT }
+| "* )" { Parser.WHAT }
+| "(+)" { Parser.FPLUS }
+| "( * )" { Parser.FMULT }
 
 | ['a'-'z'] ['a'-'z' '0'-'9' '_' '\'']*
     { let id = Lexing.lexeme lexbuf in
