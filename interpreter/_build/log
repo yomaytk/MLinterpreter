@@ -1,46 +1,4 @@
 # dune build
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/dune50b1f5.output 2> /dev/null
-$ /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -config > /tmp/dunedb1171.output
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl main.ml) > _build/default/.main.eobjs/main.ml.d
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/cui.ml) > _build/default/src/.miniml.objs/cui.ml.d
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/syntax.ml) > _build/default/src/.miniml.objs/syntax.ml.d
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/eval.ml) > _build/default/src/.miniml.objs/eval.ml.d
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamllex.opt -q -o src/lexer.ml src/lexer.mll)
-$ (cd _build/default/src && /export/home/016/a0161090/.opam/4.07.0/bin/menhir --dump parser.mly --base parser)
-> File "parser.mly", line 12, characters 13-18:
-> Warning: the token FMULT is unused.
-> File "parser.mly", line 12, characters 7-12:
-> Warning: the token FPLUS is unused.
-> File "parser.mly", line 103, characters 0-10:
-> Warning: symbol LetFunExpr is unreachable from any of the start symbol(s).
-> File "parser.mly", line 106, characters 0-13:
-> Warning: symbol LetFunFunExpr is unreachable from any of the start symbol(s).
-> Warning: 9 states have shift/reduce conflicts.
-> Warning: one state has reduce/reduce conflicts.
-> Warning: 10 shift/reduce conflicts were arbitrarily resolved.
-> Warning: 8 reduce/reduce conflicts were arbitrarily resolved.
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/lexer.ml) > _build/default/src/.miniml.objs/lexer.ml.d
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -intf src/parser.mli) > _build/default/src/.miniml.objs/parser.mli.d
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl src/parser.ml) > _build/default/src/.miniml.objs/parser.ml.d
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Syntax.cmo -c -impl src/syntax.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Syntax.cmx -c -impl src/syntax.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Environment.cmi -c -intf src/environment.mli)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Parser.cmi -c -intf src/parser.mli)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Lexer.cmo -c -impl src/lexer.ml)
-> File "src/lexer.mll", line 38, characters 10-22:
-> Error: Unbound constructor Parser.FPULS
-> Hint: Did you mean FPLUS?
-[2]
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Environment.cmx -c -impl src/environment.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I src/.miniml.objs -I src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Eval.cmo -c -impl src/eval.ml)
-> File "src/eval.ml", line 25, characters 10-11:
-> Warning 27: unused variable v.
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Eval.cmx -c -impl src/eval.ml)
-> File "src/eval.ml", line 25, characters 10-11:
-> Warning 27: unused variable v.
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I src/.miniml.objs -I src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o src/.miniml.objs/miniml__Parser.cmx -c -impl src/parser.ml)
-> File "parser.ml", line 1866, characters 69-71:
-> Warning 27: unused variable e2.
-> File "parser.ml", line 1892, characters 46-47:
-> Warning 27: unused variable e.
+$ /usr/bin/nproc > /tmp/dune9479b1.output 2> /dev/null
+$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune6a6a98.output

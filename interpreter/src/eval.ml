@@ -69,9 +69,9 @@ let rec eval_exp env = function
         | OOR -> if arg1 = BoolV true then BoolV true else eval_exp env (BinOp(op, exp1, exp2))
         | _ -> (try err "error" with _ -> Exception))
   | FplmuBinOp (op, id1, id2) ->
-     let exp1 = try Environment.lookup id1 env with _ -> err "error" in
-     let exp2 = try Environment.lookup id2 env with _ -> err "error" in
-     apply_prim op exp1 exp2
+      let exp1 = try Environment.lookup id1 env with _ -> err "error" in
+      let exp2 = try Environment.lookup id2 env with _ -> err "error" in
+      apply_prim op exp1 exp2
   | IfExp (exp1, exp2, exp3) ->
     let test = eval_exp env exp1 in
     (match test with
@@ -100,10 +100,11 @@ let rec eval_exp env = function
           eval_exp (Environment.extend id value newenv) exp2
         end
   | FunExp (id, exp) -> ProcV(id, exp, env)
-  | FplmuFunExp(op, id1, id2) ->
-     (match id1 with
-        "-"-> ProcV("a", FunExp("b", FplmuBinOp(op, "a", "b")),env)
-     |  _ -> ProcV(id1, FunExp("a", FplmuBinOp(op, id1, "a")),env))
+  | FplmuFunExp(op, exp, id2) ->
+      (match id2 with
+        "--"  -> ProcV("a", FunExp("b", FplmuBinOp(op, "a", "b")),env)
+      |  _ -> (let arga = eval_exp env exp in
+                ProcV("b", FplmuBinOp(op, "a", "b"), (Environment.extend "a" arga env))))
   | AppExp (exp1, exp2) ->
       let funval = eval_exp env exp1 in
       let arg = eval_exp env exp2 in

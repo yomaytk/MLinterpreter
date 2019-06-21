@@ -22,33 +22,33 @@ open Syntax
 toplevel :
     e=Expr SEMISEMI { Exp e }
   | e=RecLetExpr SEMISEMI { e }
-(* | e=LetExpr SEMISEMI { e } *)
+  /* | e=LetExpr SEMISEMI { e } */
   | e=LetAndExpr SEMISEMI { e }
-  (* | e=LetFunExpr SEMISEMI { e } *)
-  | e=WExpr SEMISEMI { ParseFail }
+  | e=LetFunExpr SEMISEMI { e }
+  /* | e=WExpr SEMISEMI { ParseFail } */
 
 Expr :
     e=IfExpr { e }
   | e=LetInExpr { e }
-  (* | e=ORExpr { e } *)
-  (* | e=BExpr { e } *)
+  /* | e=ORExpr { e } */
+  /* | e=BExpr { e } */
   | e=FPlusExpr { e }
   | e=FunExpr { e }
-  | e=FunMExpr { e }
+  /* | e=FunMExpr { e } */
   | e=LetAndInExpr { e }
 
-WExpr :
+/* WExpr :
     e=Expr { e }
   | e1=WExpr WHAT e2=WExpr { e1 }
   | e=WExpr WHAT { e }
   | WHAT e=WExpr { e }
-  | WHAT { BLit false }
+  | WHAT { BLit false } */
 
 FPlusExpr :
     FPLUS x1=AExpr x2=AExpr { BinOp (Plus, x1, x2) }
   | FPLUS x1=ID x2=ID { FplmuBinOp (Plus, x1, x2) }
-  | FPLUS x1=ID { FplmuFunExp (Plus, x1, ("-" : Syntax.id)) }
-  | FPLUS { FplmuFunExp (Plus, ("-" : Syntax.id)  , ("-" : Syntax.id)) }
+  | FPLUS x1=AExpr { FplmuFunExp (Plus, x1, "-") }
+  | FPLUS { FplmuFunExp (Plus, ILit 0, "--") }
   | e=FMultExpr { e }
 
 FMultExpr :
@@ -107,18 +107,18 @@ RecLetExpr :
 FunExpr : 
     FUN x=ID RARROW e=Expr { FunExp (x, e) }
 
-FunMExpr :
+/* FunMExpr :
     FUN x=ID e=FunMExpr { FunExp (x, e) }
   (* | x=ID e=FunMExpr { FunExp (x, e) } *)
-  | x=ID RARROW e=Expr { FunExp (x, e) }
+  | x=ID RARROW e=Expr { FunExp (x, e) } */
 
 LetFunExpr :
     LET x=ID e=LetFunFunExpr { Decl (x, e) }
-                                 
+
 LetFunFunExpr :
-    x=ID e=LetFunFunExpr { FunExp (x, e) }                                        
+    /* x=ID e=LetFunFunExpr { FunExp (x, e) } */
   | x=ID EQ e=Expr { FunExp (x, e) }
-                
+
 LetAndExpr :
     LET x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) }
 
