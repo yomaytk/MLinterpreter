@@ -6,7 +6,7 @@ type errorcase = { input: string }
 
 type eval_to_raise_result =
   | Evaluated of exval
-  (* | ErrorRaised *)
+  | ErrorRaised
 
 let eval (input : string) : exval =
   Exec.exec
@@ -27,11 +27,11 @@ let eval_to_raise src =
     Evaluated value
   with
     Exec.Error msg -> raise (Exec.Error msg)
-  (* | _ -> ErrorRaised *)
+  | _ -> ErrorRaised
 
 let eval_to_raise_result_printer = function
   | Evaluated value -> string_of_exval value
-  (* | ErrorRaised -> "error" *)
+  | ErrorRaised -> "error"
 
 let gen_eval_tests (dataset: evaluatedcase list) =
   gen_tests
@@ -52,6 +52,5 @@ let gen_evalerror_tests (dataset: errorcase list) =
     ~exec: eval_to_raise
   @@ List.map
     (fun (testcase: errorcase): (string, eval_to_raise_result) test ->
-       (* { input = testcase.input; expected = ErrorRaised }) *)
-        { input = testcase.input; expected = Evaluated Exception })
+        { input = testcase.input; expected = ErrorRaised })
     dataset

@@ -11,7 +11,8 @@ let reservedWords = [
   ("fun", Parser.FUN);
   ("and", Parser.AND);
 ];;
-let cnt = ref 0;;
+let cnt = ref 0
+exception Error
 }
 
 rule main = parse

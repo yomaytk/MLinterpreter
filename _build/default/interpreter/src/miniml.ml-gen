@@ -19,5 +19,8 @@ module Parser = Miniml__Parser
 (** @canonical Miniml.Syntax *)
 module Syntax = Miniml__Syntax
 
+(** @canonical Miniml.Syntax_debug *)
+module Syntax_debug = Miniml__Syntax_debug
+
 (** @canonical Miniml.Typing *)
 module Typing = Miniml__Typing

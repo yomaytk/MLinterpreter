@@ -30,11 +30,9 @@ toplevel :
 Expr :
     e=IfExpr { e }
   | e=LetInExpr { e }
-  /* | e=ORExpr { e } */
-  /* | e=BExpr { e } */
   | e=FPlusExpr { e }
   | e=FunExpr { e }
-  /* | e=FunMExpr { e } */
+  | e=FunMExpr { e }
   | e=LetAndInExpr { e }
 
 /* WExpr :
@@ -49,11 +47,11 @@ FPlusExpr :
   | FPLUS x1=ID x2=ID { FplmuBinOp (Plus, x1, x2) }
   | FPLUS x1=AExpr { FplmuFunExp (Plus, x1, "-") }
   | FPLUS { FplmuFunExp (Plus, ILit 0, "--") }
-  | e=FMultExpr { e }
-
-FMultExpr :
-    FMULT x1=AExpr x2=AExpr { BinOp (Mult, x1, x2) }
   | e=BExpr { e }
+
+/* FMultExpr :
+    FMULT x1=AExpr x2=AExpr { BinOp (Mult, x1, x2) }
+  | e=BExpr { e } */
 
 BExpr :
     l=LTExpr AAND r=Expr { ANDORBinOp(AAND, l, r) }
@@ -81,7 +79,13 @@ MExpr :
   | e=AppExpr { e }
 
 AppExpr : 
-    e1=AppExpr e2=AExpr { AppExp (e1, e2) }
+    e1=AppExpr e2=FPlusFunExpr { AppExp (e1, e2) }
+  | e=FPlusFunExpr { e }
+
+FPlusFunExpr :
+    FPLUS { AppExp (FplmuFunExp (Plus, ILit 0, "--"), ILit 0)}
+  | FPLUS e=AExpr { AppExp (FplmuFunExp (Plus, e, "-"), ILit 0)}
+  | FPLUS e1=AExpr e2=AExpr { AppExp (e1, BinOp (Plus, e1, e2))}
   | e=AExpr { e }
 
 AExpr :
@@ -107,10 +111,10 @@ RecLetExpr :
 FunExpr : 
     FUN x=ID RARROW e=Expr { FunExp (x, e) }
 
-/* FunMExpr :
+FunMExpr :
     FUN x=ID e=FunMExpr { FunExp (x, e) }
   (* | x=ID e=FunMExpr { FunExp (x, e) } *)
-  | x=ID RARROW e=Expr { FunExp (x, e) } */
+  | x=ID RARROW e=Expr { FunExp (x, e) }
 
 LetFunExpr :
     LET x=ID e=LetFunFunExpr { Decl (x, e) }
