@@ -9,12 +9,10 @@ let rec read_eval_print env =
   try
       let decl = Parser.toplevel Lexer.main (Lexing.from_channel stdin) in
       let (newenv, localenv, value) = eval_decl env decl [] in
-        let rec print_localenv tmp_localenv = 
+        let rec print_localenv tmp_localenv =   
           match tmp_localenv with
               [] -> ()
-            | (id, v) :: rest -> 
-                (if except_judge v then begin pp_id id;pp_val v;print_newline();print_localenv rest; end
-                else begin print_localenv rest end)
+            | (id, v) :: rest -> pp_id id;pp_val v;print_newline();print_localenv rest
         in print_localenv localenv;
       analysis_exe decl;
       print_newline();
