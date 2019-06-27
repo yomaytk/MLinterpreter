@@ -10,6 +10,7 @@ open Syntax
 %token FUN RARROW
 %token AND
 %token FPLUS FMULT
+%token REC
 %token WHAT
 
 %token <int> INTV
@@ -21,26 +22,20 @@ open Syntax
 
 toplevel :
     e=Expr SEMISEMI { Exp e }
-  | e=RecLetExpr SEMISEMI { e }
-  /* | e=LetExpr SEMISEMI { e } */
-  | e=LetAndExpr SEMISEMI { e }
+  | e=DecLetExpr SEMISEMI { e }
+  | LET REC x1=ID EQ FUN x2=ID RARROW e=Expr SEMISEMI { RecDecl (x1, x2, e) } 
+  /* | e=LetAndExpr SEMISEMI { e } */
+  | LET x=ID EQ e1=Expr AND e2=AndExpr SEMISEMI { AndLet (x, e1, e2) }
   | e=LetFunExpr SEMISEMI { e }
-  /* | e=WExpr SEMISEMI { ParseFail } */
 
 Expr :
-    e=IfExpr { e }
+    e=LetRecExpr { e }  
+  | e=IfExpr { e } 
   | e=LetInExpr { e }
   | e=FPlusExpr { e }
   | e=FunExpr { e }
   | e=FunMExpr { e }
   | e=LetAndInExpr { e }
-
-/* WExpr :
-    e=Expr { e }
-  | e1=WExpr WHAT e2=WExpr { e1 }
-  | e=WExpr WHAT { e }
-  | WHAT e=WExpr { e }
-  | WHAT { BLit false } */
 
 FPlusExpr :
     FPLUS x1=AExpr x2=AExpr { BinOp (Plus, x1, x2) }
@@ -75,7 +70,7 @@ PExpr :
   | e=MExpr { e }
 
 MExpr :
-    e1=MExpr MULT e2=AExpr { BinOp (Mult, e1, e2) }
+    e1=MExpr MULT e2=AppExpr { BinOp (Mult, e1, e2) }
   | e=AppExpr { e }
 
 AppExpr : 
@@ -104,8 +99,8 @@ LetInExpr :
 LetExpr : 
     LET x=ID EQ e=Expr { Decl (x, e) }
 
-RecLetExpr :
-    LET x=ID EQ e1=Expr e2=RecLetExpr { RecDecl (x, e1, e2) }
+DecLetExpr :
+    LET x=ID EQ e1=Expr e2=DecLetExpr { DecDecl (x, e1, e2) }
   | e=LetExpr { e }
 
 FunExpr : 
@@ -123,8 +118,8 @@ LetFunFunExpr :
     /* x=ID e=LetFunFunExpr { FunExp (x, e) } */
   | x=ID EQ e=Expr { FunExp (x, e) }
 
-LetAndExpr :
-    LET x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) }
+/* LetAndExpr :
+    LET x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) } */
 
 AndExpr :
     x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) }
@@ -134,4 +129,7 @@ LetAndInExpr :
     LET x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
   | x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
   | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) }
+
+LetRecExpr :
+    LET REC x1=ID EQ FUN x2=ID RARROW e1=Expr IN e2=Expr { LetRecExp (x1, x2, e1, e2) }
 

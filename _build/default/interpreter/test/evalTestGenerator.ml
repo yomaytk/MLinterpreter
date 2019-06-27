@@ -53,5 +53,4 @@ let gen_evalerror_tests (dataset: errorcase list) =
   @@ List.map
     (fun (testcase: errorcase): (string, eval_to_raise_result) test ->
         { input = testcase.input; expected = ErrorRaised })
-        (* { input = testcase.input; expected = Evaluated Exception }) *)
     dataset

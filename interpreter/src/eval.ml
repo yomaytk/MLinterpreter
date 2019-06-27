@@ -3,7 +3,7 @@ open Syntax
 type exval =
     IntV of int
   | BoolV of bool
-  | ProcV of id * exp * dnval Environment.t
+  | ProcV of id * exp * dnval Environment.t ref
   | Exception
 and dnval = exval
 
@@ -104,22 +104,31 @@ let rec eval_exp env = function
           let newenv = andlistadd !andletlist env in
           eval_exp (Environment.extend id value newenv) exp2
         end
-  | FunExp (id, exp) -> ProcV(id, exp, env)
+  | FunExp (id, exp) -> ProcV(id, exp, ref env)
   | FplmuFunExp(op, exp, id2) ->
       (match id2 with
-        "--"  -> ProcV("a", FunExp("b", FplmuBinOp(op, "a", "b")),env)
+        "--"  -> ProcV("a", FunExp("b", FplmuBinOp(op, "a", "b")),ref env)
       |  _ -> (let arga = eval_exp env exp in
-                ProcV("b", FplmuBinOp(op, "a", "b"), (Environment.extend "a" arga env))))
+                ProcV("b", FplmuBinOp(op, "a", "b"), ref (Environment.extend "a" arga env))))
   | AppExp (exp1, exp2) ->
       let funval = eval_exp env exp1 in
       let arg = eval_exp env exp2 in
         (match funval with
           ProcV (id, body, env') ->
-            let newenv = Environment.extend id arg env' in
+            let newenv = Environment.extend id arg !env' in
             eval_exp newenv body
         | _ -> print_string "Error : Non-function value is applied";err "error")
+  | LetRecExp (id, para, exp1, exp2) ->
+      (* ダミーの環境への参照を作る *)
+      let dummyenv = ref Environment.empty in
+      (* 関数閉包を作り, id をこの関数閉包に写像するように現在の環境 env を拡張 *)
+      let newenv =
+      Environment.extend id (ProcV (para, exp1, dummyenv)) env in
+      (* ダミーの環境への参照に,拡張された環境を破壊的代入してバックパッチ *)
+      dummyenv := newenv;
+      eval_exp newenv exp2
 
-let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
+let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
     match ee with
       Exp e ->
         let v = eval_exp env e in (env, env2 @ [("-", v)], v)
@@ -131,7 +140,7 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
                 let newenv = andlistadd !andletlist env in
                 if v = Exception then (newenv, [("-", v)], v) else (Environment.extend id v newenv, env2 @ [(id, v)], v)
               end
-    | RecDecl(id, e1, e2) ->
+    | DecDecl(id, e1, e2) ->
         let v = eval_exp env e1 in
           let newenv = Environment.extend id v env in
             eval_decl newenv e2 (env2 @ [(id, v)])
@@ -142,5 +151,9 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list)=
             let v1 = eval_exp env e1 in
             andletlist := (id, v1) :: !andletlist; eval_decl env e2 (env2 @ [(id, v1)])
           end
-    | ParseFail -> print_string "Fatal error: Exception Miniml.Parser.MenhirBasics.Error";(env, [("-", Exception)], err "error")
+    | RecDecl (id1, id2, e) ->
+        let dummyenv = ref Environment.empty in
+          let newenv = Environment.extend id1 (ProcV(id2, e, dummyenv)) env in
+          dummyenv := newenv;(newenv, env2 @ [(id1, ProcV(id2, e, dummyenv))], ProcV(id2, e, dummyenv))
+    | ParseFail -> print_string "Error: Exception Miniml.Parser.MenhirBasics.Error";(env, [("-", Exception)], err "error")
     

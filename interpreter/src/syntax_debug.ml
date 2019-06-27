@@ -16,14 +16,16 @@ let rec exp_analysis exp =
   | FunExp (id, exp) -> "FunExp(" ^ id ^ ", " ^ (exp_analysis exp) ^ ")"
   | FplmuFunExp (op, exp, id) -> "FplmuFunExp(" ^ (string_of_binop op) ^ ", " ^ (exp_analysis exp) ^ ", " ^ id ^ ")"
   | AppExp (exp1, exp2) -> "AppExp(" ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
+  | LetRecExp (id1, id2, exp1, exp2) -> "LetRecExp(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
   | _ -> "Fail!"
 
 let rec program_analysis decl = 
   match decl with
     Exp e -> "Exp(" ^ (exp_analysis e) ^ ")"
-  | RecDecl (id, e1, e2) -> "RecDecl(" ^ id ^ ", " ^ (exp_analysis e1) ^ ", " ^ (program_analysis e2) ^ ")"
+  | DecDecl (id, e1, e2) -> "RecDecl(" ^ id ^ ", " ^ (exp_analysis e1) ^ ", " ^ (program_analysis e2) ^ ")"
   | Decl (id, e) -> "Decl(" ^ id ^ ", " ^ exp_analysis e ^ ")"
   | AndLet (id, e1, e2) -> "AndLet(" ^ id ^ ", " ^ (exp_analysis e1) ^ ", " ^ (program_analysis e2) ^ ")"
+  | RecDecl (id1, id2, e) -> "RecDecl(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis e) ^ ")"
   | ParseFail -> "ParseFail"
   | _ -> "Fail!"
 

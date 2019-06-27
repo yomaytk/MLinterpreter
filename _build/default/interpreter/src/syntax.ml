@@ -17,12 +17,14 @@ type exp =
   | LetEndInExp of id * exp * exp
   | FplmuBinOp of binOp * id * id
   | FplmuFunExp of binOp * exp * id
+  | LetRecExp of id * id * exp * exp
 
 type program =
     Exp of exp
   | Decl of id * exp
-  | RecDecl of id * exp * program
+  | DecDecl of id * exp * program
   | AndLet of id * exp * program
+  | RecDecl of id * id * exp
   | ParseFail 
 
 type tyvar = int
