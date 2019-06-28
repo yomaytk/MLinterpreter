@@ -7,15 +7,15 @@ let rec read_eval_print env =
   flush stdout;
   
   try
-      let decl = Parser.toplevel Lexer.main (Lexing.from_channel stdin) in
+    let decl = Parser.toplevel Lexer.main (Lexing.from_channel stdin) in
+    analysis_exe decl;
+      print_newline();
       let (newenv, localenv, value) = eval_decl env decl [] in
         let rec print_localenv tmp_localenv =   
           match tmp_localenv with
               [] -> ()
             | (id, v) :: rest -> pp_id id;pp_val v;print_newline();print_localenv rest
         in print_localenv localenv;
-      analysis_exe decl;
-      print_newline();
       read_eval_print newenv
   with 
       Lexer.Error -> Printf.printf "lexer error";print_newline();read_eval_print env

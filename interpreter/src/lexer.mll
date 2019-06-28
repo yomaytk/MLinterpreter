@@ -10,7 +10,7 @@ let reservedWords = [
   ("let", Parser.LET);
   ("fun", Parser.FUN);
   ("and", Parser.AND);
-  ("rec", Parser.REC)
+  ("rec", Parser.REC);
 ];;
 let cnt = ref 0
 exception Error
@@ -37,6 +37,10 @@ rule main = parse
 | "->" { Parser.RARROW }
 | "(+)" { Parser.FPLUS }
 | "( * )" { Parser.FMULT }
+| "[" { Parser.MDRPAREN }
+| "]" { Parser.MDLPAREN }
+| ";" { Parser.SEMI }
+| "::" { Parser.COROCORO }
 
 | ['a'-'z'] ['a'-'z' '0'-'9' '_' '\'']*
     { let id = Lexing.lexeme lexbuf in

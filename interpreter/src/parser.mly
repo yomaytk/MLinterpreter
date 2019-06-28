@@ -11,6 +11,8 @@ open Syntax
 %token AND
 %token FPLUS FMULT
 %token REC
+%token MDLPAREN MDRPAREN
+%token SEMI COROCORO
 %token WHAT
 
 %token <int> INTV
@@ -23,7 +25,8 @@ open Syntax
 toplevel :
     e=Expr SEMISEMI { Exp e }
   | e=DecLetExpr SEMISEMI { e }
-  | LET REC x1=ID EQ FUN x2=ID RARROW e=Expr SEMISEMI { RecDecl (x1, x2, e) } 
+    | LET REC x1=ID EQ FUN x2=ID RARROW e=Expr SEMISEMI { RecDecl (x1, x2, e) }
+    | LET REC x1=ID EQ FUN x2=ID RARROW e1=Expr AND e2=RecAndExpr SEMISEMI { RecAndLet (x1, x2, e1, e2) }
   /* | e=LetAndExpr SEMISEMI { e } */
   | LET x=ID EQ e1=Expr AND e2=AndExpr SEMISEMI { AndLet (x, e1, e2) }
   | e=LetFunExpr SEMISEMI { e }
@@ -36,6 +39,9 @@ Expr :
   | e=FunExpr { e }
   | e=FunMExpr { e }
   | e=LetAndInExpr { e }
+  | e=RecAndInExpr { e }
+  (* | e=ListExpr { e } *)
+  | e=ListCoroExpr { e }
 
 FPlusExpr :
     FPLUS x1=AExpr x2=AExpr { BinOp (Plus, x1, x2) }
@@ -127,9 +133,32 @@ AndExpr :
 
 LetAndInExpr :
     LET x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
+  (* | LET REC x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) } *) 
   | x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
   | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) }
 
 LetRecExpr :
     LET REC x1=ID EQ FUN x2=ID RARROW e1=Expr IN e2=Expr { LetRecExp (x1, x2, e1, e2) }
 
+RecAndExpr :
+    x1=ID EQ FUN x2=ID RARROW e1=Expr AND e2=RecAndExpr { RecAndLet (x1, x2, e1, e2) }
+  | x1=ID EQ FUN x2=ID RARROW e=Expr { RecDecl (x1, x2, e) }
+
+RecAndInExpr :
+    LET REC x1=ID EQ FUN x2=ID RARROW e1=Expr AND e2=RecAndInExpr { LetRecExp (x1, x2, e1, e2) }
+  | x1=ID EQ FUN x2=ID RARROW e1=Expr AND e2=RecAndInExpr { LetRecExp (x1, x2, e1, e2) }
+  | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) }
+
+ListCoroExpr :
+    e1=Expr COROCORO e2=ListExpr { ListExp (e1, e2) }                                                       
+  | e=ListExpr { e }
+  
+ListExpr :
+    MDRPAREN e1=Expr SEMI e2=ListInExpr { ListExp (e1, e2) }
+  | MDRPAREN e=Expr MDLPAREN { ListFirstExp(e) }
+  | MDRPAREN MDLPAREN { ListFirstExp (NIlV) }
+
+ListInExpr :
+    e1=Expr SEMI e2=ListInExpr { ListExp (e1, e2) }
+  | e=Expr MDLPAREN { ListFirstExp (e) }
+        
