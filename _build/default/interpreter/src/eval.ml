@@ -4,6 +4,9 @@ type exval =
     IntV of int
   | BoolV of bool
   | ProcV of id * exp * dnval Environment.t ref
+  | DProcV of id * exp * dnval Environment.t ref
+  | ConsV of exval * exval
+  | NilV
   | Exception
 and dnval = exval
 
@@ -30,6 +33,9 @@ let rec string_of_exval = function
     IntV i -> string_of_int i
   | BoolV b -> string_of_bool b
   | ProcV _ -> "<fun>"
+  | DProcV _ -> "<fun>"
+  | ConsV (e1, e2) -> "ConsV(" ^ (string_of_exval e1) ^ ", " ^ (string_of_exval e2) ^ ")"
+  | NilV -> "NilV"
   | Exception -> "error"
 
 let string_of_binop = function
@@ -62,9 +68,10 @@ let rec apply_prim op arg1 arg2 =
 let rec eval_exp env = function
     Var x ->
     (try Environment.lookup x env with
-      Environment.Not_bound -> print_string ("Error: Exception Variable not bound: " ^ x);err "error")
+        Environment.Not_bound -> (*print_string ("Error: Exception Variable not bound: " ^ x);*)err "error")
   | ILit i -> IntV i
   | BLit b -> BoolV b
+  | NIlV -> NilV
   | BinOp (op, exp1, exp2) ->
     let arg1 = eval_exp env exp1 in
     let arg2 = eval_exp env exp2 in
@@ -105,6 +112,7 @@ let rec eval_exp env = function
           eval_exp (Environment.extend id value newenv) exp2
         end
   | FunExp (id, exp) -> ProcV(id, exp, ref env)
+  | DfunExp (id, exp) -> DProcV(id, exp, ref env)
   | FplmuFunExp(op, exp, id2) ->
       (match id2 with
         "--"  -> ProcV("a", FunExp("b", FplmuBinOp(op, "a", "b")),ref env)
@@ -116,17 +124,23 @@ let rec eval_exp env = function
         (match funval with
           ProcV (id, body, env') ->
             let newenv = Environment.extend id arg !env' in
-            eval_exp newenv body
+            let newenv2 = Environment.extend id arg env in
+            (try eval_exp newenv body with _ -> eval_exp newenv2 body)
+        | DProcV (id, body, env') ->
+            let newenv = Environment.extend id arg !env' in
+            let newenv2 = Environment.extend id arg env in
+            (try eval_exp newenv2 body with _ -> eval_exp newenv body)
         | _ -> print_string "Error : Non-function value is applied";err "error")
   | LetRecExp (id, para, exp1, exp2) ->
-      (* ダミーの環境への参照を作る *)
       let dummyenv = ref Environment.empty in
-      (* 関数閉包を作り, id をこの関数閉包に写像するように現在の環境 env を拡張 *)
-      let newenv =
-      Environment.extend id (ProcV (para, exp1, dummyenv)) env in
-      (* ダミーの環境への参照に,拡張された環境を破壊的代入してバックパッチ *)
+      let newenv = Environment.extend id (ProcV (para, exp1, dummyenv)) env in
       dummyenv := newenv;
       eval_exp newenv exp2
+  | ListExp (e1, e2) ->
+      let el = eval_exp env e1 in
+  (* el :: (eval_exp env e2) *)
+      ConsV (el, (eval_exp env e2)) 
+  | ListFirstExp (e) -> let ee = eval_exp env e in ConsV(ee, NilV)
 
 let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
     match ee with
@@ -155,5 +169,9 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
         let dummyenv = ref Environment.empty in
           let newenv = Environment.extend id1 (ProcV(id2, e, dummyenv)) env in
           dummyenv := newenv;(newenv, env2 @ [(id1, ProcV(id2, e, dummyenv))], ProcV(id2, e, dummyenv))
+    | RecAndLet (id1, id2, e1, e2) ->
+        let dummyenv = ref Environment.empty in
+        let newenv = Environment.extend id1 (ProcV(id2, e1, dummyenv)) env in
+        dummyenv := newenv;eval_decl newenv e2 (env2 @ [(id1, ProcV(id2, e1, dummyenv))])
     | ParseFail -> print_string "Error: Exception Miniml.Parser.MenhirBasics.Error";(env, [("-", Exception)], err "error")
     

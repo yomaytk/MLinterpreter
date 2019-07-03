@@ -1,4 +1,4 @@
 # dune build
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/dune9479b1.output 2> /dev/null
-$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune6a6a98.output
+$ /usr/bin/nproc > /tmp/dune1a2b11.output 2> /dev/null
+$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune4d0ef2.output

@@ -10,8 +10,10 @@ let reservedWords = [
   ("let", Parser.LET);
   ("fun", Parser.FUN);
   ("and", Parser.AND);
+  ("rec", Parser.REC);
 ];;
-let cnt = ref 0;;
+let cnt = ref 0
+exception Error
 }
 
 rule main = parse
@@ -33,10 +35,12 @@ rule main = parse
 | "&&" { Parser.AAND }
 | "||" { Parser.OOR }
 | "->" { Parser.RARROW }
-| "( *" { Parser.WHAT }
-| "* )" { Parser.WHAT }
-| "(+)" { Parser.FPULS }
+| "(+)" { Parser.FPLUS }
 | "( * )" { Parser.FMULT }
+| "[" { Parser.MDRPAREN }
+| "]" { Parser.MDLPAREN }
+| ";" { Parser.SEMI }
+| "::" { Parser.COROCORO }
 
 | ['a'-'z'] ['a'-'z' '0'-'9' '_' '\'']*
     { let id = Lexing.lexeme lexbuf in
@@ -46,13 +50,13 @@ rule main = parse
       _ -> Parser.ID id
     }
 
-| _ { Parser.WHAT }
+| _ { raise Error }
 
 | eof { exit 0 }
 
 and comment = parse
     "(*" {cnt := !cnt+1;comment lexbuf}
-  | "*)" {cnt := !cnt-1;if !cnt = 0 then main lexbuf else if !cnt > 0 then comment lexbuf else Parser.WHAT }
+  | "*)" {cnt := !cnt-1;if !cnt = 0 then main lexbuf else if !cnt > 0 then comment lexbuf else raise Error }
   | _ {comment lexbuf}
 
   | eof { exit 0 }

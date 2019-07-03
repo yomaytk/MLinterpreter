@@ -11,6 +11,7 @@ let reservedWords = [
   ("fun", Parser.FUN);
   ("and", Parser.AND);
   ("rec", Parser.REC);
+  ("dfun", Parser.DFUN);
 ];;
 let cnt = ref 0
 exception Error
@@ -24,7 +25,7 @@ rule main = parse
     { Parser.INTV (int_of_string (Lexing.lexeme lexbuf)) }
 
 | "(*" { cnt := 1;comment lexbuf }
-| "*)" { comment lexbuf }
+| "*)" { raise Error }
 | "(" { Parser.LPAREN }
 | ")" { Parser.RPAREN }
 | ";;" { Parser.SEMISEMI }
