@@ -14,7 +14,6 @@ open Syntax
 %token MDLPAREN MDRPAREN
 %token SEMI COROCORO
 %token DFUN
-%token WHAT
 
 %token <int> INTV
 %token <Syntax.id> ID

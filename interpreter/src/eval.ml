@@ -16,12 +16,14 @@ let err s = raise (Error s)
 
 let andletlist = ref []
 
+(*リストで環境を拡張し、拡張された環境を返す関数*)
 let rec andlistadd list tmpenv = 
   let env = tmpenv in
   match list with
       [] -> andletlist := []; env
     | (id, v) :: rest -> andlistadd rest (Environment.extend id v env)
 
+(*リストの中に id と同じ名前が存在する場合 true そうでない時 false を返すような関数*)
 let rec findid list id = 
   match list with
       [] -> false
@@ -45,11 +47,10 @@ let string_of_binop = function
   | AAND -> "AAND"
   | OOR -> "OOR"
 
-let pp_val v = if v!= Exception then print_string (string_of_exval v)
+(*exval型の値を受け取ってそれを文字列として出力する関数*)
+let pp_val v = print_string (string_of_exval v)
 
 let pp_id (i : id) = Printf.printf "val %s = " i
-
-let except_judge v = if v!= Exception then true else false
 
 let rec apply_prim op arg1 arg2 = 
   let errm = "Error: Exception Both arguments must be " in
@@ -78,8 +79,10 @@ let rec eval_exp env = function
     apply_prim op arg1 arg2
   | ANDORBinOp (op, exp1, exp2) ->
     let arg1 = eval_exp env exp1 in
-      (match op with
-          AAND -> if arg1 = BoolV false then BoolV false else eval_exp env (BinOp(op, exp1, exp2))
+    (match op with
+       (*false && のときは即 false に決定、そうでない時は全体を再評価*)
+       AAND -> if arg1 = BoolV false then BoolV false else eval_exp env (BinOp(op, exp1, exp2))
+     (*true || の時は即 true に決定、そうでない時は全体を再評価*)
         | OOR -> if arg1 = BoolV true then BoolV true else eval_exp env (BinOp(op, exp1, exp2))
         | _ -> err "error")
   | FplmuBinOp (op, id1, id2) ->
@@ -97,10 +100,12 @@ let rec eval_exp env = function
     let newenv = andlistadd !andletlist env in
     eval_exp (Environment.extend id value newenv) exp2
   | LetAndInExp (id, exp1, exp2) ->
+     (*新たに束縛しようとしている変数と同じ名前の変数がすでに宣言されていないか findid で判定*)
     let bound = findid !andletlist id in
-      if bound then err "error"
+    if bound then err "error"(*すでに同じ名前の変数が存在する場合はエラー*)
       else begin
-          let value = eval_exp env exp1 in
+        let value = eval_exp env exp1 in
+        (*リストandletlistに新しい変数を追加*)
           andletlist := (id, value)::!andletlist;eval_exp env exp2
         end
   | LetEndInExp (id, exp1, exp2) ->
@@ -108,14 +113,17 @@ let rec eval_exp env = function
       if bound then err "error"
       else begin
           let value = eval_exp env exp1 in
+          (*リストに追加された変数を一斉に環境に追加*)
           let newenv = andlistadd !andletlist env in
           eval_exp (Environment.extend id value newenv) exp2
         end
   | FunExp (id, exp) -> ProcV(id, exp, ref env)
   | DfunExp (id, exp) -> DProcV(id, exp, ref env)
   | FplmuFunExp(op, exp, id2) ->
-      (match id2 with
+     (match id2 with
+        (*引数が０個の場合、もしくは関数適用で左結合される場合の処理*)
         "--"  -> ProcV("a", FunExp("b", FplmuBinOp(op, "a", "b")),ref env)
+      (*引数が１個の場合の処理*)
       |  _ -> (let arga = eval_exp env exp in
                 ProcV("b", FplmuBinOp(op, "a", "b"), ref (Environment.extend "a" arga env))))
   | AppExp (exp1, exp2) ->
@@ -123,17 +131,22 @@ let rec eval_exp env = function
       let arg = eval_exp env exp2 in
         (match funval with
           ProcV (id, body, env') ->
-            let newenv = Environment.extend id arg !env' in
-            let newenv2 = Environment.extend id arg env in
+           let newenv = Environment.extend id arg !env' in  (*ProcVから取り出した環境を拡張*)
+           let newenv2 = Environment.extend id arg env in   (*今現在の環境を拡張*)
+           (*相互再帰関数の時のために、失敗した場合現在の環境で再評価*)
             (try eval_exp newenv body with _ -> eval_exp newenv2 body)
         | DProcV (id, body, env') ->
             let newenv = Environment.extend id arg !env' in
             let newenv2 = Environment.extend id arg env in
+            (*動的束縛の時は、今現在の環境で最初に評価*)
             (try eval_exp newenv2 body with _ -> eval_exp newenv body)
         | _ -> print_string "Error : Non-function value is applied";err "error")
   | LetRecExp (id, para, exp1, exp2) ->
-      let dummyenv = ref Environment.empty in
-      let newenv = Environment.extend id (ProcV (para, exp1, dummyenv)) env in
+     (*ダミーの環境の参照を用意*)
+     let dummyenv = ref Environment.empty in
+     (* 関数閉包を作り，id をこの関数閉包に写像するように現在の環境env を拡張*)
+     let newenv = Environment.extend id (ProcV (para, exp1, dummyenv)) env in
+     (*ダミーの環境に新しい環境を破壊的代入*)
       dummyenv := newenv;
       eval_exp newenv exp2
   | ListExp (e1, e2) ->

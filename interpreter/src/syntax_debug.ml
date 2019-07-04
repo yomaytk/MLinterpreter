@@ -15,6 +15,7 @@ let rec exp_analysis exp =
   | LetAndInExp (id, exp1, exp2) -> "LetAndInExp(" ^ id ^ ", " ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
   | LetEndInExp (id, exp1, exp2) -> "LetEndInExp(" ^ id ^ ", " ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
   | FunExp (id, exp) -> "FunExp(" ^ id ^ ", " ^ (exp_analysis exp) ^ ")"
+  | DfunExp (id, exp) -> "DfunExp(" ^ id ^ ", " ^ (exp_analysis exp) ^ ")"
   | FplmuFunExp (op, exp, id) -> "FplmuFunExp(" ^ (string_of_binop op) ^ ", " ^ (exp_analysis exp) ^ ", " ^ id ^ ")"
   | AppExp (exp1, exp2) -> "AppExp(" ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
   | LetRecExp (id1, id2, exp1, exp2) -> "LetRecExp(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
