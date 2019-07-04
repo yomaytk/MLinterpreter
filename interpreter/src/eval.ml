@@ -80,9 +80,9 @@ let rec eval_exp env = function
   | ANDORBinOp (op, exp1, exp2) ->
     let arg1 = eval_exp env exp1 in
     (match op with
-       (*false && のときは即 false に決定、そうでない時は全体を再評価*)
-       AAND -> if arg1 = BoolV false then BoolV false else eval_exp env (BinOp(op, exp1, exp2))
-     (*true || の時は即 true に決定、そうでない時は全体を再評価*)
+        (*false && のときは即 false に決定、そうでない時は全体を再評価*)
+        AAND -> if arg1 = BoolV false then BoolV false else eval_exp env (BinOp(op, exp1, exp2))
+        (*true || の時は即 true に決定、そうでない時は全体を再評価*)
         | OOR -> if arg1 = BoolV true then BoolV true else eval_exp env (BinOp(op, exp1, exp2))
         | _ -> err "error")
   | FplmuBinOp (op, id1, id2) ->
@@ -100,7 +100,7 @@ let rec eval_exp env = function
     let newenv = andlistadd !andletlist env in
     eval_exp (Environment.extend id value newenv) exp2
   | LetAndInExp (id, exp1, exp2) ->
-     (*新たに束縛しようとしている変数と同じ名前の変数がすでに宣言されていないか findid で判定*)
+      (*新たに束縛しようとしている変数と同じ名前の変数がすでに宣言されていないか findid で判定*)
     let bound = findid !andletlist id in
     if bound then err "error"(*すでに同じ名前の変数が存在する場合はエラー*)
       else begin
@@ -120,7 +120,7 @@ let rec eval_exp env = function
   | FunExp (id, exp) -> ProcV(id, exp, ref env)
   | DfunExp (id, exp) -> DProcV(id, exp, ref env)
   | FplmuFunExp(op, exp, id2) ->
-     (match id2 with
+      (match id2 with
         (*引数が０個の場合、もしくは関数適用で左結合される場合の処理*)
         "--"  -> ProcV("a", FunExp("b", FplmuBinOp(op, "a", "b")),ref env)
       (*引数が１個の場合の処理*)
@@ -131,9 +131,9 @@ let rec eval_exp env = function
       let arg = eval_exp env exp2 in
         (match funval with
           ProcV (id, body, env') ->
-           let newenv = Environment.extend id arg !env' in  (*ProcVから取り出した環境を拡張*)
-           let newenv2 = Environment.extend id arg env in   (*今現在の環境を拡張*)
-           (*相互再帰関数の時のために、失敗した場合現在の環境で再評価*)
+            let newenv = Environment.extend id arg !env' in  (*ProcVから取り出した環境を拡張*)
+            let newenv2 = Environment.extend id arg env in   (*今現在の環境を拡張*)
+            (*相互再帰関数の時のために、失敗した場合現在の環境で再評価*)
             (try eval_exp newenv body with _ -> eval_exp newenv2 body)
         | DProcV (id, body, env') ->
             let newenv = Environment.extend id arg !env' in
@@ -142,18 +142,16 @@ let rec eval_exp env = function
             (try eval_exp newenv2 body with _ -> eval_exp newenv body)
         | _ -> print_string "Error : Non-function value is applied";err "error")
   | LetRecExp (id, para, exp1, exp2) ->
-     (*ダミーの環境の参照を用意*)
-     let dummyenv = ref Environment.empty in
-     (* 関数閉包を作り，id をこの関数閉包に写像するように現在の環境env を拡張*)
-     let newenv = Environment.extend id (ProcV (para, exp1, dummyenv)) env in
-     (*ダミーの環境に新しい環境を破壊的代入*)
+      (*ダミーの環境の参照を用意*)
+      let dummyenv = ref Environment.empty in
+      (* 関数閉包を作り，id をこの関数閉包に写像するように現在の環境env を拡張*)
+      let newenv = Environment.extend id (ProcV (para, exp1, dummyenv)) env in
+      (*ダミーの環境に新しい環境を破壊的代入*)
       dummyenv := newenv;
       eval_exp newenv exp2
   | ListExp (e1, e2) ->
       let el = eval_exp env e1 in
-  (* el :: (eval_exp env e2) *)
       ConsV (el, (eval_exp env e2)) 
-  | ListFirstExp (e) -> let ee = eval_exp env e in ConsV(ee, NilV)
 
 let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
     match ee with

@@ -21,7 +21,6 @@ type exp =
   | DfunExp of id * exp
   | LetRecExp of id * id * exp * exp
   | ListExp of exp * exp
-  | ListFirstExp of exp
 
 type program =
     Exp of exp

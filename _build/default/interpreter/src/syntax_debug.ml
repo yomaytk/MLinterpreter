@@ -20,7 +20,6 @@ let rec exp_analysis exp =
   | AppExp (exp1, exp2) -> "AppExp(" ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
   | LetRecExp (id1, id2, exp1, exp2) -> "LetRecExp(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
   | ListExp (e1, e2) -> "ListExp(" ^ (exp_analysis e1) ^ ", " ^ (exp_analysis e2) ^ ")"
-  | ListFirstExp (e) -> "ListFirstExp(" ^ (exp_analysis e) ^ ")"
   | _ -> "Fail!"
 
 let rec program_analysis decl = 
