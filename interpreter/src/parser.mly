@@ -123,13 +123,13 @@ LetFunFunExpr :
   | x=ID EQ e=Expr { FunExp (x, e) }
 
 AndExpr :
-    x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) } (*letのandによる並列宣言にマッチする*)
+    x=ID EQ e1=Expr AND e2=AndExpr { AndLet (x, e1, e2) } (*let and並列宣言のand以降の宣言にマッチする*)
   | x=ID EQ e=Expr { Decl (x, e) }
 
 LetAndInExpr :
-    LET x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
-  | x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }
-  | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) }
+                LET x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) }  (*let and並列宣言の一行目にマッチする*)
+  | x=ID EQ e1=Expr AND e2=LetAndInExpr { LetAndInExp (x, e1, e2) } (*let and並列宣言の途中の宣言にマッチする*)
+  | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) } (*let and並列宣言の最後の宣言にマッチする*)
 
 LetRecExpr :
     LET REC x1=ID EQ FUN x2=ID RARROW e1=Expr IN e2=Expr { LetRecExp (x1, x2, e1, e2) }
@@ -144,15 +144,20 @@ RecAndInExpr :
   | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) }
 
 ListCoroExpr :
-    e1=Expr COROCORO e2=ListExpr { ListExp (e1, e2) }                                                       
+    e1=ListsinExpr COROCORO e2=ListCoroExpr { ListExp (e1, e2) }
   | e=ListExpr { e }
   
 ListExpr :
-    MDRPAREN e1=Expr SEMI e2=ListInExpr { ListExp (e1, e2) }
-  | MDRPAREN e=Expr MDLPAREN { ListFirstExp(e) }
-  | MDRPAREN MDLPAREN { ListFirstExp (NIlV) }
+    MDRPAREN e1=ListExpr SEMI e2=ListInExpr { ListExp (e1, e2) }
+  | MDRPAREN e=ListExpr MDLPAREN { ListFirstExp(e) }
+  | MDRPAREN MDLPAREN { NIlV }
+  | e=AExpr { e }
 
 ListInExpr :
     e1=Expr SEMI e2=ListInExpr { ListExp (e1, e2) }
   | e=Expr MDLPAREN { ListFirstExp (e) }
-        
+
+ListsinExpr :
+    MDRPAREN e=AExpr MDLPAREN { ListExp(e, NIlV) }
+  | MDRPAREN MDLPAREN { NIlV }
+  | e=AExpr { e }
