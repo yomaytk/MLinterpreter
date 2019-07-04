@@ -1,7 +1,9 @@
 open Eval
+open Syntax
 open Syntax_debug
+open Typing
 
-let rec read_eval_print env =
+let rec read_eval_print env tyenv =
   print_string "# ";
   flush stdout;
   (*try構文でエラーが出ても処理を止まらないようにする*)
@@ -10,21 +12,23 @@ let rec read_eval_print env =
     (*構文解析結果の出力*)
     analysis_exe decl;
     print_newline();
+    let ty = ty_decl tyenv decl in
     (*localenv には新しく宣言された変数とその値のみで構成されるリスト*)
     let (newenv, localenv, value) = eval_decl env decl [] in
     (*受け取ったリストを全て出力するような関数*)
         let rec print_localenv tmp_localenv =   
           match tmp_localenv with
               [] -> ()
-            | (id, v) :: rest -> pp_id id;pp_val v;print_newline();print_localenv rest
+            | (id, v) :: rest -> pp_id id;pp_ty ty;Printf.printf " = ";pp_val v;print_newline();print_localenv rest
     (*localenvの中身を出力*)
         in print_localenv localenv;
-      read_eval_print newenv
+      read_eval_print newenv tyenv
   with
     (*with以下で、parser、lexer、eval、それぞれの場合で、エラーが発生した時の処理を行う*)
-      Lexer.Error -> Printf.printf "lexer error";print_newline();read_eval_print env
-    | Eval.Error _ -> print_newline();read_eval_print env
-    | _ -> Printf.printf "parser error";print_newline();read_eval_print env
+      Lexer.Error -> Printf.printf "lexer error";print_newline();read_eval_print env tyenv
+    | Eval.Error _ -> print_newline();read_eval_print env tyenv
+    | Typing.Error _ -> Printf.printf "typing error";print_newline();read_eval_print env tyenv
+    | Parser.Error -> Printf.printf "parser error";print_newline();read_eval_print env tyenv
 
 let initial_env =
   Environment.extend "i" (IntV 1)
@@ -33,3 +37,8 @@ let initial_env =
         (Environment.extend "ii" (IntV 2)
           (Environment.extend "iii" (IntV 3)
             (Environment.extend "iv" (IntV 4) Environment.empty)))))
+
+let initial_tyenv =
+  Environment.extend "i" TyInt
+    (Environment.extend "v" TyInt
+      (Environment.extend "x" TyInt Environment.empty))

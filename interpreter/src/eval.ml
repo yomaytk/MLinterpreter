@@ -50,7 +50,7 @@ let string_of_binop = function
 (*exval型の値を受け取ってそれを文字列として出力する関数*)
 let pp_val v = print_string (string_of_exval v)
 
-let pp_id (i : id) = Printf.printf "val %s = " i
+let pp_id (i : id) = Printf.printf "val %s : " i
 
 let rec apply_prim op arg1 arg2 = 
   let errm = "Error: Exception Both arguments must be " in

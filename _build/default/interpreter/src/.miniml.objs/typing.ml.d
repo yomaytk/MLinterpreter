@@ -1,1 +1,1 @@
-interpreter/src/typing.ml:
+interpreter/src/typing.ml: Environment Syntax

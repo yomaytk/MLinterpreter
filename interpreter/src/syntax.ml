@@ -1,7 +1,7 @@
 (* ML interpreter / type reconstruction *)
 type id = string
 
-type binOp = Plus | Mult | Lt | AAND | OOR
+type binOp = Plus | Mult | Lt | AAND | OOR | Cons
 
 type exp =
     Var of id
@@ -38,3 +38,15 @@ type ty =
   | TyVar of tyvar
   | TyFun of ty * ty
   | TyList of ty
+
+let string_of_ty = function
+    TyInt -> "TyInt"
+  | TyBool -> "TyBool"
+  | _ -> "error"
+
+let fresh_tyvar =
+  let counter = ref 0 in
+  let body () =
+  let v = !counter in
+    counter := v + 1; v
+  in body
