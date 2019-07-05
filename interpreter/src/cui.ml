@@ -14,7 +14,7 @@ let rec read_eval_print env tyenv =
     print_newline();
     let ty = ty_decl tyenv decl in
     (*localenv には新しく宣言された変数とその値のみで構成されるリスト*)
-    let (newenv, localenv, value) = eval_decl env decl [] in
+    let (newenv, localenv, _) = eval_decl env decl [] in
     (*受け取ったリストを全て出力するような関数*)
         let rec print_localenv tmp_localenv =   
           match tmp_localenv with

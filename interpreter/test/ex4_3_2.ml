@@ -1,6 +1,6 @@
 open OUnit
 open PretypingTestGenerator
-open Miniml
+(* open Miniml *)
 
 let dataset_for_subst_type = [
   (* 1st example in the textbook *)

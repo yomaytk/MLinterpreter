@@ -20,7 +20,7 @@ let rec exp_analysis exp =
   | AppExp (exp1, exp2) -> "AppExp(" ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
   | LetRecExp (id1, id2, exp1, exp2) -> "LetRecExp(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis exp1) ^ ", " ^ (exp_analysis exp2) ^ ")"
   | ListExp (e1, e2) -> "ListExp(" ^ (exp_analysis e1) ^ ", " ^ (exp_analysis e2) ^ ")"
-  | _ -> "Fail!"
+  (* | _ -> "Fail!" *)
 
 let rec program_analysis decl = 
   match decl with
@@ -31,7 +31,7 @@ let rec program_analysis decl =
   | RecDecl (id1, id2, e) -> "RecDecl(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis e) ^ ")"
   | RecAndLet (id1, id2, e1, e2) -> "RecAndLet(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis e1) ^ ", " ^ (program_analysis e2) ^ ")" 
   | ParseFail -> "ParseFail"
-  | _ -> "Fail!"
+  (* | _ -> "Fail!" *)
 
 let analysis_exe decl = 
   let s = program_analysis decl in

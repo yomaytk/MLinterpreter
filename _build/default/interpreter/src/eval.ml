@@ -46,6 +46,7 @@ let string_of_binop = function
   | Lt -> "Lt"
   | AAND -> "AAND"
   | OOR -> "OOR"
+  | Cons -> "What is this ?"
 
 (*exval型の値を受け取ってそれを文字列として出力する関数*)
 let pp_val v = print_string (string_of_exval v)
@@ -65,6 +66,7 @@ let rec apply_prim op arg1 arg2 =
   | AAND, _, _ -> print_string (errm ^ "bool: &&");err "error"
   | OOR, BoolV i1, BoolV i2 -> BoolV (i1 || i2)
   | OOR, _, _ -> print_string (errm ^ "bool: ||");err "error"
+  | Cons, _, _ -> err "error"
 
 let rec eval_exp env = function
     Var x ->

@@ -12,3 +12,4 @@ val member : 'a -> 'a t -> bool
 
 val map : ('a -> 'b) -> 'a t -> 'b t
 val bigunion : 'a t t -> 'a t
+val join : 'a t -> 'a t -> 'a t
