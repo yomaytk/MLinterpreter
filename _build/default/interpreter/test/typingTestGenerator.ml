@@ -17,19 +17,19 @@ let cmp_ty_alpha (ty1: ty) (ty2: ty) =
       TyInt, TyInt | TyBool, TyBool -> Some eq
     | TyVar id1, TyVar id2 ->
       (try
-         if List.assoc id1 eq = id2 then
-           Some eq
-         else
-           None
-       with
-         Not_found -> Some ((id1, id2) :: eq)
-       | _ -> Some eq
+          if List.assoc id1 eq = id2 then
+            Some eq
+          else
+            None
+        with
+          Not_found -> Some ((id1, id2) :: eq)
+        | _ -> Some eq
       )
     | TyFun (tyarg1, tybody1), TyFun (tyarg2, tybody2) ->
       (match unify eq tyarg1 tyarg2 with
-         Some eq ->
-         unify eq tybody1 tybody2
-       | None -> None
+          Some eq ->
+          unify eq tybody1 tybody2
+        | None -> None
       )
     | TyList ty1, TyList ty2 ->
       unify eq ty1 ty2
@@ -51,12 +51,12 @@ let convert_ty ty =
     | TySyntax.TyBool -> env, TyBool
     | TySyntax.TyVar name ->
       (match List.assoc_opt name env with
-         Some id ->
-         env, TyVar id
-       | None ->
-         let id = List.length env in
-         let env = (name, id) :: env in
-         env, TyVar id)
+          Some id ->
+          env, TyVar id
+        | None ->
+          let id = List.length env in
+          let env = (name, id) :: env in
+          env, TyVar id)
     | TySyntax.TyFun (ty1, ty2) ->
       let env, ty1 = convert env ty1 in
       let env, ty2 = convert env ty2 in
@@ -71,9 +71,9 @@ let convert_ty ty =
 let typing input =
   Exec.exec
     (fun env program ->
-       (* let env, ty = ty_decl env program *)
-       let ty = ty_decl env program in
-       env, ty)
+        let _, ty = ty_decl env program in
+        (* let ty = ty_decl env program in *)
+        env, ty)
     Cui.initial_tyenv
     input
 
@@ -97,8 +97,8 @@ let gen_typing_tests (dataset: typedcase list) =
     ~exec: typing
   @@ List.map
     (fun (testcase: typedcase): (string, ty) test ->
-       let _, expected = TyHelper.ty_of_string testcase.expected in
-       { input = testcase.input; expected = expected })
+        let _, expected = TyHelper.ty_of_string testcase.expected in
+        { input = testcase.input; expected = expected })
     dataset
 
 let gen_typingerror_tests (dataset: errorcase list) =
@@ -109,5 +109,5 @@ let gen_typingerror_tests (dataset: errorcase list) =
     ~exec: typing_to_raise
   @@ List.map
     (fun (testcase: errorcase): (string, typing_to_raise_result) test ->
-       { input = testcase.input; expected = ErrorRaised })
+        { input = testcase.input; expected = ErrorRaised })
     dataset

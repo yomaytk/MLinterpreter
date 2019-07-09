@@ -5,11 +5,11 @@ type ('a, 'b) test = { input: 'a; expected: 'b }
 let gen_tests2 ?(cmp=(=)) ~errorhow ~exec tests =
   List.map
     (fun (test: ('a, 'b) test) ->
-       "" >:: fun () ->
-         let actual = exec test.input in
-         assert_bool
-           (errorhow test.input actual test.expected)
-           (cmp actual test.expected)
+        "" >:: fun () ->
+          let actual = exec test.input in
+          assert_bool
+            (errorhow test.input actual test.expected)
+            (cmp actual test.expected)
     )
     tests
 

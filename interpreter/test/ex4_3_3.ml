@@ -1,6 +1,5 @@
 open OUnit
 open PretypingTestGenerator
-open Miniml
 
 let dataset_for_unify = [
   {

@@ -1,1 +1,1 @@
-interpreter/test/ex4_3_3.ml: Miniml OUnit PretypingTestGenerator
+interpreter/test/ex4_3_3.ml: OUnit PretypingTestGenerator

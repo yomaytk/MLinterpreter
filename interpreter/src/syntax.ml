@@ -48,26 +48,31 @@ type ty =
 let counter = ref 0
 
 let tyvarlist = ref []
-          
-let makelist nextn =
-    let nexts = "'a"^(string_of_int nextn) in
-    tyvarlist := (nextn, nexts) :: !tyvarlist; nexts
+
+let addlist nextn =
+  let nexts = "'a"^(string_of_int nextn) in
+  tyvarlist := (nextn, nexts) :: !tyvarlist; nexts
 
 let rec researchlist cnt list =
   match list with
-        [] -> err "researchlist error"
-      | (n, id) :: rest -> if n=cnt then id else researchlist cnt rest
+      [] -> print_string(string_of_int cnt);"error reserarchlist"
+    | (n, id) :: rest -> if n=cnt then id else researchlist cnt rest
 
 let fresh_tyvar =
   let body () =
   let v = !counter in
-    counter := v + 1; v
+    counter := v + 1; ignore(addlist v);v
   in body
+
+let rec mkmktyid num = 
+  if num = !counter then addlist (fresh_tyvar())
+  else if num > !counter then begin ignore(addlist (fresh_tyvar()));mkmktyid num end
+  else err "mkmktyid error"
 
 let rec string_of_ty = function
     TyInt -> "int"
   | TyBool -> "bool"
-  | TyVar num -> if num = !counter then (makelist (fresh_tyvar ())) else researchlist num !tyvarlist
+  | TyVar num -> if num >= !counter then mkmktyid num else researchlist num !tyvarlist
   | TyFun (ty1, ty2) -> "(" ^ (string_of_ty ty1) ^ " -> " ^ (string_of_ty ty2) ^ ")"
   | _ -> "error"
 
