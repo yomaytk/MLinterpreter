@@ -12,7 +12,7 @@ let rec read_eval_print env tyenv =
     (*構文解析結果の出力*)
     analysis_exe decl;
     print_newline();
-    let (_, ty) = ty_decl tyenv decl in
+    let (newtyenv, _, ty) = ty_decl tyenv decl in
     (*localenv には新しく宣言された変数とその値のみで構成されるリスト*)
     let (newenv, localenv, _) = eval_decl env decl [] in
     (*受け取ったリストを全て出力するような関数*)
@@ -22,7 +22,7 @@ let rec read_eval_print env tyenv =
             | (id, v) :: rest -> pp_id id;pp_ty ty;Printf.printf " = ";pp_val v;print_newline();print_localenv rest
     (*localenvの中身を出力*)
         in print_localenv localenv;
-      read_eval_print newenv tyenv
+      read_eval_print newenv newtyenv
   with
     (*with以下で、parser、lexer、eval、それぞれの場合で、エラーが発生した時の処理を行う*)
       Lexer.Error -> Printf.printf "lexer error";print_newline();read_eval_print env tyenv

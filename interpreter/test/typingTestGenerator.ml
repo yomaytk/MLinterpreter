@@ -71,7 +71,7 @@ let convert_ty ty =
 let typing input =
   Exec.exec
     (fun env program ->
-        let _, ty = ty_decl env program in
+        let _, _, ty = ty_decl env program in
         (* let ty = ty_decl env program in *)
         env, ty)
     Cui.initial_tyenv

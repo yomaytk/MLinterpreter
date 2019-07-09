@@ -76,68 +76,69 @@ let ty_prim op ty1 ty2 = match op with
 
 let rec ty_exp tyenv = function
     Var x ->
-      (try ([], Environment.lookup x tyenv) with
+      (try (tyenv, [], Environment.lookup x tyenv) with
         Environment.Not_bound -> err ("variable not bound: " ^ x))
-  | ILit _ -> ([], TyInt)
-  | BLit _ -> ([], TyBool)
+  | ILit _ -> (tyenv, [], TyInt)
+  | BLit _ -> (tyenv, [], TyBool)
   | BinOp (op, exp1, exp2) ->
-      let (s1, ty1) = ty_exp tyenv exp1 in
-      let (s2, ty2) = ty_exp tyenv exp2 in
+      let (_, s1, ty1) = ty_exp tyenv exp1 in
+      let (_, s2, ty2) = ty_exp tyenv exp2 in
       let (eqs3, ty) = ty_prim op ty1 ty2 in
       let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
-      let s3 = unify eqs in (s3, subst_type s3 ty)
+      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty)
   | ANDORBinOp (op, exp1, exp2) ->
-      let (s1, ty1) = ty_exp tyenv exp1 in
-      let (s2, ty2) = ty_exp tyenv exp2 in
+      let (_, s1, ty1) = ty_exp tyenv exp1 in
+      let (_, s2, ty2) = ty_exp tyenv exp2 in
       let (eqs3, ty) = ty_prim op ty1 ty2 in
       let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
-      let s3 = unify eqs in (s3, subst_type s3 ty)
+      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty)
   | IfExp (exp1, exp2, exp3) ->
-      let (s1, ty1) = ty_exp tyenv exp1 in
-      let (s2, ty2) = ty_exp tyenv exp2 in
-      let (s3, ty3) = ty_exp tyenv exp3 in
+      let (_, s1, ty1) = ty_exp tyenv exp1 in
+      let (_, s2, ty2) = ty_exp tyenv exp2 in
+      let (_, s3, ty3) = ty_exp tyenv exp3 in
       let eqs4 = (ty1, TyBool) in
       let eqs5 = (ty2, ty3)  in
       let eqs = eqs4 :: (eqs5 :: ((eqs_of_subst s1) @ (eqs_of_subst s2) @ (eqs_of_subst s3))) in 
-      let us = unify eqs in (us, subst_type us ty3)
-      (* (match ty1 with
-        TyBool -> 
-          (let (s2, ty2) = ty_exp tyenv exp2 in
-            let (s3, ty3) = ty_exp tyenv exp3 in 
-            (match (ty2 = ty3) with
-                true -> 
-                  (let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ (eqs_of_subst s3) in
-                    let s4 = unify eqs in (s4, subst_type s4 ty2))
-              | _ -> err "error of if typing"))
-      | _ -> err "error of if typing") *)
+      let s6 = unify eqs in (tyenv, s6, subst_type s6 ty3)
   | LetInExp (id, exp1, exp2) ->
       let domty = TyVar (fresh_tyvar ()) in
-      let (s1, ty1) = ty_exp tyenv exp1 in
+      let (_, s1, ty1) = ty_exp tyenv exp1 in
       let tynewenv = Environment.extend id domty tyenv in
-      let (s2, ty2) = ty_exp tynewenv exp2 in
+      let (_, s2, ty2) = ty_exp tynewenv exp2 in
       let eqs3 = [(domty, ty1)] in
       let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
-      let s3 = unify eqs in (s3, subst_type s3 ty2)
+      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty2)
+  | LetRecExp (id, para, exp1, exp2) ->
+      let domty1 = TyVar (fresh_tyvar ()) in
+      let domty2 = TyVar (fresh_tyvar ()) in
+      let domty3 = TyFun (domty1, domty2) in
+      let tynewenv = Environment.extend id domty3 (Environment.extend para domty1 tyenv) in
+      let (_, s1, ty1) = ty_exp tynewenv exp1 in
+      let (_, s2, ty2) = ty_exp tynewenv exp2 in
+      let eqs1 = [(domty2, ty1)] in
+      let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs1 in
+      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty2)
   | FunExp (id, exp) ->
       let domty = TyVar (fresh_tyvar ()) in
-      let s, ranty = ty_exp (Environment.extend id domty tyenv) exp in (s, TyFun (subst_type s domty, ranty))
+      let (_, s, ranty) = ty_exp (Environment.extend id domty tyenv) exp in (tyenv, s, TyFun (subst_type s domty, ranty))
   | AppExp (exp1, exp2) -> 
-      let (s1, ty1) = ty_exp tyenv exp1 in
-      let (s2, ty2) = ty_exp tyenv exp2 in
+      let (_, s1, ty1) = ty_exp tyenv exp1 in
+      let (_, s2, ty2) = ty_exp tyenv exp2 in
       (match ty1 with
           TyFun(tyy1, tyy2) ->
-            (* pp_ty ty1;print_string "why"; *)
             let eqs3 = [(tyy1, ty2)] in
             let eqs4 = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
-            let s5 = unify eqs4 in (s5, subst_type s5 tyy2)
+            let s5 = unify eqs4 in (tyenv, s5, subst_type s5 tyy2)
         | TyVar num -> 
             let tyr = TyVar (fresh_tyvar ()) in
             let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ [(TyVar num, TyFun(ty2, tyr))] in
-            let s6 = unify eqs in  (s6, subst_type s6 tyr)
+            let s6 = unify eqs in  (tyenv, s6, subst_type s6 tyr)
         | _ -> pp_ty ty1;err "error AppExp typing")
 
   | _ -> err ("Not Implemented!")
 
 let ty_decl tyenv = function
     Exp e -> ty_exp tyenv e
+  | Decl (id, e) -> 
+      let (_, s, ty) = ty_exp tyenv e in (Environment.extend id ty tyenv, s, ty)
   | _ -> err ("Not Implemented!")
