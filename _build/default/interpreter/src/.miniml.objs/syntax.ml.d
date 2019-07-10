@@ -1,1 +1,1 @@
-interpreter/src/syntax.ml: MySet
+interpreter/src/syntax.ml: List MySet

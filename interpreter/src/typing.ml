@@ -3,7 +3,7 @@ exception Error of string
 
 let err s = raise (Error s)
 (* Type Environment *)
-type tyenv = ty Environment.t
+type tyenv = tysc Environment.t
 
 type subst = (tyvar * ty) list
 
@@ -61,6 +61,24 @@ let rec unify tylist =
 
 let pp_ty ty = print_string (string_of_ty ty)
 
+let rec freevar_tyenv tyenv = 
+  let tyenvlist = Environment.tolist tyenv in
+  let rec freevar_tyenvrec tyenv2 = 
+    match tyenv2 with
+      [] -> MySet.empty
+    | (_, TyScheme(tyvarlist, tyy)) :: rest -> MySet.insertlist (freevar_tyenvrec rest) (freevar_tysc (TyScheme(tyvarlist, tyy)))
+  in freevar_tyenvrec tyenvlist
+
+let closure ty tyenv subst =
+  let fv_tyenv' = freevar_tyenv tyenv in
+  let fv_tyenv =
+  MySet.bigunion
+    (MySet.map
+      (fun id -> freevar_ty (subst_type subst (TyVar id)))
+        fv_tyenv') in
+  let ids = MySet.diff (freevar_ty ty) fv_tyenv in
+  TyScheme (MySet.to_list ids, ty)
+
 let ty_prim op ty1 ty2 = match op with
     Plus -> ([(ty1, TyInt); (ty2, TyInt)], TyInt)
   
@@ -76,8 +94,12 @@ let ty_prim op ty1 ty2 = match op with
 
 let rec ty_exp tyenv = function
     Var x ->
-      (try (tyenv, [], Environment.lookup x tyenv) with
-        Environment.Not_bound -> err ("variable not bound: " ^ x))
+      (try 
+        let TyScheme (vars, ty) = Environment.lookup x tyenv in
+        let s = List.map (fun v -> (v, TyVar (fresh_tyvar ())))
+        vars in
+        ([], [], subst_type s ty)
+        with Environment.Not_bound -> err ("variable not bound: " ^ x))
   | ILit _ -> (tyenv, [], TyInt)
   | BLit _ -> (tyenv, [], TyBool)
   | BinOp (op, exp1, exp2) ->
@@ -101,13 +123,19 @@ let rec ty_exp tyenv = function
       let eqs = eqs4 :: (eqs5 :: ((eqs_of_subst s1) @ (eqs_of_subst s2) @ (eqs_of_subst s3))) in 
       let s6 = unify eqs in (tyenv, s6, subst_type s6 ty3)
   | LetInExp (id, exp1, exp2) ->
-      let domty = TyVar (fresh_tyvar ()) in
+      (* let domty = TyVar (fresh_tyvar ()) in
       let (_, s1, ty1) = ty_exp tyenv exp1 in
       let tynewenv = Environment.extend id domty tyenv in
       let (_, s2, ty2) = ty_exp tynewenv exp2 in
       let eqs3 = [(domty, ty1)] in
       let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
-      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty2)
+      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty2) *)
+      let (_, s1, e1ty) = ty_exp tyenv exp1 in
+      let e1sc = closure e1ty tyenv s1 in
+      let newtyenv = Environment.extend id e1sc tyenv in
+      let (_, s2, e2ty) = ty_exp newtyenv exp2 in
+      let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) in
+      let s3 = unify eqs in (tyenv, s3, subst_type s3 e2ty)
   | LetRecExp (id, para, exp1, exp2) ->
       let domty1 = TyVar (fresh_tyvar ()) in
       let domty2 = TyVar (fresh_tyvar ()) in

@@ -45,6 +45,9 @@ type ty =
   | TyFun of ty * ty
   | TyList of ty
 
+(* type scheme *)
+type tysc = TyScheme of tyvar list * ty
+
 let counter = ref 0
 
 let tyvarlist = ref []
@@ -79,5 +82,15 @@ let rec string_of_ty = function
 let rec freevar_ty ty =
   match ty with
     TyVar num -> insert num MySet.empty
-  | TyFun (ty1, ty2) -> join (freevar_ty ty1) (freevar_ty ty2)
+  | TyFun (ty1, ty2) -> union (freevar_ty ty1) (freevar_ty ty2)
   | _ -> MySet.empty
+
+let tysc_of_ty ty = TyScheme ([], ty)
+
+let rec freevar_tysc tyscheme =
+  match tyscheme with
+      TyScheme (tyvarlist, ty1) ->
+        (match ty1 with
+            TyVar num -> (if not (List.mem num tyvarlist) then [num] else [])
+          | TyFun(tyy1, tyy2) -> (freevar_tysc (TyScheme(tyvarlist, tyy1))) @ (freevar_tysc (TyScheme(tyvarlist, tyy2)))
+          | _ -> [])

@@ -18,6 +18,6 @@ let rec fold_right f env a =
     [] -> a
   | (_, v)::rest -> f v (fold_right f rest a)
 
-(* let rec length = function
-    [] -> 0
-  | _ :: rest -> 1 + length rest *)
+let rec tolist = function
+    [] -> []
+  | x::rest -> x :: tolist rest
