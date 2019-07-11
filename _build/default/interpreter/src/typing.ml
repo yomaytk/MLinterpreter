@@ -79,6 +79,8 @@ let closure ty tyenv subst =
   let ids = MySet.diff (freevar_ty ty) fv_tyenv in
   TyScheme (MySet.to_list ids, ty)
 
+let unionScheme (TyScheme(tysc1, _)) (TyScheme(tysc2, _)) = tysc1 @ tysc2
+
 let ty_prim op ty1 ty2 = match op with
     Plus -> ([(ty1, TyInt); (ty2, TyInt)], TyInt)
   
@@ -132,31 +134,31 @@ let rec ty_exp tyenv = function
   | LetRecExp (id, para, exp1, exp2) ->
       let domty1 = TyVar (fresh_tyvar ()) in
       let domty2 = TyVar (fresh_tyvar ()) in
-      let domty3 = TyFun (domty1, domty2) in
-      let tynewenv = Environment.extend id (TyScheme([], domty3)) (Environment.extend para (TyScheme([], domty1)) tyenv) in
-      let (_, s1, ty1) = ty_exp tynewenv exp1 in
-      let (_, s2, ty2) = ty_exp tynewenv exp2 in
-      let eqs1 = [(domty2, ty1)] in
+      let tynewenv = Environment.extend id (TyScheme([], TyFun(domty1, domty2))) (Environment.extend para (TyScheme([], domty1)) tyenv) in
+      let (_, s1, ty2) = ty_exp tynewenv exp1 in
+      let ty1 = subst_type s1 domty1 in
+      let e1sc = closure ty1 tyenv s1 in
+      let e2sc = closure ty2 tyenv s1 in
+      let eqs1 = [(domty2, ty2)] in
+      let tynewenv2 = Environment.extend id (TyScheme(unionScheme e1sc e2sc, TyFun(ty1, ty2))) tyenv in
+      let (_, s2, ty3) = ty_exp tynewenv2 exp2 in
       let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs1 in
-      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty2)
+      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty3)
   | FunExp (id, exp) ->
       let domty = TyVar (fresh_tyvar ()) in
-      (* let num =
-      *   (match domty with
-      *     TyVar num -> num
-      *    | _ -> err "funexp") in *)
       let (_, s, ranty) = ty_exp (Environment.extend id (TyScheme([], domty)) tyenv) exp in
-      (* let e1sc = closure ranty tyenv s in *)
       (tyenv, s, TyFun (subst_type s domty, ranty))
   | AppExp (exp1, exp2) -> 
       let (_, s1, ty1) = ty_exp tyenv exp1 in
       let (_, s2, ty2) = ty_exp tyenv exp2 in
       (match ty1 with
           TyFun(tyy1, tyy2) ->
+          pp_ty ty1;pp_ty ty2;
             let eqs3 = [(tyy1, ty2)] in
             let eqs4 = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
             let s5 = unify eqs4 in (tyenv, s5, subst_type s5 tyy2)
         | TyVar num -> 
+        pp_ty ty1;pp_ty ty2;
             let tyr = TyVar (fresh_tyvar ()) in
             let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ [(TyVar num, TyFun(ty2, tyr))] in
             let s6 = unify eqs in  (tyenv, s6, subst_type s6 tyr)
@@ -170,4 +172,15 @@ let ty_decl tyenv = function
       let (_, s, ty) = ty_exp tyenv e in
       let esc = closure ty tyenv s in
         (Environment.extend id esc tyenv, s, ty)
+  | RecDecl (id, para, e) ->
+      let domty1 = TyVar (fresh_tyvar ()) in
+      let domty2 = TyVar (fresh_tyvar ()) in
+      let tynewenv = Environment.extend id (TyScheme([], TyFun(domty1, domty2))) (Environment.extend para (TyScheme([], domty1)) tyenv) in
+      let (_, s, tye2) = ty_exp tynewenv e in
+      let tye1 = subst_type s domty1 in
+      let esc1 = closure tye1 tyenv s in
+      let esc2 = closure tye2 tyenv s in
+      let eqs1 = [(domty2, tye2)] in
+      let eqs = (eqs_of_subst s) @ eqs1 in
+      let s2 = unify eqs in (Environment.extend id (TyScheme(unionScheme esc1 esc2, TyFun (tye1, tye2))) tyenv, s2, TyFun(tye1, tye2))
   | _ -> err ("Not Implemented!")
