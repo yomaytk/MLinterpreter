@@ -18,6 +18,7 @@ let rec fold_right f env a =
     [] -> a
   | (_, v)::rest -> f v (fold_right f rest a)
 
-let rec tolist = function
+let rec getschemelist env =
+  match env with
     [] -> []
-  | x::rest -> x :: tolist rest
+  | (_, tysc) :: rest -> tysc :: getschemelist rest 

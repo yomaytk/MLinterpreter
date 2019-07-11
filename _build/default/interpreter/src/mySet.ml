@@ -31,6 +31,7 @@ let rec bigunion = function
     [] -> []
   | set1 :: rest -> union set1 (bigunion rest)
 
+
 let rec insertlist xs = function
     [] -> xs
   | x :: rest -> insertlist (insert x xs) rest

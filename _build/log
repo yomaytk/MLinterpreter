@@ -1,27 +1,13 @@
-# dune build
+# dune exec miniml
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/dunec55581.output 2> /dev/null
-$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune245066.output
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -intf interpreter/src/environment.mli) > _build/default/interpreter/src/.miniml.objs/environment.mli.d
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Environment.cmi -c -intf interpreter/src/environment.mli)
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Typing.cmo -c -impl interpreter/src/typing.ml)
-> File "interpreter/src/typing.ml", line 69, characters 48-58:
-> Error: Unbound value insertlist
-[2]
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Environment.cmx -c -impl interpreter/src/environment.ml)
-> File "interpreter/src/environment.ml", line 1:
-> Error: The implementation interpreter/src/environment.ml
->        does not match the interface interpreter/src/.miniml.objs/byte/miniml__Environment.cmi:
->        Values do not match:
->          val tolist : 'a list -> 'a list
->        is not included in
->          val tolist : 'a t -> 'b t
->        File "interpreter/src/environment.mli", line 10, characters 0-25:
->          Expected declaration
->        File "interpreter/src/environment.ml", line 21, characters 8-14:
->          Actual declaration
-[2]
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Eval.cmo -c -impl interpreter/src/eval.ml)
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Syntax_debug.cmo -c -impl interpreter/src/syntax_debug.ml)
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Syntax_debug.cmx -c -impl interpreter/src/syntax_debug.ml)
-$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Eval.cmx -c -impl interpreter/src/eval.ml)
+$ /usr/bin/nproc > /tmp/dunec30aa6.output 2> /dev/null
+$ /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -config > /tmp/dune1689de.output
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamldep.opt -modules -impl interpreter/src/typing.ml) > _build/default/interpreter/src/.miniml.objs/typing.ml.d
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs -I interpreter/src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/miniml__Typing.cmo -c -impl interpreter/src/typing.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs -I interpreter/src/.miniml.objs/.private -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/miniml__Cui.cmo -c -impl interpreter/src/cui.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs -I interpreter/src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/miniml__Typing.cmx -c -impl interpreter/src/typing.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/.main.eobjs -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/.main.eobjs/main.cmo -c -impl interpreter/main.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs -I interpreter/src/.miniml.objs/.private -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/miniml__Cui.cmx -c -impl interpreter/src/cui.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/.main.eobjs -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/.main.eobjs/main.cmx -c -impl interpreter/main.ml)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -a -o interpreter/src/miniml.cmxa interpreter/src/.miniml.objs/miniml.cmx interpreter/src/.miniml.objs/miniml__MySet.cmx interpreter/src/.miniml.objs/miniml__Syntax.cmx interpreter/src/.miniml.objs/miniml__Environment.cmx interpreter/src/.miniml.objs/miniml__Typing.cmx interpreter/src/.miniml.objs/miniml__Eval.cmx interpreter/src/.miniml.objs/miniml__Syntax_debug.cmx interpreter/src/.miniml.objs/miniml__Parser.cmx interpreter/src/.miniml.objs/miniml__Lexer.cmx interpreter/src/.miniml.objs/miniml__Cui.cmx)
+$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/main.exe -I interpreter/src interpreter/src/miniml.cmxa interpreter/.main.eobjs/main.cmx)
