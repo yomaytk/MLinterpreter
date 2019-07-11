@@ -98,7 +98,7 @@ let rec ty_exp tyenv = function
         let TyScheme (vars, ty) = Environment.lookup x tyenv in
         let s = List.map (fun v -> (v, TyVar (fresh_tyvar ())))
         vars in
-        (Environment.empty, [], subst_type s ty)
+        (tyenv, [], subst_type s ty)
         with Environment.Not_bound -> err ("variable not bound: " ^ x))
   | ILit _ -> (tyenv, [], TyInt)
   | BLit _ -> (tyenv, [], TyBool)
@@ -123,13 +123,6 @@ let rec ty_exp tyenv = function
       let eqs = eqs4 :: (eqs5 :: ((eqs_of_subst s1) @ (eqs_of_subst s2) @ (eqs_of_subst s3))) in 
       let s6 = unify eqs in (tyenv, s6, subst_type s6 ty3)
   | LetInExp (id, exp1, exp2) ->
-      (* let domty = TyVar (fresh_tyvar ()) in
-      let (_, s1, ty1) = ty_exp tyenv exp1 in
-      let tynewenv = Environment.extend id domty tyenv in
-      let (_, s2, ty2) = ty_exp tynewenv exp2 in
-      let eqs3 = [(domty, ty1)] in
-      let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
-      let s3 = unify eqs in (tyenv, s3, subst_type s3 ty2) *)
       let (_, s1, e1ty) = ty_exp tyenv exp1 in
       let e1sc = closure e1ty tyenv s1 in
       let newtyenv = Environment.extend id e1sc tyenv in
@@ -147,14 +140,14 @@ let rec ty_exp tyenv = function
       let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs1 in
       let s3 = unify eqs in (tyenv, s3, subst_type s3 ty2)
   | FunExp (id, exp) ->
-     let domty = TyVar (fresh_tyvar ()) in
-     (* let num =
+      let domty = TyVar (fresh_tyvar ()) in
+      (* let num =
       *   (match domty with
       *     TyVar num -> num
       *    | _ -> err "funexp") in *)
-     let (_, s, ranty) = ty_exp (Environment.extend id (TyScheme([], domty)) tyenv) exp in
-     (* let e1sc = closure ranty tyenv s in *)
-     (tyenv, s, TyFun (subst_type s domty, ranty))
+      let (_, s, ranty) = ty_exp (Environment.extend id (TyScheme([], domty)) tyenv) exp in
+      (* let e1sc = closure ranty tyenv s in *)
+      (tyenv, s, TyFun (subst_type s domty, ranty))
   | AppExp (exp1, exp2) -> 
       let (_, s1, ty1) = ty_exp tyenv exp1 in
       let (_, s2, ty2) = ty_exp tyenv exp2 in
@@ -174,5 +167,7 @@ let rec ty_exp tyenv = function
 let ty_decl tyenv = function
     Exp e -> ty_exp tyenv e
   | Decl (id, e) -> 
-      let (_, s, ty) = ty_exp tyenv e in (Environment.extend id (TyScheme([], ty)) tyenv, s, ty)
+      let (_, s, ty) = ty_exp tyenv e in
+      let esc = closure ty tyenv s in
+        (Environment.extend id esc tyenv, s, ty)
   | _ -> err ("Not Implemented!")

@@ -90,7 +90,7 @@ let tysc_of_ty ty = TyScheme ([], ty)
 let rec freevar_tysc tyscheme =
   match tyscheme with
       TyScheme (tyvarlist, ty1) ->
-        (match ty1 with
+        match ty1 with
             TyVar num -> (if not (List.mem num tyvarlist) then [num] else [])
           | TyFun(tyy1, tyy2) -> (freevar_tysc (TyScheme(tyvarlist, tyy1))) @ (freevar_tysc (TyScheme(tyvarlist, tyy2)))
-          | _ -> [])
+          | _ -> []
