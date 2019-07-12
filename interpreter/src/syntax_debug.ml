@@ -30,7 +30,6 @@ let rec program_analysis decl =
   | AndLet (id, e1, e2) -> "AndLet(" ^ id ^ ", " ^ (exp_analysis e1) ^ ", " ^ (program_analysis e2) ^ ")"
   | RecDecl (id1, id2, e) -> "RecDecl(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis e) ^ ")"
   | RecAndLet (id1, id2, e1, e2) -> "RecAndLet(" ^ id1 ^ ", " ^ id2 ^ ", " ^ (exp_analysis e1) ^ ", " ^ (program_analysis e2) ^ ")" 
-  | ParseFail -> "ParseFail"
   (* | _ -> "Fail!" *)
 
 let analysis_exe decl = 

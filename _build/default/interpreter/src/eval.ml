@@ -57,21 +57,21 @@ let rec apply_prim op arg1 arg2 =
   let errm = "Error: Exception Both arguments must be " in
   match op, arg1, arg2 with
     Plus, IntV i1, IntV i2 -> IntV (i1 + i2)
-  | Plus, _, _ -> print_string (errm ^ "integer: +");err "error"
+  | Plus, _, _ -> err (errm ^ "integer: +")
   | Mult, IntV i1, IntV i2 -> IntV (i1 * i2)
-  | Mult, _, _ -> print_string (errm ^ "integer: *");err "error"
+  | Mult, _, _ -> err (errm ^ "integer: +")
   | Lt, IntV i1, IntV i2 -> BoolV (i1 < i2)
-  | Lt, _, _ -> print_string (errm ^ "integer: <");err "error"
+  | Lt, _, _ -> err (errm ^ "integer: <")
   | AAND, BoolV i1, BoolV i2 -> BoolV (i1 && i2)
-  | AAND, _, _ -> print_string (errm ^ "bool: &&");err "error"
+  | AAND, _, _ -> err (errm ^ "bool: &&")
   | OOR, BoolV i1, BoolV i2 -> BoolV (i1 || i2)
-  | OOR, _, _ -> print_string (errm ^ "bool: ||");err "error"
-  | Cons, _, _ -> err "error"
+  | OOR, _, _ -> err (errm ^ "bool: ||")
+  | Cons, _, _ -> err "Cons error"
 
 let rec eval_exp env = function
     Var x ->
     (try Environment.lookup x env with
-        Environment.Not_bound -> (*print_string ("Error: Exception Variable not bound: " ^ x);*)err "error")
+        Environment.Not_bound -> err ("Error: Exception Variable not bound: " ^ x))
   | ILit i -> IntV i
   | BLit b -> BoolV b
   | NIlV -> NilV
@@ -86,17 +86,17 @@ let rec eval_exp env = function
         AAND -> if arg1 = BoolV false then BoolV false else eval_exp env (BinOp(op, exp1, exp2))
         (*true || の時は即 true に決定、そうでない時は全体を再評価*)
         | OOR -> if arg1 = BoolV true then BoolV true else eval_exp env (BinOp(op, exp1, exp2))
-        | _ -> err "error")
+        | _ -> err "ANDORBinOp error")
   | FplmuBinOp (op, id1, id2) ->
-      let exp1 = try Environment.lookup id1 env with _ -> err "error" in
-      let exp2 = try Environment.lookup id2 env with _ -> err "error" in
+      let exp1 = try Environment.lookup id1 env with Environment.Not_bound -> err ("Exception Varivble not bound: " ^ id1) in
+      let exp2 = try Environment.lookup id2 env with Environment.Not_bound -> err ("Exception Varivble not bound: " ^ id2) in
       apply_prim op exp1 exp2
   | IfExp (exp1, exp2, exp3) ->
     let test = eval_exp env exp1 in
     (match test with
         BoolV true -> eval_exp env exp2
       | BoolV false -> eval_exp env exp3
-      | _ -> print_string "Error: Exception Test expression must be boolean: if";err "error")
+      | _ -> err "Error: Exception Test expression must be boolean: if")
   | LetInExp (id, exp1, exp2) ->
     let value = eval_exp env exp1 in
     let newenv = andlistadd !andletlist env in
@@ -104,7 +104,7 @@ let rec eval_exp env = function
   | LetAndInExp (id, exp1, exp2) ->
       (*新たに束縛しようとしている変数と同じ名前の変数がすでに宣言されていないか findid で判定*)
     let bound = findid !andletlist id in
-    if bound then err "error"(*すでに同じ名前の変数が存在する場合はエラー*)
+    if bound then err (id ^ " is already bound in let and declaration")(*すでに同じ名前の変数が存在する場合はエラー*)
       else begin
         let value = eval_exp env exp1 in
         (*リストandletlistに新しい変数を追加*)
@@ -112,7 +112,7 @@ let rec eval_exp env = function
         end
   | LetEndInExp (id, exp1, exp2) ->
       let bound = findid !andletlist id in
-      if bound then err "error"
+      if bound then err (id ^ " is already bound in let and declaration")
       else begin
           let value = eval_exp env exp1 in
           (*リストに追加された変数を一斉に環境に追加*)
@@ -142,7 +142,7 @@ let rec eval_exp env = function
             let newenv2 = Environment.extend id arg env in
             (*動的束縛の時は、今現在の環境で最初に評価*)
             (try eval_exp newenv2 body with _ -> eval_exp newenv body)
-        | _ -> print_string "Error : Non-function value is applied";err "error")
+        | _ -> err "Error : Non-function value is applied")
   | LetRecExp (id, para, exp1, exp2) ->
       (*ダミーの環境の参照を用意*)
       let dummyenv = ref Environment.empty in
@@ -162,7 +162,7 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
     | Decl (id, e) ->
         let v = eval_exp env e in
         let bound = findid !andletlist id in
-        if bound then begin Printf.printf "Error: Variable a is bound several times in this matching"; (env, [], err "error" ) end
+        if bound then begin (env, [], err "Error: Variable a is bound several times in this matching") end
         else begin
                 let newenv = andlistadd !andletlist env in
                 if v = Exception then (newenv, [("-", v)], v) else (Environment.extend id v newenv, env2 @ [(id, v)], v)
@@ -173,7 +173,7 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
             eval_decl newenv e2 (env2 @ [(id, v)])
     | AndLet(id, e1, e2) ->
         let bound = findid !andletlist id in
-        if bound then begin Printf.printf "Error: Variable a is bound several times in this matching";  (env, [], err "error") end
+        if bound then begin (env, [], err "Error: Variable a is bound several times in this matching") end
         else begin
             let v1 = eval_exp env e1 in
             andletlist := (id, v1) :: !andletlist; eval_decl env e2 (env2 @ [(id, v1)])
@@ -186,5 +186,3 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
         let dummyenv = ref Environment.empty in
         let newenv = Environment.extend id1 (ProcV(id2, e1, dummyenv)) env in
         dummyenv := newenv;eval_decl newenv e2 (env2 @ [(id1, ProcV(id2, e1, dummyenv))])
-    | ParseFail -> print_string "Error: Exception Miniml.Parser.MenhirBasics.Error";(env, [("-", Exception)], err "error")
-    

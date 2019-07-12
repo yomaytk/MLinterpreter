@@ -1,529 +1,266 @@
 # dune runtest
 # OCAMLPARAM: unset
-$ /usr/bin/nproc > /tmp/dunebd9672.output 2> /dev/null
-$ /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -config > /tmp/dune47ee3f.output
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/tySyntax.cmo -c -impl interpreter/test/tySyntax.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmo -c -impl interpreter/test/lexingHelper.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/testutil.cmo -c -impl interpreter/test/testutil.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_2_2.cmo -c -impl interpreter/test/ex3_2_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_4_6.cmo -c -impl interpreter/test/ex3_4_6.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_4.cmo -c -impl interpreter/test/ex4_3_4.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/tyParser.cmi -c -intf interpreter/test/tyParser.mli)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx -c -impl interpreter/test/tySyntax.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx -c -impl interpreter/test/lexingHelper.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/exec.cmo -c -impl interpreter/test/exec.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/testutil.cmx -c -impl interpreter/test/testutil.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_2_2.cmx -c -impl interpreter/test/ex3_2_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_4_6.cmx -c -impl interpreter/test/ex3_4_6.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_4.cmx -c -impl interpreter/test/ex4_3_4.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/tyLexer.cmo -c -impl interpreter/test/tyLexer.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/tyParser.cmx -c -impl interpreter/test/tyParser.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/exec.cmx -c -impl interpreter/test/exec.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmo -c -impl interpreter/test/evalTestGenerator.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/tyHelper.cmo -c -impl interpreter/test/tyHelper.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx -c -impl interpreter/test/tyLexer.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx -c -impl interpreter/test/evalTestGenerator.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_4_1.cmo -c -impl interpreter/test/ex3_4_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_5_2.cmo -c -impl interpreter/test/ex3_5_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_2_4.cmo -c -impl interpreter/test/ex3_2_4.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_2_1.cmo -c -impl interpreter/test/ex3_2_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_4_1.cmx -c -impl interpreter/test/ex3_4_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/typingTestGenerator.cmo -c -impl interpreter/test/typingTestGenerator.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_5_2.cmx -c -impl interpreter/test/ex3_5_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_2_4.cmx -c -impl interpreter/test/ex3_2_4.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_2_1.cmx -c -impl interpreter/test/ex3_2_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_5.cmo -c -impl interpreter/test/ex4_3_5.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_5.cmx -c -impl interpreter/test/ex4_3_5.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_2_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/ex3_2_2.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_4_6.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/ex3_4_6.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_4.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/ex4_3_4.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_4_2.cmo -c -impl interpreter/test/ex3_4_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_2_3.cmo -c -impl interpreter/test/ex3_2_3.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_3_1.cmo -c -impl interpreter/test/ex3_3_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_5_1.cmo -c -impl interpreter/test/ex3_5_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_4_2.cmx -c -impl interpreter/test/ex3_4_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_2_3.cmx -c -impl interpreter/test/ex3_2_3.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_3_1.cmx -c -impl interpreter/test/ex3_3_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_5_1.cmx -c -impl interpreter/test/ex3_5_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_4_1.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_4_1.cmx)
-$ (cd _build/default/interpreter/test && ./ex3_4_1.exe)
-> ..........
-> Ran: 10 tests in: 0.01 seconds.
-> OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_5_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_5_2.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_3_2.cmo -c -impl interpreter/test/ex3_3_2.ml)
+$ /usr/bin/nproc > /tmp/dune41e9a4.output 2> /dev/null
+$ /home/masashi/.opam/4.07.1/bin/ocamlc.opt -config > /tmp/dune51460d.output
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -o interpreter/src/.miniml.objs/byte/miniml.cmo -c -impl interpreter/src/miniml.ml-gen)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/cui.ml) > _build/default/interpreter/src/.miniml.objs/cui.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -intf interpreter/src/environment.mli) > _build/default/interpreter/src/.miniml.objs/environment.mli.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/environment.ml) > _build/default/interpreter/src/.miniml.objs/environment.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/eval.ml) > _build/default/interpreter/src/.miniml.objs/eval.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamllex.opt -q -o interpreter/src/lexer.ml interpreter/src/lexer.mll)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -intf interpreter/src/mySet.mli) > _build/default/interpreter/src/.miniml.objs/mySet.mli.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/mySet.ml) > _build/default/interpreter/src/.miniml.objs/mySet.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/syntax.ml) > _build/default/interpreter/src/.miniml.objs/syntax.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/syntax_debug.ml) > _build/default/interpreter/src/.miniml.objs/syntax_debug.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/typing.ml) > _build/default/interpreter/src/.miniml.objs/typing.ml.d
+$ (cd _build/default/interpreter/src && /home/masashi/.opam/4.07.1/bin/menhir --dump parser.mly --base parser)
+> Warning: 13 states have shift/reduce conflicts.
+> Warning: 4 states have reduce/reduce conflicts.
+> Warning: 56 shift/reduce conflicts were arbitrarily resolved.
+> Warning: 50 reduce/reduce conflicts were arbitrarily resolved.
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_2_1.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_2_1.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/evalTestGenerator.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_2_2.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_2_2.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_2_3.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_2_3.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/lexer.ml) > _build/default/interpreter/src/.miniml.objs/lexer.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_2_4.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_2_4.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_3_1.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_3_1.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_3_2.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_3_2.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__MySet.cmi -c -intf interpreter/src/mySet.mli)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_3_3.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_3_3.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_4_2.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_4_2.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_4_4.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_4_4.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_4_3.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_4_3.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_4_5.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_4_5.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_4_6.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_4_6.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_5_1.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_5_1.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_3_4.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_3_4.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_4_1.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_4_1.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_5_2.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_5_2.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o interpreter/src/.miniml.objs/native/miniml.cmx -c -impl interpreter/src/miniml.ml-gen)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_6_1.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_6_1.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_6_2.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_6_2.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_6_3.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_6_3.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_6_7.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_6_7.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_6_5.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_6_5.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_6_6.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_6_6.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_3_4.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_3_4.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_3_3.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_3_3.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_3_1.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_3_1.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_2_1.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_2_1.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_3_6.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_3_6.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_3_7.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_3_7.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_4_1.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_4_1.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_3_5.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_3_5.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Syntax.cmo -c -impl interpreter/src/syntax.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_4_3.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_4_3.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_4_4.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_4_4.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/exec.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/exec.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_4_2.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_4_2.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/pretypingTestGenerator.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/pretypingTestGenerator.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/testutil.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/testutil.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/tyHelper.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/tyHelper.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex3_6_4.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex3_6_4.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/ex4_3_2.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/ex4_3_2.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamllex.opt -q -o interpreter/test/tyLexer.ml interpreter/test/tyLexer.mll)
+$ (cd _build/default/interpreter/test && /home/masashi/.opam/4.07.1/bin/menhir tyParser.mly --base tyParser)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/lexingHelper.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/lexingHelper.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Environment.cmi -c -intf interpreter/src/environment.mli)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -intf interpreter/src/parser.mli) > _build/default/interpreter/src/.miniml.objs/parser.mli.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/typingTestGenerator.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/typingTestGenerator.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/tySyntax.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/tySyntax.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/tyLexer.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/tyLexer.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -intf interpreter/test/tyParser.mli) > _build/default/interpreter/test/.ex3_2_1.eobjs/tyParser.mli.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/src/parser.ml) > _build/default/interpreter/src/.miniml.objs/parser.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamldep.opt -modules -impl interpreter/test/tyParser.ml) > _build/default/interpreter/test/.ex3_2_1.eobjs/tyParser.ml.d
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Parser.cmi -c -intf interpreter/src/parser.mli)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__MySet.cmx -c -impl interpreter/src/mySet.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Syntax.cmx -c -impl interpreter/src/syntax.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Lexer.cmo -c -impl interpreter/src/lexer.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Environment.cmx -c -impl interpreter/src/environment.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Typing.cmo -c -impl interpreter/src/typing.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Eval.cmo -c -impl interpreter/src/eval.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Syntax_debug.cmo -c -impl interpreter/src/syntax_debug.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Lexer.cmx -c -impl interpreter/src/lexer.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/src/.miniml.objs/byte -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/byte/miniml__Cui.cmo -c -impl interpreter/src/cui.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Eval.cmx -c -impl interpreter/src/eval.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Typing.cmx -c -impl interpreter/src/typing.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Syntax_debug.cmx -c -impl interpreter/src/syntax_debug.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Cui.cmx -c -impl interpreter/src/cui.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Miniml -o interpreter/src/.miniml.objs/native/miniml__Parser.cmx -c -impl interpreter/src/parser.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -a -o interpreter/src/miniml.cmxa interpreter/src/.miniml.objs/native/miniml.cmx interpreter/src/.miniml.objs/native/miniml__MySet.cmx interpreter/src/.miniml.objs/native/miniml__Syntax.cmx interpreter/src/.miniml.objs/native/miniml__Environment.cmx interpreter/src/.miniml.objs/native/miniml__Eval.cmx interpreter/src/.miniml.objs/native/miniml__Parser.cmx interpreter/src/.miniml.objs/native/miniml__Lexer.cmx interpreter/src/.miniml.objs/native/miniml__Syntax_debug.cmx interpreter/src/.miniml.objs/native/miniml__Typing.cmx interpreter/src/.miniml.objs/native/miniml__Cui.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/tySyntax.cmo -c -impl interpreter/test/tySyntax.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/testutil.cmo -c -impl interpreter/test/testutil.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_2_2.cmo -c -impl interpreter/test/ex3_2_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/lexingHelper.cmo -c -impl interpreter/test/lexingHelper.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_4_6.cmo -c -impl interpreter/test/ex3_4_6.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_3_4.cmo -c -impl interpreter/test/ex4_3_4.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/tyParser.cmi -c -intf interpreter/test/tyParser.mli)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx -c -impl interpreter/test/tySyntax.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/exec.cmo -c -impl interpreter/test/exec.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_2_2.cmx -c -impl interpreter/test/ex3_2_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/tyLexer.cmo -c -impl interpreter/test/tyLexer.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_4_6.cmx -c -impl interpreter/test/ex3_4_6.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx -c -impl interpreter/test/testutil.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx -c -impl interpreter/test/lexingHelper.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_3_4.cmx -c -impl interpreter/test/ex4_3_4.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/evalTestGenerator.cmo -c -impl interpreter/test/evalTestGenerator.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx -c -impl interpreter/test/tyParser.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/tyHelper.cmo -c -impl interpreter/test/tyHelper.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_4_1.cmo -c -impl interpreter/test/ex3_4_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_5_2.cmo -c -impl interpreter/test/ex3_5_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_4_2.cmo -c -impl interpreter/test/ex3_4_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_3_1.cmo -c -impl interpreter/test/ex3_3_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/exec.cmx -c -impl interpreter/test/exec.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx -c -impl interpreter/test/tyLexer.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_2_4.cmo -c -impl interpreter/test/ex3_2_4.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_2_1.cmo -c -impl interpreter/test/ex3_2_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_5_1.cmo -c -impl interpreter/test/ex3_5_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_2_3.cmo -c -impl interpreter/test/ex3_2_3.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_4_1.cmx -c -impl interpreter/test/ex3_4_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_3_1.cmx -c -impl interpreter/test/ex3_3_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_4_2.cmx -c -impl interpreter/test/ex3_4_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_5_2.cmx -c -impl interpreter/test/ex3_5_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_3_2.cmo -c -impl interpreter/test/ex3_3_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_5_1.cmx -c -impl interpreter/test/ex3_5_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_4_5.cmo -c -impl interpreter/test/ex3_4_5.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_2_4.cmx -c -impl interpreter/test/ex3_2_4.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_3_4.cmo -c -impl interpreter/test/ex3_3_4.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx -c -impl interpreter/test/tyHelper.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_2_1.cmx -c -impl interpreter/test/ex3_2_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_2_3.cmx -c -impl interpreter/test/ex3_2_3.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex3_6_2.cmo -c -impl interpreter/test/ex3_6_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx -c -impl interpreter/test/evalTestGenerator.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/typingTestGenerator.cmo -c -impl interpreter/test/typingTestGenerator.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_3_4.cmx -c -impl interpreter/test/ex3_3_4.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_4_5.cmx -c -impl interpreter/test/ex3_4_5.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_3_2.cmx -c -impl interpreter/test/ex3_3_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex3_6_2.cmx -c -impl interpreter/test/ex3_6_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/pretypingTestGenerator.cmo -c -impl interpreter/test/pretypingTestGenerator.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/typingTestGenerator.cmx -c -impl interpreter/test/typingTestGenerator.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_2_2.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/ex3_2_2.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/pretypingTestGenerator.cmx -c -impl interpreter/test/pretypingTestGenerator.ml)
+$ (cd _build/default/interpreter/test && ./ex3_2_2.exe)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_4_6.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/ex3_4_6.cmx)
+$ (cd _build/default/interpreter/test && ./ex3_4_6.exe)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_4.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/ex4_3_4.cmx)
+$ (cd _build/default/interpreter/test && ./ex4_3_4.exe)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_2_4.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_2_4.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_5_2.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_5_2.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_2_1.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_2_1.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_3_4.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_3_4.cmx)
 $ (cd _build/default/interpreter/test && ./ex3_5_2.exe)
 > ..........
-> Ran: 10 tests in: 0.06 seconds.
-> OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_2_1.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_2_1.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_2_4.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_2_4.cmx)
-$ (cd _build/default/interpreter/test && ./ex3_2_1.exe)
-> ...............Error: Exception Both arguments must be integer: <.Error: Exception Both arguments must be integer: <.Error: Exception Both arguments must be integer: <.Error: Exception Both arguments must be integer: +.Error: Exception Both arguments must be integer: *.Error: Exception Test expression must be boolean: if...
-> Ran: 23 tests in: 0.01 seconds.
+> Ran: 10 tests in: 0.00 seconds.
 > OK
 $ (cd _build/default/interpreter/test && ./ex3_2_4.exe)
 > ........
-> Ran: 8 tests in: 0.01 seconds.
+> Ran: 8 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_3_2.cmx -c -impl interpreter/test/ex3_3_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_3_4.cmo -c -impl interpreter/test/ex3_3_4.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_6_2.cmo -c -impl interpreter/test/ex3_6_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_4_5.cmo -c -impl interpreter/test/ex3_4_5.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_4_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_4_2.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_2_3.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_2_3.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_3_1.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_3_1.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_5_1.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_5_1.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_3_4.cmx -c -impl interpreter/test/ex3_3_4.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_6_2.cmx -c -impl interpreter/test/ex3_6_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex3_4_5.cmx -c -impl interpreter/test/ex3_4_5.ml)
-$ (cd _build/default/interpreter/test && ./ex3_4_2.exe)
-> ..
-> Ran: 2 tests in: 0.27 seconds.
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_3_2.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_3_2.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_6_2.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_6_2.cmx)
+$ (cd _build/default/interpreter/test && ./ex3_3_4.exe)
+> ........
+> Ran: 8 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default/interpreter/test && ./ex3_2_3.exe)
-> .........
-> Ran: 9 tests in: 0.27 seconds.
+$ (cd _build/default/interpreter/test && ./ex3_2_1.exe)
+> .......................
+> Ran: 23 tests in: 0.02 seconds.
 > OK
-$ (cd _build/default/interpreter/test && ./ex3_3_1.exe)
-> .........
-> Ran: 9 tests in: 0.26 seconds.
-> OK
-$ (cd _build/default/interpreter/test && ./ex3_5_1.exe)
-> .....
-> Ran: 5 tests in: 0.26 seconds.
-> OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_6.cmo -c -impl interpreter/test/ex4_3_6.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/typingTestGenerator.cmx -c -impl interpreter/test/typingTestGenerator.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/pretypingTestGenerator.cmo -c -impl interpreter/test/pretypingTestGenerator.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx -c -impl interpreter/test/tyHelper.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_6.cmx -c -impl interpreter/test/ex4_3_6.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_4_2.cmo -c -impl interpreter/test/ex4_4_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_3.cmo -c -impl interpreter/test/ex4_3_3.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_3_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_3_2.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_4_2.cmx -c -impl interpreter/test/ex4_4_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_3.cmx -c -impl interpreter/test/ex4_3_3.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_2_1.cmo -c -impl interpreter/test/ex4_2_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_4_2.cmo -c -impl interpreter/test/ex4_4_2.ml)
 $ (cd _build/default/interpreter/test && ./ex3_3_2.exe)
 > .....
 > Ran: 5 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_2_1.cmo -c -impl interpreter/test/ex4_2_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_4_1.cmo -c -impl interpreter/test/ex4_4_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_2_1.cmx -c -impl interpreter/test/ex4_2_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_6_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_6_2.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_4_1.cmx -c -impl interpreter/test/ex4_4_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_4_5.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_4_5.cmx)
 $ (cd _build/default/interpreter/test && ./ex3_6_2.exe)
 > .....
-> Ran: 5 tests in: 0.04 seconds.
+> Ran: 5 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_3_4.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_3_4.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_4_5.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex3_4_5.cmx)
-$ (cd _build/default/interpreter/test && ./ex3_3_4.exe)
-> ......Error: Variable a is bound several times in this matching..
-> Ran: 8 tests in: 0.01 seconds.
-> OK
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_3_1.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_3_1.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_4_1.cmo -c -impl interpreter/test/ex4_4_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_2_3.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_2_3.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_3_5.cmo -c -impl interpreter/test/ex4_3_5.ml)
 $ (cd _build/default/interpreter/test && ./ex3_4_5.exe)
 > ...
 > Ran: 3 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_2.cmo -c -impl interpreter/test/ex4_3_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/pretypingTestGenerator.cmx -c -impl interpreter/test/pretypingTestGenerator.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_1.cmo -c -impl interpreter/test/ex4_3_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_2.cmx -c -impl interpreter/test/ex4_3_2.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src/.miniml.objs -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/ex4_3_1.cmx -c -impl interpreter/test/ex4_3_1.ml)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_5.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex4_3_5.cmx)
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_6.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex4_3_6.cmx)
-$ (cd _build/default/interpreter/test && ./ex4_3_5.exe)
-> ....up (int -> int) and int
-> up (int -> int) and int
-> .down 'a59 and 'a61
-> down 'a60 and 'a62
-> .down 'a64 and 'a66
-> down 'a65 and 'a66
-> down 'a67 and 'a68
-> ...down 'a73 and 'a72
-> ...down 'a80 and ('a81 -> 'a81)
-> down 'a83 and 'a79
-> up ((('a81 -> 'a81) -> 'a82) -> 'a82) and (('a79 -> 'a84) -> 'a84)
-> .down 'a85 and 'a86
-> .down 'a89 and 'a88
-> down 'a88 and 'a90
-> .down 'a93 and 'a92
-> down 'a92 and 'a94
-> down 'a93 and 'a92
-> down 'a95 and 'a96
-> .down 'a100 and 'a98
-> down 'a98 and 'a101
-> down 'a100 and 'a98
-> down 'a103 and 'a99
-> down 'a99 and 'a104
-> down 'a102 and 'a105
-> .down 'a109 and 'a107
-> down 'a108 and 'a109
-> down 'a112 and 'a110
-> down 'a111 and 'a113
-> .down 'a119 and 'a121
-> down 'a120 and 'a121
-> down 'a122 and 'a123
-> up (('a130 -> ('a131 -> 'a129)) -> (('a130 -> 'a131) -> ('a130 -> 'a129))) and ('a132 -> ('a133 -> 'a132))
-> up (('a132 -> 'a133) -> ('a132 -> 'a132)) and ('a134 -> ('a135 -> 'a134))
-> .down 'a136 and 'a137
-> down 'a139 and 'a138
-> down 'a138 and 'a137
-> .down 'a144 and 'a142
-> down 'a145 and 'a143
-> down 'a147 and ('a148 -> ('a149 -> 'a148))
-> down 'a151 and ('a152 -> ('a153 -> 'a153))
-> up ('a160 -> ('a159 -> (('a160 -> ('a159 -> 'a158)) -> 'a158))) and int
-> up ('a159 -> ((int -> ('a159 -> 'a158)) -> 'a158)) and int
-> up ((('a156 -> ('a157 -> 'a156)) -> 'a155) -> 'a155) and ((int -> (int -> 'a158)) -> 'a158)
-> ....down 'a162 and 'a162
-> .down 'a164 and 'a164
-> .down 'a167 and 'a168
-> down 'a167 and 'a168
-> down 'a169 and 'a170
-> .down 'a172 and 'a173
-> down 'a173 and 'a172
-> down 'a174 and 'a175
-> .down 'a177 and 'a178
-> down 'a178 and 'a177
-> .down 'a181 and 'a182
-> .down 'a184 and 'a185
-> .down 'a187 and 'a188
-> down 'a188 and 'a190
-> .down 'a193 and 'a194
-> down 'a196 and 'a195
-> down 'a195 and 'a194
-> down 'a195 and 'a193
-> .down 'a200 and 'a201
-> down 'a202 and 'a200
-> down 'a201 and 'a202
-> ..up (int -> int) and bool
-> .down 'a209 and 'a208
-> down 'a208 and 'a210
-> down 'a209 and 'a211
-> .down 'a213 and 'a214
-> down 'a213 and 'a215
-> up (('a216 -> 'a216) -> ('a216 -> 'a216)) and ('a217 -> ('a218 -> 'a217))
-> .down 'a219 and ('a221 -> ('a222 -> 'a221))
-> down 'a220 and 'a223
-> down 'a219 and ('a225 -> 'a225)
-> down 'a224 and 'a226
-> .down 'a229 and 'a230
-> down 'a229 and 'a232
-> up ('a230 -> 'a231) and ('a232 -> 'a233)
-> up ('a232 -> 'a233) and ('a230 -> 'a231)
-> .
-> Ran: 40 tests in: 0.01 seconds.
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_3_6.cmo -c -impl interpreter/test/ex4_3_6.ml)
+$ (cd _build/default/interpreter/test && ./ex3_3_1.exe)
+> .........
+> Ran: 9 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default/interpreter/test && ./ex4_3_6.exe)
-> down 'a3 and 'a0
-> down 'a2 and 'a3
-> down 'a6 and 'a4
-> down 'a5 and 'a7
-> .down 'a14 and 'a17
-> down 'a16 and 'a17
-> down 'a18 and 'a19
-> up (('a29 -> ('a28 -> 'a27)) -> (('a29 -> 'a28) -> ('a29 -> 'a27))) and ('a33 -> ('a35 -> 'a33))
-> up (('a33 -> 'a35) -> ('a33 -> 'a33)) and ('a36 -> ('a38 -> 'a36))
-> .down 'a42 and 'a39
-> down 'a43 and 'a41
-> down 'a45 and ('a47 -> ('a48 -> 'a47))
-> down 'a50 and ('a52 -> ('a53 -> 'a53))
-> up ('a59 -> ('a61 -> (('a59 -> ('a61 -> 'a60)) -> 'a60))) and int
-> up ('a61 -> ((int -> ('a61 -> 'a60)) -> 'a60)) and int
-> up ((('a56 -> ('a57 -> 'a56)) -> 'a55) -> 'a55) and ((int -> (int -> 'a60)) -> 'a60)
-> .up ('a63 -> 'a64) and 'a63
-> .up ('a67 -> 'a68) and 'a67
-> up ('a67 -> 'a68) and 'a68
-> .up ('a71 -> 'a72) and 'a71
-> down 'a71 and 'a72
-> down 'a74 and 'a73
-> .up ('a81 -> 'a82) and 'a81
-> down 'a80 and 'a82
-> up ('a84 -> 'a83) and int
-> .up ('a85 -> 'a86) and int
-> down 'a86 and 'a87
-> .down 'a90 and 'a92
-> down 'a91 and 'a94
-> up ('a92 -> 'a93) and 'a95
-> .up ('a97 -> 'a98) and 'a97
-> down 'a97 and 'a99
-> down 'a98 and 'a100
-> ..up ('a108 -> 'a109) and 'a108
-> down 'a109 and 'a110
-> down 'a112 and int
-> down 'a110 and 'a113
-> Fdown 'a118 and 'a118
-> .down 'a122 and 'a124
-> down 'a122 and 'a124
-> down 'a125 and 'a126
-> .down 'a128 and 'a130
-> down 'a130 and 'a128
-> down 'a131 and 'a132
-> .down 'a135 and 'a136
-> down 'a135 and 'a139
-> up ('a136 -> 'a138) and ('a139 -> 'a141)
-> up ('a139 -> 'a141) and ('a136 -> 'a138)
-> ..up ('a144 -> 'a145) and 'a144
-> down 'a146 and 'a144
-> down 'a145 and 'a147
-> .down 'a149 and ('a149 -> 'a150)
-> .up ('a152 -> 'a153) and 'a152
-> down 'a154 and 'a155
-> down 'a155 and 'a156
-> down 'a153 and ((('a156 -> 'a157) -> 'a156) -> (('a156 -> 'a157) -> 'a157))
-> .
-> ==============================================================================
-> Failure: ex4.3.6:11:
->
-> reason:    not equal
-> input:     let rec ind = fun x -> fun f -> fun n -> if n < 1 then x else f (ind x f (n + -1)) in ind;;
-> actual:    ('a115 -> (('a117 -> 'a115) -> (int -> 'a115)))
-> expected:  ('a0 -> (('a0 -> 'a0) -> (int -> 'a0)))
->
-> ------------------------------------------------------------------------------
-> Ran: 20 tests in: 0.01 seconds.
-> FAILED: Cases: 20 Tried: 20 Errors: 0 Failures: 1 Skip:  0 Todo: 0 Timeouts: 0.
-[1]
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_4_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex4_4_2.cmx)
-$ (cd _build/default/interpreter/test && ./ex4_4_2.exe)
-> down 'a2 and ('a6 -> 'a6)
-> up ('a4 -> 'a4) and 'a8
-> .down 'a15 and ('a21 -> ('a23 -> 'a21))
-> up ('a18 -> ('a20 -> 'a18)) and 'a24
-> .down 'a31 and 'a34
-> down 'a33 and 'a34
-> down 'a35 and 'a36
-> down 'a38 and (('a44 -> ('a43 -> 'a42)) -> (('a44 -> 'a43) -> ('a44 -> 'a42)))
-> down 'a41 and (('a51 -> ('a50 -> 'a49)) -> (('a51 -> 'a50) -> ('a51 -> 'a49)))
-> down 'a48 and 'a55
-> down 'a40 and (('a59 -> ('a58 -> 'a57)) -> (('a59 -> 'a58) -> ('a59 -> 'a57)))
-> down 'a41 and (('a66 -> ('a65 -> 'a64)) -> (('a66 -> 'a65) -> ('a66 -> 'a64)))
-> down 'a63 and 'a70
-> down 'a56 and 'a71
-> .down 'a88 and 'a91
-> down 'a90 and 'a91
-> down 'a92 and 'a93
-> up (('a100 -> ('a99 -> 'a98)) -> (('a100 -> 'a99) -> ('a100 -> 'a98))) and ('a104 -> ('a106 -> 'a104))
-> up (('a104 -> 'a106) -> ('a104 -> 'a104)) and ('a107 -> ('a109 -> 'a107))
-> .down 'a110 and 'a113
-> down 'a112 and 'a113
-> down 'a114 and 'a115
-> up (('a122 -> ('a121 -> 'a120)) -> (('a122 -> 'a121) -> ('a122 -> 'a120))) and ('a126 -> ('a127 -> 'a127))
-> up (('a126 -> 'a127) -> ('a126 -> 'a127)) and ('a128 -> ('a129 -> 'a129))
-> .down 'a133 and 'a130
-> down 'a134 and 'a132
-> down 'a136 and ('a138 -> ('a139 -> 'a138))
-> down 'a141 and ('a143 -> ('a144 -> 'a144))
-> up ('a154 -> ('a156 -> (('a154 -> ('a156 -> 'a155)) -> 'a155))) and int
-> up ('a158 -> ('a160 -> (('a158 -> ('a160 -> 'a159)) -> 'a159))) and int
-> up ('a160 -> ((int -> ('a160 -> 'a159)) -> 'a159)) and int
-> up ('a156 -> ((int -> ('a156 -> 'a155)) -> 'a155)) and ((int -> (int -> 'a159)) -> 'a159)
-> up ((('a152 -> ('a151 -> 'a151)) -> 'a150) -> 'a150) and ((int -> (((int -> (int -> 'a159)) -> 'a159) -> 'a155)) -> 'a155)
-> up ((('a147 -> ('a148 -> 'a147)) -> 'a146) -> 'a146) and ((int -> (int -> 'a159)) -> 'a159)
-> .up ('a164 -> 'a164) and bool
-> up ('a166 -> 'a166) and int
-> up ('a168 -> 'a168) and int
-> .up ('a172 -> int) and bool
-> up ('a173 -> int) and int
-> .up ('a179 -> 'a179) and ('a181 -> 'a181)
-> up ('a183 -> 'a183) and ('a185 -> 'a185)
-> .down 'a189 and 'a188
-> down 'a192 and 'a188
-> up (('a188 -> 'a196) -> 'a196) and 'a195
-> down 'a196 and (('a188 -> 'a198) -> 'a198)
-> up (('a188 -> 'a201) -> 'a201) and 'a195
-> down 'a201 and (('a188 -> 'a203) -> 'a203)
-> .up ('a206 -> 'a207) and int
-> down 'a207 and 'a208
-> down 'a208 and 'a209
-> down 'a210 and 'a211
-> up (int -> (('a214 -> 'a215) -> ('a214 -> 'a214))) and 'a213
-> up (('a214 -> 'a215) -> ('a214 -> 'a214)) and (bool -> bool)
-> up (bool -> bool) and bool
-> up (int -> (('a217 -> 'a218) -> ('a217 -> 'a217))) and 'a213
-> up (('a217 -> 'a218) -> ('a217 -> 'a217)) and (int -> int)
-> up (int -> int) and int
-> .down 'a222 and ('a225 -> int)
-> up ('a224 -> int) and 'a226
-> Edown 'a232 and ('a237 -> ('a238 -> int))
-> up ('a235 -> ('a236 -> int)) and 'a239
-> intEdown 'a245 and 'a248
-> down 'a247 and 'a248
-> down 'a249 and 'a250
-> intEdown 'a254 and 'a257
-> down 'a256 and 'a257
-> down 'a258 and 'a259
-> intEdown 'a263 and 'a266
-> down 'a265 and 'a266
-> down 'a267 and 'a268
-> intEdown 'a275 and 'a272
-> down 'a276 and 'a274
-> Eup ('a282 -> int) and bool
-> up ('a283 -> int) and int
-> up ('a284 -> int) and int
-> Eup ('a287 -> int) and bool
-> up ('a288 -> int) and int
-> .up ('a289 -> 'a290) and int
-> down 'a290 and 'a291
-> down 'a291 and 'a292
-> down 'a293 and 'a294
-> E
-> ==============================================================================
-> Error: ex4.4.2:19:
->
-> Miniml.Typing.Error("variable not bound: n")
-> ------------------------------------------------------------------------------
-> ==============================================================================
-> Error: ex4.4.2:17:
->
-> Miniml.Typing.Error("unify error")
-> ------------------------------------------------------------------------------
-> ==============================================================================
-> Error: ex4.4.2:16:
->
-> Miniml.Typing.Error("variable not bound: x1")
-> ------------------------------------------------------------------------------
-> ==============================================================================
-> Error: ex4.4.2:15:
->
-> Miniml.Typing.Error("error AppExp typing")
-> ------------------------------------------------------------------------------
-> ==============================================================================
-> Error: ex4.4.2:14:
->
-> Miniml.Typing.Error("error AppExp typing")
-> ------------------------------------------------------------------------------
-> ==============================================================================
-> Error: ex4.4.2:13:
->
-> Miniml.Typing.Error("error AppExp typing")
-> ------------------------------------------------------------------------------
-> ==============================================================================
-> Error: ex4.4.2:12:
->
-> Miniml.Typing.Error("error AppExp typing")
-> ------------------------------------------------------------------------------
-> ==============================================================================
-> Error: ex4.4.2:11:
->
-> Miniml.Typing.Error("variable not bound: y")
-> ------------------------------------------------------------------------------
-> Ran: 20 tests in: 0.01 seconds.
-> FAILED: Cases: 20 Tried: 20 Errors: 8 Failures: 0 Skip:  0 Todo: 0 Timeouts: 0.
-[1]
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_2_1.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex4_2_1.cmx)
-$ (cd _build/default/interpreter/test && ./ex4_2_1.exe)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_3_2.cmo -c -impl interpreter/test/ex4_3_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_4_2.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_4_2.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_4_2.cmx -c -impl interpreter/test/ex4_4_2.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_2_1.cmx -c -impl interpreter/test/ex4_2_1.ml)
+$ (cd _build/default/interpreter/test && ./ex3_2_3.exe)
+> .........
+> Ran: 9 tests in: 0.00 seconds.
+> OK
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_3_1.cmo -c -impl interpreter/test/ex4_3_1.ml)
+$ (cd _build/default/interpreter/test && ./ex3_4_2.exe)
+> ..
+> Ran: 2 tests in: 0.00 seconds.
+> OK
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlc.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -bin-annot -I interpreter/test/.ex3_2_1.eobjs/byte -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/byte/ex4_3_3.cmo -c -impl interpreter/test/ex4_3_3.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_4_1.cmx -c -impl interpreter/test/ex4_4_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_3_5.cmx -c -impl interpreter/test/ex4_3_5.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_3_6.cmx -c -impl interpreter/test/ex4_3_6.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_5_1.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_5_1.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_3_2.cmx -c -impl interpreter/test/ex4_3_2.ml)
+$ (cd _build/default/interpreter/test && ./ex3_5_1.exe)
 > .....
-> Ran: 5 tests in: 0.03 seconds.
+> Ran: 5 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_4_1.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/exec.cmx interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex4_4_1.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_3_1.cmx -c -impl interpreter/test/ex4_3_1.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -I interpreter/test/.ex3_2_1.eobjs/byte -I interpreter/test/.ex3_2_1.eobjs/native -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src/.miniml.objs/byte -I interpreter/src/.miniml.objs/native -intf-suffix .ml -no-alias-deps -opaque -o interpreter/test/.ex3_2_1.eobjs/native/ex4_3_3.cmx -c -impl interpreter/test/ex4_3_3.ml)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex3_4_1.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/evalTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex3_4_1.cmx)
+$ (cd _build/default/interpreter/test && ./ex3_4_1.exe)
+> ..........
+> Ran: 10 tests in: 0.00 seconds.
+> OK
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_5.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex4_3_5.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_6.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex4_3_6.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_4_2.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex4_4_2.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_4_1.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex4_4_1.cmx)
+$ (cd _build/default/interpreter/test && ./ex4_3_5.exe)
+> ........................................
+> Ran: 40 tests in: 0.00 seconds.
+> OK
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_2.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/pretypingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex4_3_2.cmx)
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_2_1.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/lexingHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/exec.cmx interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/typingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex4_2_1.cmx)
+$ (cd _build/default/interpreter/test && ./ex4_3_6.exe)
+> ....................
+> Ran: 20 tests in: 0.00 seconds.
+> OK
+$ (cd _build/default/interpreter/test && ./ex4_4_2.exe)
+> ....................
+> Ran: 20 tests in: 0.00 seconds.
+> OK
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_1.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/pretypingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex4_3_1.cmx)
 $ (cd _build/default/interpreter/test && ./ex4_4_1.exe)
-> down 'a1 and ('a3 -> 'a3)
-> up ('a2 -> 'a2) and 'a4
-> .down 'a9 and ('a13 -> ('a14 -> 'a13))
-> up ('a11 -> ('a12 -> 'a11)) and 'a15
-> .down 'a21 and 'a23
-> down 'a22 and 'a23
-> down 'a24 and 'a25
-> down 'a27 and (('a31 -> ('a32 -> 'a30)) -> (('a31 -> 'a32) -> ('a31 -> 'a30)))
-> down 'a29 and (('a35 -> ('a36 -> 'a34)) -> (('a35 -> 'a36) -> ('a35 -> 'a34)))
-> down 'a33 and 'a37
-> down 'a28 and (('a40 -> ('a41 -> 'a39)) -> (('a40 -> 'a41) -> ('a40 -> 'a39)))
-> down 'a29 and (('a44 -> ('a45 -> 'a43)) -> (('a44 -> 'a45) -> ('a44 -> 'a43)))
-> down 'a42 and 'a46
-> down 'a38 and 'a47
-> .down 'a61 and 'a63
-> down 'a62 and 'a63
-> down 'a64 and 'a65
-> up (('a70 -> ('a71 -> 'a69)) -> (('a70 -> 'a71) -> ('a70 -> 'a69))) and ('a72 -> ('a73 -> 'a72))
-> up (('a72 -> 'a73) -> ('a72 -> 'a72)) and ('a74 -> ('a75 -> 'a74))
-> .down 'a76 and 'a78
-> down 'a77 and 'a78
-> down 'a79 and 'a80
-> up (('a85 -> ('a86 -> 'a84)) -> (('a85 -> 'a86) -> ('a85 -> 'a84))) and ('a88 -> ('a87 -> 'a87))
-> up (('a88 -> 'a87) -> ('a88 -> 'a87)) and ('a90 -> ('a89 -> 'a89))
-> .down 'a93 and 'a91
-> down 'a94 and 'a92
-> down 'a96 and ('a97 -> ('a98 -> 'a97))
-> down 'a100 and ('a101 -> ('a102 -> 'a102))
-> up ('a112 -> ('a111 -> (('a112 -> ('a111 -> 'a110)) -> 'a110))) and int
-> up ('a115 -> ('a114 -> (('a115 -> ('a114 -> 'a113)) -> 'a113))) and int
-> up ('a114 -> ((int -> ('a114 -> 'a113)) -> 'a113)) and int
-> up ('a111 -> ((int -> ('a111 -> 'a110)) -> 'a110)) and ((int -> (int -> 'a113)) -> 'a113)
-> up ((('a109 -> ('a108 -> 'a108)) -> 'a107) -> 'a107) and ((int -> (((int -> (int -> 'a113)) -> 'a113) -> 'a110)) -> 'a110)
-> up ((('a105 -> ('a106 -> 'a105)) -> 'a104) -> 'a104) and ((int -> (int -> 'a113)) -> 'a113)
-> .up ('a117 -> 'a117) and bool
-> up ('a118 -> 'a118) and int
-> up ('a119 -> 'a119) and int
-> .up ('a121 -> int) and bool
-> up ('a122 -> int) and int
-> .up ('a126 -> 'a126) and ('a127 -> 'a127)
-> up ('a128 -> 'a128) and ('a129 -> 'a129)
-> .down 'a132 and 'a131
-> down 'a134 and 'a131
-> up (('a131 -> 'a137) -> 'a137) and 'a136
-> down 'a137 and (('a131 -> 'a138) -> 'a138)
-> up (('a131 -> 'a140) -> 'a140) and 'a136
-> down 'a140 and (('a131 -> 'a141) -> 'a141)
-> .down 'a144 and ('a146 -> 'a146)
-> up ('a145 -> 'a145) and 'a147
-> .down 'a152 and ('a156 -> ('a157 -> 'a156))
-> up ('a154 -> ('a155 -> 'a154)) and 'a158
-> .down 'a164 and 'a166
-> down 'a165 and 'a166
-> down 'a167 and 'a168
-> down 'a170 and (('a174 -> ('a175 -> 'a173)) -> (('a174 -> 'a175) -> ('a174 -> 'a173)))
-> down 'a172 and (('a178 -> ('a179 -> 'a177)) -> (('a178 -> 'a179) -> ('a178 -> 'a177)))
-> down 'a176 and 'a180
-> down 'a171 and (('a183 -> ('a184 -> 'a182)) -> (('a183 -> 'a184) -> ('a183 -> 'a182)))
-> down 'a172 and (('a187 -> ('a188 -> 'a186)) -> (('a187 -> 'a188) -> ('a187 -> 'a186)))
-> down 'a185 and 'a189
-> down 'a181 and 'a190
-> .down 'a204 and 'a206
-> down 'a205 and 'a206
-> down 'a207 and 'a208
-> up (('a213 -> ('a214 -> 'a212)) -> (('a213 -> 'a214) -> ('a213 -> 'a212))) and ('a215 -> ('a216 -> 'a215))
-> up (('a215 -> 'a216) -> ('a215 -> 'a215)) and ('a217 -> ('a218 -> 'a217))
-> .down 'a219 and 'a221
-> down 'a220 and 'a221
-> down 'a222 and 'a223
-> up (('a228 -> ('a229 -> 'a227)) -> (('a228 -> 'a229) -> ('a228 -> 'a227))) and ('a231 -> ('a230 -> 'a230))
-> up (('a231 -> 'a230) -> ('a231 -> 'a230)) and ('a233 -> ('a232 -> 'a232))
-> .down 'a236 and 'a234
-> down 'a237 and 'a235
-> down 'a239 and ('a240 -> ('a241 -> 'a240))
-> down 'a243 and ('a244 -> ('a245 -> 'a245))
-> up ('a255 -> ('a254 -> (('a255 -> ('a254 -> 'a253)) -> 'a253))) and int
-> up ('a258 -> ('a257 -> (('a258 -> ('a257 -> 'a256)) -> 'a256))) and int
-> up ('a257 -> ((int -> ('a257 -> 'a256)) -> 'a256)) and int
-> up ('a254 -> ((int -> ('a254 -> 'a253)) -> 'a253)) and ((int -> (int -> 'a256)) -> 'a256)
-> up ((('a252 -> ('a251 -> 'a251)) -> 'a250) -> 'a250) and ((int -> (((int -> (int -> 'a256)) -> 'a256) -> 'a253)) -> 'a253)
-> up ((('a248 -> ('a249 -> 'a248)) -> 'a247) -> 'a247) and ((int -> (int -> 'a256)) -> 'a256)
-> .up ('a260 -> 'a260) and bool
-> up ('a261 -> 'a261) and int
-> up ('a262 -> 'a262) and int
-> .up ('a264 -> int) and bool
-> up ('a265 -> int) and int
-> .
-> Ran: 18 tests in: 0.01 seconds.
+> ..................
+> Ran: 18 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_3.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/pretypingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex4_3_3.cmx)
-$ (cd _build/default/interpreter/test && ./ex4_3_3.exe)
-> ...........................
-> Ran: 27 tests in: 0.01 seconds.
-> OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_2.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/pretypingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex4_3_2.cmx)
 $ (cd _build/default/interpreter/test && ./ex4_3_2.exe)
 > ..................
-> Ran: 18 tests in: 0.02 seconds.
+> Ran: 18 tests in: 0.00 seconds.
 > OK
-$ (cd _build/default && /export/home/016/a0161090/.opam/4.07.0/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_1.exe -I /export/home/016/a0161090/.opam/4.07.0/lib/bytes -I /export/home/016/a0161090/.opam/4.07.0/lib/oUnit -I interpreter/src /export/home/016/a0161090/.opam/4.07.0/lib/ocaml/unix.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnitAdvanced.cmxa /export/home/016/a0161090/.opam/4.07.0/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/testutil.cmx interpreter/test/.ex3_2_1.eobjs/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/pretypingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/ex4_3_1.cmx)
+$ (cd _build/default/interpreter/test && ./ex4_2_1.exe)
+> .....
+> Ran: 5 tests in: 0.00 seconds.
+> OK
 $ (cd _build/default/interpreter/test && ./ex4_3_1.exe)
 > .............
-> Ran: 13 tests in: 0.01 seconds.
+> Ran: 13 tests in: 0.00 seconds.
 > OK
 > .............
-> Ran: 13 tests in: 0.01 seconds.
+> Ran: 13 tests in: 0.00 seconds.
+> OK
+$ (cd _build/default && /home/masashi/.opam/4.07.1/bin/ocamlopt.opt -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -w -39 -g -o interpreter/test/ex4_3_3.exe -I /home/masashi/.opam/4.07.1/lib/bytes -I /home/masashi/.opam/4.07.1/lib/oUnit -I interpreter/src /home/masashi/.opam/4.07.1/lib/ocaml/unix.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnitAdvanced.cmxa /home/masashi/.opam/4.07.1/lib/oUnit/oUnit.cmxa interpreter/src/miniml.cmxa interpreter/test/.ex3_2_1.eobjs/native/testutil.cmx interpreter/test/.ex3_2_1.eobjs/native/tySyntax.cmx interpreter/test/.ex3_2_1.eobjs/native/tyParser.cmx interpreter/test/.ex3_2_1.eobjs/native/tyLexer.cmx interpreter/test/.ex3_2_1.eobjs/native/tyHelper.cmx interpreter/test/.ex3_2_1.eobjs/native/pretypingTestGenerator.cmx interpreter/test/.ex3_2_1.eobjs/native/ex4_3_3.cmx)
+$ (cd _build/default/interpreter/test && ./ex4_3_3.exe)
+> ...........................
+> Ran: 27 tests in: 0.00 seconds.
 > OK

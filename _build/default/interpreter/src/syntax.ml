@@ -34,7 +34,6 @@ type program =
   | AndLet of id * exp * program
   | RecDecl of id * id * exp
   | RecAndLet of id * id * exp * program
-  | ParseFail 
 
 type tyvar = int
 
@@ -43,6 +42,7 @@ type ty =
   | TyBool
   | TyVar of tyvar
   | TyFun of ty * ty
+  | TyNilV
   | TyList of ty
 
 (* type scheme *)

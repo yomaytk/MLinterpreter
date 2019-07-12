@@ -7,19 +7,19 @@ let cmp_ty_alpha (ty1: ty) (ty2: ty) =
       TyInt, TyInt | TyBool, TyBool -> Some eq
     | TyVar id1, TyVar id2 ->
       (try
-         if List.assoc id1 eq = id2 then
-           Some eq
-         else
-           None
-       with
-         Not_found -> Some ((id1, id2) :: eq)
-       | _ -> Some eq
+          if List.assoc id1 eq = id2 then
+            Some eq
+          else
+            None
+        with
+          Not_found -> Some ((id1, id2) :: eq)
+        | _ -> Some eq
       )
     | TyFun (tyarg1, tybody1), TyFun (tyarg2, tybody2) ->
       (match unify eq tyarg1 tyarg2 with
-         Some eq ->
-         unify eq tybody1 tybody2
-       | None -> None
+          Some eq ->
+          unify eq tybody1 tybody2
+        | None -> None
       )
     | TyList ty1, TyList ty2 -> unify eq ty1 ty2
     | _ -> None
@@ -39,12 +39,12 @@ let rec convert_ty env = function
   | TySyntax.TyBool -> env, TyBool
   | TySyntax.TyVar name ->
     (match List.assoc_opt name env with
-       Some id ->
-       env, TyVar id
-     | None ->
-       let id = List.length env in
-       let env = (name, id) :: env in
-       env, TyVar id)
+        Some id ->
+        env, TyVar id
+      | None ->
+        let id = List.length env in
+        let env = (name, id) :: env in
+        env, TyVar id)
   | TySyntax.TyFun (ty1, ty2) ->
     let env, ty1 = convert_ty env ty1 in
     let env, ty2 = convert_ty env ty2 in
@@ -52,6 +52,7 @@ let rec convert_ty env = function
   | TySyntax.TyList ty ->
     let env, ty = convert_ty env ty in
     env, TyList ty
+  | TyNilV -> env, TyNilV
 
 let ty_of_string ?(tynameenv=[]) tystr =
   let lexbuf = Lexing.from_string tystr in
@@ -79,6 +80,7 @@ let rec rawstring_of_ty ?(need_bracket=false) ty =
     rawstring_of_ty ~need_bracket:true ty
     |> Printf.sprintf "TyList %s"
     |> add_bracket
+  | TyNilV -> "TyNilV"
 
 let rawstring_of_subst subst =
   List.map
