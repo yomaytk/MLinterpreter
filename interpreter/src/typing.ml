@@ -81,6 +81,14 @@ let closure ty tyenv subst =
 
 let unionScheme (TyScheme(tysc1, _)) (TyScheme(tysc2, _)) = tysc1 @ tysc2
 
+let rec findendty ty =
+  match ty with
+    TyFun(_, ty2) -> findendty ty2
+  | TyVar num -> TyVar num
+  | TyInt -> TyInt
+  | TyBool -> TyBool
+  | TyList ty1 -> TyList ty1
+
 let ty_prim op ty1 ty2 = match op with
     Plus -> ([(ty1, TyInt); (ty2, TyInt)], TyInt)
   
@@ -136,31 +144,37 @@ let rec ty_exp tyenv = function
       let domty2 = TyVar (fresh_tyvar ()) in
       let tynewenv = Environment.extend id (TyScheme([], TyFun(domty1, domty2))) (Environment.extend para (TyScheme([], domty1)) tyenv) in
       let (_, s1, ty2) = ty_exp tynewenv exp1 in
-      let ty1 = subst_type s1 domty1 in
-      let e1sc = closure ty1 tyenv s1 in
-      let e2sc = closure ty2 tyenv s1 in
       let eqs1 = [(domty2, ty2)] in
+      let eqs2 = (eqs_of_subst s1) @ eqs1 in
+      let su = unify eqs2 in
+      let ty1 = subst_type su domty1 in
+      let e1sc = closure ty1 tyenv su in
+      let e2sc = closure ty2 tyenv su in
       let tynewenv2 = Environment.extend id (TyScheme(unionScheme e1sc e2sc, TyFun(ty1, ty2))) tyenv in
       let (_, s2, ty3) = ty_exp tynewenv2 exp2 in
-      let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs1 in
+      let eqs = eqs2 @ (eqs_of_subst s2) in
       let s3 = unify eqs in (tyenv, s3, subst_type s3 ty3)
   | FunExp (id, exp) ->
       let domty = TyVar (fresh_tyvar ()) in
-      let (_, s, ranty) = ty_exp (Environment.extend id (TyScheme([], domty)) tyenv) exp in
-      (tyenv, s, TyFun (subst_type s domty, ranty))
+      let (_, s1, ranty) = ty_exp (Environment.extend id (TyScheme([], domty)) tyenv) exp in
+      (tyenv, s1, TyFun (subst_type s1 domty, ranty))
   | AppExp (exp1, exp2) -> 
       let (_, s1, ty1) = ty_exp tyenv exp1 in
       let (_, s2, ty2) = ty_exp tyenv exp2 in
       (match ty1 with
           TyFun(tyy1, tyy2) ->
-          pp_ty ty1;pp_ty ty2;
-            let eqs3 = [(tyy1, ty2)] in
+           print_string "up ";pp_ty ty1;print_string " and "; pp_ty ty2;print_newline();
+           let eqs5 = (eqs_of_subst s1) @ (eqs_of_subst s2) in
+           let ss = unify eqs5 in
+            let eqs3 = [(subst_type ss tyy1, subst_type ss ty2)] in
             let eqs4 = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
             let s5 = unify eqs4 in (tyenv, s5, subst_type s5 tyy2)
         | TyVar num -> 
-        pp_ty ty1;pp_ty ty2;
-            let tyr = TyVar (fresh_tyvar ()) in
-            let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ [(TyVar num, TyFun(ty2, tyr))] in
+           print_string "down ";pp_ty ty1;print_string " and ";pp_ty ty2;print_newline();
+           let tyr = TyVar (fresh_tyvar ()) in
+           let eqs1 = (eqs_of_subst s1) @ (eqs_of_subst s2) in
+           let s7 = unify eqs1 in
+            let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ [(TyVar num, TyFun(subst_type s7 ty2, subst_type s7 tyr))] in
             let s6 = unify eqs in  (tyenv, s6, subst_type s6 tyr)
         | _ -> pp_ty ty1;err "error AppExp typing")
 
@@ -176,11 +190,22 @@ let ty_decl tyenv = function
       let domty1 = TyVar (fresh_tyvar ()) in
       let domty2 = TyVar (fresh_tyvar ()) in
       let tynewenv = Environment.extend id (TyScheme([], TyFun(domty1, domty2))) (Environment.extend para (TyScheme([], domty1)) tyenv) in
-      let (_, s, tye2) = ty_exp tynewenv e in
-      let tye1 = subst_type s domty1 in
-      let esc1 = closure tye1 tyenv s in
-      let esc2 = closure tye2 tyenv s in
-      let eqs1 = [(domty2, tye2)] in
-      let eqs = (eqs_of_subst s) @ eqs1 in
-      let s2 = unify eqs in (Environment.extend id (TyScheme(unionScheme esc1 esc2, TyFun (tye1, tye2))) tyenv, s2, TyFun(tye1, tye2))
+      let (_, s1, tye2) = ty_exp tynewenv e in
+      (* pp_ty tye2;print_string " ";pp_ty domty2; *)
+      let newdomty2 = subst_type s1 domty2 in
+      (* let domty2end = findendty newdomty2 in *)
+      let eqs1 = [(tye2, newdomty2)] in
+      let eqs = (eqs_of_subst s1) @ eqs1 in
+      let s2 = unify eqs in
+      let tye1 = subst_type s2 domty1 in
+      let esc1 = closure tye1 tyenv s2 in
+      let esc2 = closure tye2 tyenv s2 in
+      let tynewenv2 = (Environment.extend id (TyScheme(unionScheme esc1 esc2, TyFun (tye1, tye2))) tyenv) in
+      let (_, ss1, tye2) = ty_exp tynewenv2 e in
+      let eqs1 = [(tye2, newdomty2)] in
+      let eqs = (eqs_of_subst ss1) @ eqs1 in
+      let s2 = unify eqs in
+      let tye1 = subst_type s2 domty1 in
+      let esc1 = closure tye1 tynewenv2 s2 in
+      let esc2 = closure tye2 tynewenv2 s2 in (Environment.extend id (TyScheme(unionScheme esc1 esc2, TyFun (tye1, tye2))) tyenv, ss1, tye2)
   | _ -> err ("Not Implemented!")
