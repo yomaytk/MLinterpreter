@@ -52,7 +52,6 @@ let rec convert_ty env = function
   | TySyntax.TyList ty ->
     let env, ty = convert_ty env ty in
     env, TyList ty
-  | TyNilV -> env, TyNilV
 
 let ty_of_string ?(tynameenv=[]) tystr =
   let lexbuf = Lexing.from_string tystr in
@@ -80,7 +79,6 @@ let rec rawstring_of_ty ?(need_bracket=false) ty =
     rawstring_of_ty ~need_bracket:true ty
     |> Printf.sprintf "TyList %s"
     |> add_bracket
-  | TyNilV -> "TyNilV"
 
 let rawstring_of_subst subst =
   List.map

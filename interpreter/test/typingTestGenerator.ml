@@ -64,7 +64,6 @@ let convert_ty ty =
     | TySyntax.TyList ty ->
       let env, ty = convert env ty in
       env, TyList ty
-    | TyNilV -> env, TyNilV
   in
   let _, ty = convert [] ty in
   ty

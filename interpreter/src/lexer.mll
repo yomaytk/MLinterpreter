@@ -12,6 +12,8 @@ let reservedWords = [
   ("and", Parser.AND);
   ("rec", Parser.REC);
   ("dfun", Parser.DFUN);
+  ("match", Parser.MATCH);
+  ("with", Parser.WITH);
 ];;
 let cnt = ref 0
 exception Error
@@ -42,6 +44,7 @@ rule main = parse
 | "]" { Parser.MDLPAREN }
 | ";" { Parser.SEMI }
 | "::" { Parser.COROCORO }
+| "|" { Parser.PAIPU }
 
 | ['a'-'z'] ['a'-'z' '0'-'9' '_' '\'']*
     { let id = Lexing.lexeme lexbuf in

@@ -7,7 +7,6 @@ type exval =
   | DProcV of id * exp * dnval Environment.t ref
   | ConsV of exval * exval
   | NilV
-  | Exception
 and dnval = exval
 
 exception Error of string
@@ -38,7 +37,6 @@ let rec string_of_exval = function
   | DProcV _ -> "<fun>"
   | ConsV (e1, e2) -> "ConsV(" ^ (string_of_exval e1) ^ ", " ^ (string_of_exval e2) ^ ")"
   | NilV -> "NilV"
-  | Exception -> "error"
 
 let string_of_binop = function
     Plus -> "Plus"
@@ -52,6 +50,24 @@ let string_of_binop = function
 let pp_val v = print_string (string_of_exval v)
 
 let pp_id (i : id) = Printf.printf "val %s : " i
+
+let rec getVar exp = 
+  match exp with
+      Var id -> [id]
+    | BinOp (_, exp1, exp2) -> (getVar exp1) @ (getVar exp2)
+    | ANDORBinOp (_, exp1, exp2) -> (getVar exp1) @ (getVar exp2)
+    | IfExp (exp1, exp2, exp3) -> (getVar exp1) @ (getVar exp2) @ (getVar exp3)
+    | LetInExp (_, exp1, exp2) -> (getVar exp1) @ (getVar exp2)
+    | FunExp (_, exp) -> getVar exp
+    | AppExp (exp1, exp2) -> (getVar exp1) @ (getVar exp2)
+    | LetAndInExp (_, exp1, exp2) -> (getVar exp1) @ (getVar exp2)
+    | LetEndInExp (_, exp1, exp2) -> (getVar exp1) @ (getVar exp2)
+    | FplmuBinOp (_, id1, id2) -> [id1;id2]
+    | FplmuFunExp (_, exp, id) -> (getVar exp) @ [id]
+    | DfunExp (id, exp) -> [id] @ (getVar exp)
+    | LetRecExp (_, _, exp1, exp2) -> (getVar exp1) @ (getVar exp2)
+    | ListExp (exp1, exp2) -> (getVar exp1) @ (getVar exp2)
+    | _ -> []
 
 let rec apply_prim op arg1 arg2 = 
   let errm = "Error: Exception Both arguments must be " in
@@ -154,6 +170,13 @@ let rec eval_exp env = function
   | ListExp (e1, e2) ->
       let el = eval_exp env e1 in
       ConsV (el, (eval_exp env e2)) 
+  | MatchExp (exp1, exp2, id1, id2, exp3) ->
+      let e1 = eval_exp env exp1 in
+      match e1 with
+          NilV -> eval_exp env exp2
+        | ConsV(e11, e12) -> 
+            let newenv = Environment.extend id1 e11 (Environment.extend id2 e12 env) in eval_exp newenv exp3 
+        | _ -> err "match error"
 
 let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
     match ee with
@@ -165,7 +188,7 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
         if bound then begin (env, [], err "Error: Variable a is bound several times in this matching") end
         else begin
                 let newenv = andlistadd !andletlist env in
-                if v = Exception then (newenv, [("-", v)], v) else (Environment.extend id v newenv, env2 @ [(id, v)], v)
+                  (Environment.extend id v newenv, env2 @ [(id, v)], v)
               end
     | DecDecl(id, e1, e2) ->
         let v = eval_exp env e1 in
@@ -181,8 +204,10 @@ let rec eval_decl env ee (env2 : (Syntax.id * exval) list) =
     | RecDecl (id1, id2, e) ->
         let dummyenv = ref Environment.empty in
           let newenv = Environment.extend id1 (ProcV(id2, e, dummyenv)) env in
-          dummyenv := newenv;(newenv, env2 @ [(id1, ProcV(id2, e, dummyenv))], ProcV(id2, e, dummyenv))
+            dummyenv := newenv;
+              (newenv, env2 @ [(id1, ProcV(id2, e, dummyenv))], ProcV(id2, e, dummyenv))
     | RecAndLet (id1, id2, e1, e2) ->
         let dummyenv = ref Environment.empty in
-        let newenv = Environment.extend id1 (ProcV(id2, e1, dummyenv)) env in
-        dummyenv := newenv;eval_decl newenv e2 (env2 @ [(id1, ProcV(id2, e1, dummyenv))])
+          let newenv = Environment.extend id1 (ProcV(id2, e1, dummyenv)) env in
+            dummyenv := newenv;
+              eval_decl newenv e2 (env2 @ [(id1, ProcV(id2, e1, dummyenv))])

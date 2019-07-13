@@ -14,6 +14,7 @@ open Syntax
 %token MDLPAREN MDRPAREN
 %token SEMI COROCORO
 %token DFUN
+%token MATCH WITH PAIPU
 
 %token <int> INTV
 %token <Syntax.id> ID
@@ -37,11 +38,10 @@ Expr :
   | e=BExpr { e }
   | e=FunExpr { e }
   | e=FunMExpr { e }
-  /* | e=LetFunFunExpr { e } */
   | e=LetAndInExpr { e }
   | e=RecAndInExpr { e }
-  (* | e=ListExpr { e } *)
   | e=ListCoroExpr { e }
+  | e=MatchExpr { e }
 
 BExpr :
     l=LTExpr AAND r=Expr { ANDORBinOp(AAND, l, r) } (*false && undef の判定に利用する*)
@@ -65,7 +65,20 @@ PExpr :
   | e=MExpr { e }
 
 MExpr :
-    e1=MExpr MULT e2=AppExpr { BinOp (Mult, e1, e2) }
+    e1=MExpr MULT e2=ListCoroExpr { BinOp (Mult, e1, e2) }
+  | e=ListCoroExpr { e }
+
+ListCoroExpr :
+    e1=ListsinExpr COROCORO e2=ListCoroExpr { ListExp (e1, e2) }
+  | MDRPAREN e1=ListCoroExpr SEMI e2=ListInExpr { ListExp (e1, e2) }
+  | e=ListsinExpr { e }
+
+ListInExpr :
+    e1=Expr SEMI e2=ListInExpr { ListExp (e1, e2) }
+  | e=Expr MDLPAREN { ListExp (e, NIlV) }
+
+ListsinExpr :
+    MDRPAREN e=AExpr MDLPAREN { ListExp(e, NIlV) }
   | e=AppExpr { e }
 
 AppExpr : 
@@ -91,6 +104,7 @@ AExpr :
   | TRUE   { BLit true }
   | FALSE  { BLit false }
   | i=ID   { Var i }
+  | MDRPAREN MDLPAREN { NIlV }
   | LPAREN e=Expr RPAREN { e }
 
 IfExpr :
@@ -143,19 +157,5 @@ RecAndInExpr :
   | x1=ID EQ FUN x2=ID RARROW e1=Expr AND e2=RecAndInExpr { LetRecExp (x1, x2, e1, e2) }
   | x=ID EQ e1=Expr IN e2=Expr { LetEndInExp (x, e1, e2) }
 
-ListCoroExpr :
-    e1=ListsinExpr COROCORO e2=ListCoroExpr { ListExp (e1, e2) }
-  | e=ListExpr { e }
-
-ListExpr :
-    MDRPAREN e1=ListExpr SEMI e2=ListInExpr { ListExp (e1, e2) }
-  | e=ListsinExpr { e }
-
-ListInExpr :
-    e1=Expr SEMI e2=ListInExpr { ListExp (e1, e2) }
-  | e=Expr MDLPAREN { ListExp (e, NIlV) }
-
-ListsinExpr :
-    MDRPAREN e=AExpr MDLPAREN { ListExp(e, NIlV) }
-  | MDRPAREN MDLPAREN { NIlV }
-  | e=AExpr { e }
+MatchExpr :
+    MATCH e1=Expr WITH MDRPAREN MDLPAREN RARROW e2=Expr PAIPU id1=ID COROCORO id2=ID RARROW e3=Expr { MatchExp(e1, e2, id1, id2, e3) }

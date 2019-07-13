@@ -19,9 +19,12 @@ let rec read_eval_print env tyenv =
         let rec print_localenv tmp_localenv =   
           match tmp_localenv with
               [] -> ()
-            | (id, v) :: rest -> pp_id id;pp_ty ty;Printf.printf " = ";pp_val v;print_newline();print_localenv rest
+            | (id, v) :: rest -> 
+                let pty = try Environment.lookup id !Typing.idenv with Environment.Not_bound -> ty in
+                pp_id id;pp_ty pty;Printf.printf " = ";pp_val v;print_newline();print_localenv rest
     (*localenvの中身を出力*)
         in print_localenv localenv;
+        Typing.idenv := Environment.empty;
       read_eval_print newenv newtyenv
   with
     (*with以下で、parser、lexer、eval、それぞれの場合で、エラーが発生した時の処理を行う*)

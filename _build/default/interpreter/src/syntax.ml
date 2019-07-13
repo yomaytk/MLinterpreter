@@ -26,6 +26,7 @@ type exp =
   | DfunExp of id * exp
   | LetRecExp of id * id * exp * exp
   | ListExp of exp * exp
+  | MatchExp of exp * exp * id * id * exp
 
 type program =
     Exp of exp
@@ -42,7 +43,6 @@ type ty =
   | TyBool
   | TyVar of tyvar
   | TyFun of ty * ty
-  | TyNilV
   | TyList of ty
 
 (* type scheme *)
@@ -77,7 +77,7 @@ let rec string_of_ty = function
   | TyBool -> "bool"
   | TyVar num -> if num >= !counter then mkmktyid num else researchlist num !tyvarlist
   | TyFun (ty1, ty2) -> "(" ^ (string_of_ty ty1) ^ " -> " ^ (string_of_ty ty2) ^ ")"
-  | _ -> "error"
+  | TyList ty -> "TyList " ^ (string_of_ty ty)
 
 let rec freevar_ty ty =
   match ty with

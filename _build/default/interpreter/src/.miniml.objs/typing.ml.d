@@ -1,1 +1,1 @@
-interpreter/src/typing.ml: Environment List MySet Syntax
+interpreter/src/typing.ml: Environment Eval List MySet Syntax
