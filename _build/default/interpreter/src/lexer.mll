@@ -59,9 +59,9 @@ rule main = parse
 | eof { exit 0 }
 
 and comment = parse
-     (*cntをインクリメントする*)
+      (*cntをインクリメントする*)
     "(*" {cnt := !cnt+1;comment lexbuf}
-     (*cntをデクリメントし、cntの値が正、０、負のそれぞれについて処理を行う*)           
+      (*cntをデクリメントし、cntの値が正、０、負のそれぞれについて処理を行う*)           
   | "*)" {cnt := !cnt-1;if !cnt = 0 then main lexbuf else if !cnt > 0 then comment lexbuf else raise Error }
   (*途中の文の時はそのままコメントの規則を再帰的に呼び出す*)
   | _ {comment lexbuf}
