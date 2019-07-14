@@ -69,15 +69,15 @@ MExpr :
 	| e=ListCoroExpr { e }
 
 ListCoroExpr :
-		e1=ListsinExpr COROCORO e2=ListCoroExpr { ListExp (e1, e2) }
+		e1=ListSingleExpr COROCORO e2=ListCoroExpr { ListExp (e1, e2) }
 	| MDRPAREN e1=ListCoroExpr SEMI e2=ListInExpr { ListExp (e1, e2) }
-	| e=ListsinExpr { e }
+	| e=ListSingleExpr { e }
 
 ListInExpr :
 		e1=Expr SEMI e2=ListInExpr { ListExp (e1, e2) }
 	| e=Expr MDLPAREN { ListExp (e, NIlV) }
 
-ListsinExpr :
+ListSingleExpr :
 		MDRPAREN e=AExpr MDLPAREN { ListExp(e, NIlV) }
 	| e=AppExpr { e }
 

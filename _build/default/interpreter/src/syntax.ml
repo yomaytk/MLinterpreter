@@ -77,12 +77,13 @@ let rec string_of_ty = function
 	| TyBool -> "bool"
 	| TyVar num -> if num >= !counter then mkmktyid num else researchlist num !tyvarlist
 	| TyFun (ty1, ty2) -> "(" ^ (string_of_ty ty1) ^ " -> " ^ (string_of_ty ty2) ^ ")"
-	| TyList ty -> "TyList " ^ (string_of_ty ty)
+	| TyList ty ->  (string_of_ty ty) ^ " list"
 
 let rec freevar_ty ty =
 	match ty with
 	TyVar num -> insert num MySet.empty
 	| TyFun (ty1, ty2) -> union (freevar_ty ty1) (freevar_ty ty2)
+	| TyList ty1 -> freevar_ty ty1
 	| _ -> MySet.empty
 
 let tysc_of_ty ty = TyScheme ([], ty)
@@ -93,4 +94,5 @@ let rec freevar_tysc tyscheme =
 			match ty1 with
 					TyVar num -> (if not (List.mem num tyvarlist) then [num] else [])
 				| TyFun(tyy1, tyy2) -> (freevar_tysc (TyScheme(tyvarlist, tyy1))) @ (freevar_tysc (TyScheme(tyvarlist, tyy2)))
+				| TyList tyy1 -> freevar_tysc (TyScheme(tyvarlist, tyy1))
 				| _ -> []

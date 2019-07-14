@@ -6,4 +6,3 @@ type ty =
   | TyVar of tyvar
   | TyFun of ty * ty
   | TyList of ty
-  | TyNilV

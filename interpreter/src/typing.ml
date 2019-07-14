@@ -17,7 +17,7 @@ let rec sub_subst (numm, tyy) ty =
 	| TyBool -> TyBool
 	| TyFun (ty1, ty2) -> TyFun((sub_subst (numm, tyy) ty1), (sub_subst (numm, tyy) ty2))
 	| TyVar num  -> if num = numm then tyy else TyVar num
-	| TyList ty1 -> TyList ty1
+	| TyList ty1 -> TyList (sub_subst (numm, tyy) ty1)
 
 let rec subst_type numtyl ty =
 	match numtyl with
@@ -209,22 +209,20 @@ let rec ty_exp tyenv = function
 						let eqs3 = [(tyy1, ty2)] in
 						let eqs4 = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs3 in
 						let s5 = unify eqs4 in (tyenv, s5, subst_type s5 tyy2)
-				| TyVar num -> 
+				|   TyVar num -> 
 						let tyr = TyVar (fresh_tyvar ()) in
 						let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ [(TyVar num, TyFun(ty2, tyr))] in
 						let s6 = unify eqs in  (tyenv, s6, subst_type s6 tyr)
-				| _ -> pp_ty ty1;err "error AppExp typing")
+				|   _ -> pp_ty ty1;err "error AppExp typing")
 	| ListExp (e1, e2) -> 
 			let (_, s1, ty1) = ty_exp tyenv e1 in
 			let (_, s2, ty2) = ty_exp tyenv e2 in
 				(match ty2 with
 						TyList (TyVar num) -> 
-						print_string "ajijij";
 								let eqs1 = [(TyVar num, ty1)] in
 								let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs1 in
 								let s3 = unify eqs in (tyenv, s3, subst_type s3 (TyList ty1))
-					| _ -> 
-					pp_ty ty1;pp_ty ty2;
+					|   _ -> 
 								let eqs1 = [(TyList ty1, ty2)] in
 								let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs1 in
 								let s3 = unify eqs in (tyenv, s3, subst_type s3 (TyList ty1)))
@@ -237,8 +235,16 @@ let rec ty_exp tyenv = function
 										let (_, s3, ty3) = ty_exp tynewenv e3 in
 										let eqs1 = [(ty2, ty3)] in
 										let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ (eqs_of_subst s3) @ eqs1 in
-										let s4 = unify eqs in (tyenv, s4, subst_type s4 (TyList ty2))
-							| _ -> err "matchexp error")
+										let s4 = unify eqs in (tyenv, s4, subst_type s4 ty2)
+							|	TyVar num -> 
+										let domty1 = TyVar (fresh_tyvar ()) in
+										let tynewenv = Environment.extend id1 (TyScheme ([], domty1)) (Environment.extend id2 (TyScheme ([], TyList domty1)) tyenv) in
+										let (_, s3, ty3) = ty_exp tynewenv e3 in
+										let eqs1 = [(ty2, ty3)] in
+										let eqs2 = [(TyVar num, TyList domty1)] in
+										let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ (eqs_of_subst s3) @ eqs1 @ eqs2 in
+										let s4 = unify eqs in (tyenv, s4, subst_type s4 ty2)
+							|   _ -> err "matchexp error")
 	(* | _ -> err ("Not Implemented!") *)
 
 let rec ty_decl tyenv = function

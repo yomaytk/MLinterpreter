@@ -19,7 +19,7 @@ toplevel' -> . toplevel [ # ]
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -70,7 +70,7 @@ AExpr -> TRUE . [ WITH TRUE THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDRPAR
 State 2:
 AExpr -> MDRPAREN . MDLPAREN [ WITH TRUE THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDRPAREN MDLPAREN LT LPAREN LET INTV IN ID FPLUS FMULT FALSE ELSE COROCORO AND AAND ]
 ListCoroExpr -> MDRPAREN . ListCoroExpr SEMI ListInExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
-ListsinExpr -> MDRPAREN . AExpr MDLPAREN [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE COROCORO AND AAND ]
+ListSingleExpr -> MDRPAREN . AExpr MDLPAREN [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE COROCORO AND AAND ]
 -- On TRUE shift to state 1
 -- On MDRPAREN shift to state 2
 -- On MDLPAREN shift to state 3
@@ -80,7 +80,7 @@ ListsinExpr -> MDRPAREN . AExpr MDLPAREN [ WITH THEN SEMISEMI SEMI RPAREN PLUS P
 -- On FPLUS shift to state 19
 -- On FMULT shift to state 23
 -- On FALSE shift to state 20
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 147
 -- On FPlusFunExpr shift to state 26
 -- On FMultFunExpr shift to state 27
@@ -135,7 +135,7 @@ AExpr -> LPAREN . Expr RPAREN [ WITH TRUE THEN SEMISEMI SEMI RPAREN PLUS PAIPU O
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -172,7 +172,7 @@ MatchExpr -> MATCH . Expr WITH MDRPAREN MDLPAREN RARROW Expr PAIPU ID COROCORO I
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -243,7 +243,7 @@ RecAndInExpr -> LET REC ID EQ FUN ID RARROW . Expr AND RecAndInExpr [ WITH THEN 
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -308,7 +308,7 @@ IfExpr -> IF . Expr THEN Expr ELSE Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU M
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -1008,7 +1008,7 @@ RecAndInExpr -> ID EQ . Expr IN Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLP
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -1061,7 +1061,7 @@ RecAndInExpr -> ID EQ FUN ID RARROW . Expr AND RecAndInExpr [ WITH THEN SEMISEMI
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -1111,7 +1111,7 @@ FunExpr -> FUN ID RARROW . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLPAREN 
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -1156,7 +1156,7 @@ FunExpr -> DFUN ID RARROW . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLPAREN
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -1218,7 +1218,7 @@ PExpr -> PExpr PLUS . MExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MDLP
 -- On FMULT shift to state 23
 -- On FALSE shift to state 20
 -- On MExpr shift to state 48
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 55
 -- On FPlusFunExpr shift to state 26
 -- On FMultFunExpr shift to state 27
@@ -1255,7 +1255,7 @@ MExpr -> MExpr MULT . ListCoroExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU O
 -- On FPLUS shift to state 19
 -- On FMULT shift to state 23
 -- On FALSE shift to state 20
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 54
 -- On FPlusFunExpr shift to state 26
 -- On FMultFunExpr shift to state 27
@@ -1263,28 +1263,28 @@ MExpr -> MExpr MULT . ListCoroExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU O
 -- On AExpr shift to state 34
 
 State 50:
-ListCoroExpr -> ListsinExpr . COROCORO ListCoroExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
-ListCoroExpr -> ListsinExpr . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
+ListCoroExpr -> ListSingleExpr . COROCORO ListCoroExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
+ListCoroExpr -> ListSingleExpr . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
 -- On COROCORO shift to state 51
--- On WITH reduce production ListCoroExpr -> ListsinExpr 
--- On THEN reduce production ListCoroExpr -> ListsinExpr 
--- On SEMISEMI reduce production ListCoroExpr -> ListsinExpr 
--- On SEMI reduce production ListCoroExpr -> ListsinExpr 
--- On RPAREN reduce production ListCoroExpr -> ListsinExpr 
--- On PLUS reduce production ListCoroExpr -> ListsinExpr 
--- On PAIPU reduce production ListCoroExpr -> ListsinExpr 
--- On OOR reduce production ListCoroExpr -> ListsinExpr 
--- On MULT reduce production ListCoroExpr -> ListsinExpr 
--- On MDLPAREN reduce production ListCoroExpr -> ListsinExpr 
--- On LT reduce production ListCoroExpr -> ListsinExpr 
--- On LET reduce production ListCoroExpr -> ListsinExpr 
--- On IN reduce production ListCoroExpr -> ListsinExpr 
--- On ELSE reduce production ListCoroExpr -> ListsinExpr 
--- On AND reduce production ListCoroExpr -> ListsinExpr 
--- On AAND reduce production ListCoroExpr -> ListsinExpr 
+-- On WITH reduce production ListCoroExpr -> ListSingleExpr 
+-- On THEN reduce production ListCoroExpr -> ListSingleExpr 
+-- On SEMISEMI reduce production ListCoroExpr -> ListSingleExpr 
+-- On SEMI reduce production ListCoroExpr -> ListSingleExpr 
+-- On RPAREN reduce production ListCoroExpr -> ListSingleExpr 
+-- On PLUS reduce production ListCoroExpr -> ListSingleExpr 
+-- On PAIPU reduce production ListCoroExpr -> ListSingleExpr 
+-- On OOR reduce production ListCoroExpr -> ListSingleExpr 
+-- On MULT reduce production ListCoroExpr -> ListSingleExpr 
+-- On MDLPAREN reduce production ListCoroExpr -> ListSingleExpr 
+-- On LT reduce production ListCoroExpr -> ListSingleExpr 
+-- On LET reduce production ListCoroExpr -> ListSingleExpr 
+-- On IN reduce production ListCoroExpr -> ListSingleExpr 
+-- On ELSE reduce production ListCoroExpr -> ListSingleExpr 
+-- On AND reduce production ListCoroExpr -> ListSingleExpr 
+-- On AAND reduce production ListCoroExpr -> ListSingleExpr 
 
 State 51:
-ListCoroExpr -> ListsinExpr COROCORO . ListCoroExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
+ListCoroExpr -> ListSingleExpr COROCORO . ListCoroExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
 -- On TRUE shift to state 1
 -- On MDRPAREN shift to state 2
 -- On LPAREN shift to state 4
@@ -1293,7 +1293,7 @@ ListCoroExpr -> ListsinExpr COROCORO . ListCoroExpr [ WITH THEN SEMISEMI SEMI RP
 -- On FPLUS shift to state 19
 -- On FMULT shift to state 23
 -- On FALSE shift to state 20
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 52
 -- On FPlusFunExpr shift to state 26
 -- On FMultFunExpr shift to state 27
@@ -1301,29 +1301,29 @@ ListCoroExpr -> ListsinExpr COROCORO . ListCoroExpr [ WITH THEN SEMISEMI SEMI RP
 -- On AExpr shift to state 34
 
 State 52:
-ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
--- On WITH reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On THEN reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On SEMISEMI reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On SEMI reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On RPAREN reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On PLUS reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On PAIPU reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On OOR reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On MULT reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On MDLPAREN reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On LT reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On LET reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On IN reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On ELSE reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On AND reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
--- On AAND reduce production ListCoroExpr -> ListsinExpr COROCORO ListCoroExpr 
+ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
+-- On WITH reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On THEN reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On SEMISEMI reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On SEMI reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On RPAREN reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On PLUS reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On PAIPU reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On OOR reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On MULT reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On MDLPAREN reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On LT reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On LET reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On IN reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On ELSE reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On AND reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
+-- On AAND reduce production ListCoroExpr -> ListSingleExpr COROCORO ListCoroExpr 
 
 State 53:
 AppExpr -> AppExpr . FPlusFunExpr [ WITH TRUE THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDRPAREN MDLPAREN LT LPAREN LET INTV IN ID FPLUS FMULT FALSE ELSE COROCORO AND AAND ]
 AppExpr -> AppExpr . FPLUS AExpr [ WITH TRUE THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDRPAREN MDLPAREN LT LPAREN LET INTV IN ID FPLUS FMULT FALSE ELSE COROCORO AND AAND ]
 AppExpr -> AppExpr . FMULT AExpr [ WITH TRUE THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDRPAREN MDLPAREN LT LPAREN LET INTV IN ID FPLUS FMULT FALSE ELSE COROCORO AND AAND ]
-ListsinExpr -> AppExpr . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE COROCORO AND AAND ]
+ListSingleExpr -> AppExpr . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE COROCORO AND AAND ]
 -- On TRUE shift to state 1
 -- On MDRPAREN shift to state 17
 -- On LPAREN shift to state 4
@@ -1335,23 +1335,23 @@ ListsinExpr -> AppExpr . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MD
 -- On FPlusFunExpr shift to state 33
 -- On FMultFunExpr shift to state 27
 -- On AExpr shift to state 34
--- On WITH reduce production ListsinExpr -> AppExpr 
--- On THEN reduce production ListsinExpr -> AppExpr 
--- On SEMISEMI reduce production ListsinExpr -> AppExpr 
--- On SEMI reduce production ListsinExpr -> AppExpr 
--- On RPAREN reduce production ListsinExpr -> AppExpr 
--- On PLUS reduce production ListsinExpr -> AppExpr 
--- On PAIPU reduce production ListsinExpr -> AppExpr 
--- On OOR reduce production ListsinExpr -> AppExpr 
--- On MULT reduce production ListsinExpr -> AppExpr 
--- On MDLPAREN reduce production ListsinExpr -> AppExpr 
--- On LT reduce production ListsinExpr -> AppExpr 
--- On LET reduce production ListsinExpr -> AppExpr 
--- On IN reduce production ListsinExpr -> AppExpr 
--- On ELSE reduce production ListsinExpr -> AppExpr 
--- On COROCORO reduce production ListsinExpr -> AppExpr 
--- On AND reduce production ListsinExpr -> AppExpr 
--- On AAND reduce production ListsinExpr -> AppExpr 
+-- On WITH reduce production ListSingleExpr -> AppExpr 
+-- On THEN reduce production ListSingleExpr -> AppExpr 
+-- On SEMISEMI reduce production ListSingleExpr -> AppExpr 
+-- On SEMI reduce production ListSingleExpr -> AppExpr 
+-- On RPAREN reduce production ListSingleExpr -> AppExpr 
+-- On PLUS reduce production ListSingleExpr -> AppExpr 
+-- On PAIPU reduce production ListSingleExpr -> AppExpr 
+-- On OOR reduce production ListSingleExpr -> AppExpr 
+-- On MULT reduce production ListSingleExpr -> AppExpr 
+-- On MDLPAREN reduce production ListSingleExpr -> AppExpr 
+-- On LT reduce production ListSingleExpr -> AppExpr 
+-- On LET reduce production ListSingleExpr -> AppExpr 
+-- On IN reduce production ListSingleExpr -> AppExpr 
+-- On ELSE reduce production ListSingleExpr -> AppExpr 
+-- On COROCORO reduce production ListSingleExpr -> AppExpr 
+-- On AND reduce production ListSingleExpr -> AppExpr 
+-- On AAND reduce production ListSingleExpr -> AppExpr 
 
 State 54:
 MExpr -> MExpr MULT ListCoroExpr . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE AND AAND ]
@@ -1403,7 +1403,7 @@ LTExpr -> PExpr LT . PExpr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU OOR MDLPAREN L
 -- On FALSE shift to state 20
 -- On PExpr shift to state 57
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 55
 -- On FPlusFunExpr shift to state 26
 -- On FMultFunExpr shift to state 27
@@ -1476,7 +1476,7 @@ ORExpr -> ORExpr OOR . ANDExpr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU OOR MDLPAR
 -- On FALSE shift to state 20
 -- On PExpr shift to state 46
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 55
 -- On LTExpr shift to state 61
 -- On FPlusFunExpr shift to state 26
@@ -1533,7 +1533,7 @@ ANDExpr -> ANDExpr AAND . ORExpr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU OOR MDLP
 -- On PExpr shift to state 46
 -- On ORExpr shift to state 64
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 55
 -- On LTExpr shift to state 61
 -- On FPlusFunExpr shift to state 26
@@ -1709,7 +1709,7 @@ BExpr -> LTExpr OOR . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLPAREN LET I
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -1816,7 +1816,7 @@ BExpr -> LTExpr AAND . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLPAREN LET 
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -1961,7 +1961,7 @@ RecAndInExpr -> LET REC ID EQ FUN ID RARROW . Expr AND RecAndInExpr [ WITH THEN 
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2014,7 +2014,7 @@ RecAndInExpr -> ID EQ . Expr IN Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLP
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2055,7 +2055,7 @@ RecAndInExpr -> ID EQ Expr IN . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLP
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2142,7 +2142,7 @@ RecAndInExpr -> ID EQ Expr IN . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLP
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2220,7 +2220,7 @@ LetAndInExpr -> LET ID EQ . Expr AND LetAndInExpr [ WITH THEN SEMISEMI SEMI RPAR
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2273,7 +2273,7 @@ LetAndInExpr -> ID EQ . Expr IN Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLP
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2316,7 +2316,7 @@ LetAndInExpr -> ID EQ Expr IN . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDLP
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2399,7 +2399,7 @@ IfExpr -> IF Expr THEN . Expr ELSE Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU M
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2440,7 +2440,7 @@ IfExpr -> IF Expr THEN Expr ELSE . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU M
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2497,7 +2497,7 @@ LetRecExpr -> LET REC ID EQ FUN ID RARROW Expr IN . Expr [ WITH THEN SEMISEMI SE
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2554,7 +2554,7 @@ LetInExpr -> LET ID EQ . Expr IN Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDL
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2597,7 +2597,7 @@ LetInExpr -> LET ID EQ Expr IN . Expr [ WITH THEN SEMISEMI SEMI RPAREN PAIPU MDL
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2664,7 +2664,7 @@ MatchExpr -> MATCH Expr WITH MDRPAREN MDLPAREN RARROW . Expr PAIPU ID COROCORO I
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2721,7 +2721,7 @@ MatchExpr -> MATCH Expr WITH MDRPAREN MDLPAREN RARROW Expr PAIPU ID COROCORO ID 
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -2808,7 +2808,7 @@ ListCoroExpr -> MDRPAREN ListCoroExpr SEMI . ListInExpr [ WITH THEN SEMISEMI SEM
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListInExpr shift to state 149
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
@@ -2871,7 +2871,7 @@ ListInExpr -> Expr SEMI . ListInExpr [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListInExpr shift to state 152
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
@@ -2929,7 +2929,7 @@ ListInExpr -> Expr MDLPAREN . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MU
 
 State 154:
 FMultFunExpr -> AExpr . [ TRUE SEMI MDRPAREN LPAREN INTV ID FPLUS FMULT FALSE COROCORO ]
-ListsinExpr -> MDRPAREN AExpr . MDLPAREN [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE COROCORO AND AAND ]
+ListSingleExpr -> MDRPAREN AExpr . MDLPAREN [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE COROCORO AND AAND ]
 -- On MDLPAREN shift to state 155
 -- On TRUE reduce production FMultFunExpr -> AExpr 
 -- On SEMI reduce production FMultFunExpr -> AExpr 
@@ -2943,24 +2943,24 @@ ListsinExpr -> MDRPAREN AExpr . MDLPAREN [ WITH THEN SEMISEMI SEMI RPAREN PLUS P
 -- On COROCORO reduce production FMultFunExpr -> AExpr 
 
 State 155:
-ListsinExpr -> MDRPAREN AExpr MDLPAREN . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE COROCORO AND AAND ]
--- On WITH reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On THEN reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On SEMISEMI reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On SEMI reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On RPAREN reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On PLUS reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On PAIPU reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On OOR reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On MULT reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On MDLPAREN reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On LT reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On LET reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On IN reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On ELSE reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On COROCORO reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On AND reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
--- On AAND reduce production ListsinExpr -> MDRPAREN AExpr MDLPAREN 
+ListSingleExpr -> MDRPAREN AExpr MDLPAREN . [ WITH THEN SEMISEMI SEMI RPAREN PLUS PAIPU OOR MULT MDLPAREN LT LET IN ELSE COROCORO AND AAND ]
+-- On WITH reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On THEN reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On SEMISEMI reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On SEMI reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On RPAREN reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On PLUS reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On PAIPU reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On OOR reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On MULT reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On MDLPAREN reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On LT reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On LET reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On IN reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On ELSE reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On COROCORO reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On AND reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
+-- On AAND reduce production ListSingleExpr -> MDRPAREN AExpr MDLPAREN 
 
 State 156:
 DecLetExpr -> LET . ID EQ Expr DecLetExpr [ SEMISEMI ]
@@ -3034,7 +3034,7 @@ toplevel -> LET REC ID EQ FUN ID RARROW . Expr AND RecAndExpr SEMISEMI [ # ]
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -3102,7 +3102,7 @@ RecAndInExpr -> ID EQ . Expr IN Expr [ SEMISEMI ]
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -3161,7 +3161,7 @@ RecAndInExpr -> ID EQ FUN ID RARROW . Expr AND RecAndInExpr [ SEMISEMI ]
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -3245,7 +3245,7 @@ LetFunFunExpr -> ID EQ . Expr [ SEMISEMI ]
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -3294,7 +3294,7 @@ toplevel -> LET ID EQ . Expr AND AndExpr SEMISEMI [ # ]
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -3355,7 +3355,7 @@ LetExpr -> LET ID EQ . Expr [ SEMISEMI ]
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
@@ -3426,7 +3426,7 @@ LetAndInExpr -> ID EQ . Expr IN Expr [ SEMISEMI ]
 -- On ORExpr shift to state 59
 -- On MatchExpr shift to state 66
 -- On MExpr shift to state 58
--- On ListsinExpr shift to state 50
+-- On ListSingleExpr shift to state 50
 -- On ListCoroExpr shift to state 67
 -- On LetRecExpr shift to state 68
 -- On LetInExpr shift to state 69
