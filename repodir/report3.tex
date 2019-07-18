@@ -1,0 +1,180 @@
+\documentclass{jreport}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amssymb, amsmath}
+
+\begin{document}
+\begin{center}
+  計算機科学実験演習３ \ ソフトウェア \ レポート３  \\
+  氏名：吉村仁志  \\
+  提出日：７月１９日（木）
+  \newpage
+\end{center}
+\chapter{ML$^2$インタプリタ型推論}
+\section{Exercise \ 4.2.1}
+chap04-1.pdfで解説されていない部分について解説する。
+まず、ty\_prim についてだが、Plus の時と同様に、受け取った２つの ty に関して
+op に対して望まれる型であるときに、その op の結果として来るべきである型を返せば良く、
+そうでない時にはエラーを発生させれば良い。
+Mult は TyIntとTyIntを受け取ってTyIntを返し、LtはTyIntとTyIntを受け取ってTyBoolを返す。といった
+具合である。AAND、OORは引数も結果もすべてTyBoolである。
+次に、ty\_expについて説明する。
+IfExpについてだが、型の条件としては、exp1の型がTyBoolであり、exp2とexp1の型が等しいということである。
+そこで、まずtyarg1にty\_expを再帰呼出ししてexp1の型を束縛し、match文でそれがTyBool出ない時はエラーを発生させる。TyBoolであるもとで、exp2とexp1の型を評価し、それが等しいかどうかをmatch文で評価しそうでない時はエラーを発生させる。等しいというもとで、最終的にはexp2もしくはexp3の型が結果になるので、それを返すようにする。
+LetInExpは、まずidをexp1の型の評価結果で束縛し、それで現在の環境を拡張した新たな環境tynewenvを作成し、そのもとでexp2の
+型を評価すれば良い。
+\chapter{ML$^3$インタプリタ型推論}
+\section{Exercise \ 4.3.1}
+まずpp\_tyの実装についてだが、これはstring\_of\_tyを呼び出すだけと定義したので、string\_of\_tyについて解説する。
+これは、ty型の値を受け取ってそれを文字列にするような関数である。match構文を用いて型によって場合分けする。
+まずTyInt、TyBoolのときはそれぞれ'int'、'bool'をそのまま返せば良い。TyFun(ty1, ty2)のときは、ty1、ty2
+をそれぞれ再び評価しなければならなく、'TyFun('  (string\_of\_ty ty1)  (string\_of\_ty ty) `)`といったように
+中身についてstring\_of\_tyを再帰呼出しをする。TyList tyのときは、tyを再び評価するので、(string\_of\_ty ty) `list`
+というようにする。TyVar numのときは、そのnumの中身を探しに行くことになる。そこで、すでに定義されたTyVar numを
+格納しておくものが必要であり、syntax.mlにグローバル変数としてリストの参照tyvarlist * tyvar * idを定義しておく
+これは、tyvar とそれを表す文字を対応させている。そこで、TyVar num のときは、tyvarlist を走査してnumに対応する文字
+を返すようにする。また、リストを走査するための関数researchlistを定義してそれを利用した。
+次にfresh\_tyvarの実装だが、まず型変数が現れうるのは、TyVar num、TyFun、TyListである。そこで、match構文を利用して
+それぞれの型に関して処理を行う。TyVar num のときはnumは欲しいものそのものであるから、MySet.mlで定義されている関数insert
+を利用して、insert num MySet.empty としたMySet型の集合を作り、それを返す。TyFun(ty1, ty2)のときは、ty1、ty2のそれぞれ
+を評価する必要があるので、ty1、ty2を再帰的に評価しその結果を統合すれば良い。よって、MySet.mlで定義されている関数union
+を利用して、union (fresh\_tyvar ty1) (fresh\_tyvar ty2) を返せば良い。TyList tyのときはtyを評価する必要があり、fresh\_tyvar tyを返す。それ以外の型のときはMySet.emptyを返す。
+\section{Exercise \ 4.3.2}
+subst\_typeは、(tyvar * ty) list と ty を受け取って (tyvar * ty) list を ty に適用するのだが、
+ここでそのための補助関数として、sub\_subst を定義する。これは、(tyvar * ty) と ty を受け取って
+(tyvar * ty) を ty に適用しその結果を返すような関数である。これはmatch構文を利用して、それぞれの型に関して
+処理を行う。TyInt、TyBool ときはそのままTyInt、TyBoolを返せば良い。TyFun(ty1, ty2) 、TyList ty のときは
+前者はty1、ty2に関して、後者は ty に関して再帰呼出しする必要があるので、TyFun(sub\_subst ... ty1, sub\_subst ... ty2)
+、TyList sub\_subst ... ty をそれぞれ返せば良い。TyVar numのときは、numが引数として受け取った tyvar と一致するときには
+型を置き換える必要がある。sub\_subst の引数を (numm, tyy) ty とすると、num = numm のときは、tyy を返し、そうでないときはそのまま Tyvar num を返すといったようにする。これで sub\_subst の実装は終了する。subst\_type であるが、
+これは受け取った第一引数である、(tyvar * ty) list の一要素毎に sub\_subst を呼びだせば良い。これで subst\_type の実装は終了する。
+\section{Exercise \ 4.3.3}
+まず、型 ty の中に TyVar num が現れるかどうかを判定するための関数 reserarch\_ftv を定義する。これは num と ty を
+受け取って、bool 型の値を返すような関数である。存在するとき true を返し、そうでないとき false を返す。
+受け取る引数を、numm ty とし、match 構文で ty の型によってそれぞれ処理を行う。TyVar numのときは、numm = num を返せば良い。TvFun(ty1, ty2)のときは、ty1、ty2 のそれぞれを評価する必要があり、ty1、ty2 のどちらかが true のときには全体の結果
+も true になるので、(research\_ftv ty1) ｜｜(research\_ftv ty2) を返せば良い。TyList ty のときは、ty を評価すれば
+良く、research\_ftv ty を返せば良い。それ以外のときは false を返す。これで research\_ftv の実装は終了する。
+次に、型代入のリスト numtyl と、ty のタプルのリスト tytyl を受け取って、後者に前者を適用するような関数 map\_subst を定義する。
+これは、tytyl が (ty1, ty2) :: rest という形になるとき、ty1、ty2 のそれぞれに型代入を適用すればよく、このとき
+((subst\_type numtyl ty1), (subst\_type numtyl ty2)) :: (map\_subst rest) を返すようにする。
+ tytyl が空リストのときは空リストを返す。
+次に unify について解説する。
+受け取る引数は tylist であるとする。解説にあるとおり、tylist の型によって場合分けをする。
+tylist が空リストのときは空リストを返せば良い。そうでない時、すなわち (t1 , t2) :: rest にマッチしたとする。
+t1 = t2 のときは条件は満たされており、unify rest を返せば良い。
+以下そうでない時について考える。t1、t2 がそれぞれ TyFun(tyy11, tyy12)、TyFun(tyy21, tyy22) のとき、
+条件は tyy11 = tyy21、tyy12 = tyy 22 であるので、解説にあるとおり、unify ((tyy11, tyy21) :: (tyy12, tyy22) :: rest)
+を返す。
+t1、t2 がそれぞれ TyVar num 、tyy のとき、research\_ftv num tyy を評価して、解説にあるとおり、これが true のときは
+エラーを発生させる。false のとき、解説にあるとおり、 (num, tyy) は答えの型代入の一要素になり、また残りにその型代入を
+行ったリストを再帰的に評価するので、先ほど定義した map\_subst を利用して、unify (map\_subst [(num, tyy)] rest)
+を返す。t1、t2 がそれぞれ tyy、TyVar num のときも同様である。
+t1、t2 がそれぞれ TyList ty1、TyList ty2 のときは、ty1 と ty2 が等しい必要があるので、それを rest に含めたリストを
+再帰的に評価すればよく、unify ((ty1, ty2) :: rest) を返せば良い。これで unify の実装は完了する。
+\section{Exercise \ 4.3.4}
+unify の第一引数のリストに含まれる (TyVar num, tyy) について、num が tyy に完全に含まれるとき、まずこれが必ず等しくならない
+ことは明らかである。（方程式 a = a + b (ただし、b != 0) が成り立たないのと原理的に同じである。）よって、
+型代入に (num, tyy) を含めてしまうと、tyy の中の num を tyy で置き換える、という操作を型代入が起きるたびに繰り返され、また型代入ではエラーが起きることはないので、間違った結果が返ってくる。
+\section{Exercise \ 4.3.5}
+IfExp(exp1, exp2, exp3) について型推論の手続きを与えると以下のようになる。
+  \begin{equation}
+      1. \ \ \  \Gamma、exp1 を入力として型推論を行い、S1、 \tau1 を得る。
+\end{equation}
+\begin{equation}
+  2. \ \ \  \Gamma、exp2 を入力として型推論を行い、S2、 \tau2 を得る。
+\end{equation}
+\begin{equation}
+  3. \ \ \  \Gamma、exp3 を入力として型推論を行い、S3、 \tau3 を得る。
+\end{equation}
+\begin{equation}
+  \begin{split}
+   4. \ \ \ & 型代入S1, S2, S3 を \alpha = \tau という方程式の集まりとみなして、
+   \\ &S1 \cup S2 \cup S3 \cup (\tau1, bool) \cup (\tau2, \tau3) を単一化し、型代入S4を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    5. \ \ \  S4 と \tau2 を出力として返す。 
+  \end{split}
+\end{equation}
+次に LetInExp(id, exp1, exp2) についての型推論の手続きを与えると以下のようになる。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ \Gamma, exp1 を入力として型推論を行い、S1,  \tau1 を得、 \\ id を \tau1 で \Gamma を
+    拡張した新しい環境 N\Gamma を作る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ N\Gamma, exp2 を入力として型推論を行い、S2,  \tau2 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &型代入S1, S2, を \alpha = \tau という方程式の集まりとみなして、 \\
+    &S1 \cup S2 \cup を単一化し、型代入 S3 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    4. \ \ \ S3 と \tau2 を出力として返す。
+  \end{split}
+\end{equation}
+次に FunExp(id, exp) についての型推論の手続きを与えると以下のようになる。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ &\Gamma　を入力とし、新しい型変数 \tau1 を作り、\Gamma を、\\ &
+     \tau1 に束縛された id で拡張した新しい環境 N\Gamma を作る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ N\Gamma 、exp を入力とし、型推論を行い、S1,　\tau2 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &\tau1 にS1の型代入を適用してできた新たな型、\tau3 を得た後、\\ &
+    S1, TyFun(\tau3, \tau2) を返す。
+  \end{split}
+\end{equation}
+次に、AppExp(exp1, exp2) についての型推論の手続きを与えると以下のようになる。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ \Gamma, exp1 を入力とし、型推論を行い、S1,　\tau1 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ \Gamma, exp2 を入力とし、型推論を行い、S2, \tau2 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &\tau1 の型が TyFun(tyy1, tyy2) のとき、手続き4へ、\\ & TyVar \ num  のときは手続き5へ　
+    \\ &どちらでもない時はエラー発生
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    4. \ \ \ &S1 \cup S2 \cup (tyy1, \tau2) を単一化し、型代入S3を得、\\ &
+    S3, tyy2 を出力として返す。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    5. \ \ \ &新しい型変数 \tau3 を得、S1 \cup S2 \cup (TyVar num, TyFun(\tau2, \tau3)) \\ &を単一化し、
+    型代入S4を得、S4,　\tau3 を出力として返す。
+  \end{split}
+\end{equation}
+\\
+次に、補助関数について解説する。
+ひとつ目は、型代入を型の等式集合に変換する関数 eqs\_of\_subst である。これは、リストを走査しながら
+(num, ty) を (Tyvar num, ty) に全てを変換すれば良いだけである。また、解説pdfでは補助関数 subst\_eqs を定義しているが、
+これは map\_subst そのものである。
+次に、先ほどの型推論の実装であるが、基本的には手続き通りに実装すれば良い。ただし、単一化をする際の入力となるリストは、
+先ほどの補助関数 eqs\_of\_subst を利用して型代入のリストの型を変換してから unify に渡す必要があることに注意する。
+AppExp に関して少し補足すると、ty1 の形として許されるのは、TyFun、TyVar num　の２つである。TyVar num についてだが、
+ty1 はこの段階で初めて関数型であることが決まり、最終的に返す型はまだ確定していないので、新しい型変数を作る
+必要がある。
+\enddocument}
