@@ -7,7 +7,7 @@
 \begin{center}
   計算機科学実験演習３ \ ソフトウェア \ レポート３  \\
   氏名：吉村仁志  \\
-  提出日：７月１９日（木）
+  提出日：７月１９日（金）
   \newpage
 \end{center}
 \chapter{ML$^2$インタプリタ型推論}
@@ -20,7 +20,7 @@ Mult は TyIntとTyIntを受け取ってTyIntを返し、LtはTyIntとTyIntを�
 具合である。AAND、OORは引数も結果もすべてTyBoolである。
 次に、ty\_expについて説明する。
 IfExpについてだが、型の条件としては、exp1の型がTyBoolであり、exp2とexp1の型が等しいということである。
-そこで、まずtyarg1にty\_expを再帰呼出ししてexp1の型を束縛し、match文でそれがTyBool出ない時はエラーを発生させる。TyBoolであるもとで、exp2とexp1の型を評価し、それが等しいかどうかをmatch文で評価しそうでない時はエラーを発生させる。等しいというもとで、最終的にはexp2もしくはexp3の型が結果になるので、それを返すようにする。
+そこで、まずtyarg1にty\_expを再帰呼出ししてexp1の型を束縛し、match文でそれがTyBool出ない時はエラーを発生させる。TyBoolであるもとで、exp2とexp1の型を評価し、それが等しいかどうかをmatch文で評価し、そうでない時はエラーを発生させる。等しいというもとで、最終的にはexp2もしくはexp3の型が結果になるので、それを返すようにする。
 LetInExpは、まずidをexp1の型の評価結果で束縛し、それで現在の環境を拡張した新たな環境tynewenvを作成し、そのもとでexp2の
 型を評価すれば良い。
 \chapter{ML$^3$インタプリタ型推論}
@@ -31,9 +31,9 @@ LetInExpは、まずidをexp1の型の評価結果で束縛し、それで現在
 をそれぞれ再び評価しなければならなく、'TyFun('  (string\_of\_ty ty1)  (string\_of\_ty ty) `)`といったように
 中身についてstring\_of\_tyを再帰呼出しをする。TyList tyのときは、tyを再び評価するので、(string\_of\_ty ty) `list`
 というようにする。TyVar numのときは、そのnumの中身を探しに行くことになる。そこで、すでに定義されたTyVar numを
-格納しておくものが必要であり、syntax.mlにグローバル変数としてリストの参照tyvarlist * tyvar * idを定義しておく
+格納しておくものが必要であり、syntax.mlにグローバル変数としてリストの参照tyvarlist * tyvar * idを定義しておく。
 これは、tyvar とそれを表す文字を対応させている。そこで、TyVar num のときは、tyvarlist を走査してnumに対応する文字
-を返すようにする。また、リストを走査するための関数researchlistを定義してそれを利用した。
+を返すようにする。また、リストを走査し、numを発見するための関数researchlistを定義してそれを利用した。\\
 次にfresh\_tyvarの実装だが、まず型変数が現れうるのは、TyVar num、TyFun、TyListである。そこで、match構文を利用して
 それぞれの型に関して処理を行う。TyVar num のときはnumは欲しいものそのものであるから、MySet.mlで定義されている関数insert
 を利用して、insert num MySet.empty としたMySet型の集合を作り、それを返す。TyFun(ty1, ty2)のときは、ty1、ty2のそれぞれ
@@ -43,7 +43,7 @@ LetInExpは、まずidをexp1の型の評価結果で束縛し、それで現在
 subst\_typeは、(tyvar * ty) list と ty を受け取って (tyvar * ty) list を ty に適用するのだが、
 ここでそのための補助関数として、sub\_subst を定義する。これは、(tyvar * ty) と ty を受け取って
 (tyvar * ty) を ty に適用しその結果を返すような関数である。これはmatch構文を利用して、それぞれの型に関して
-処理を行う。TyInt、TyBool ときはそのままTyInt、TyBoolを返せば良い。TyFun(ty1, ty2) 、TyList ty のときは
+処理を行う。TyInt、TyBool のときはそのままTyInt、TyBoolを返せば良い。TyFun(ty1, ty2) 、TyList ty のときは
 前者はty1、ty2に関して、後者は ty に関して再帰呼出しする必要があるので、TyFun(sub\_subst ... ty1, sub\_subst ... ty2)
 、TyList sub\_subst ... ty をそれぞれ返せば良い。TyVar numのときは、numが引数として受け取った tyvar と一致するときには
 型を置き換える必要がある。sub\_subst の引数を (numm, tyy) ty とすると、num = numm のときは、tyy を返し、そうでないときはそのまま Tyvar num を返すといったようにする。これで sub\_subst の実装は終了する。subst\_type であるが、
@@ -67,12 +67,13 @@ t1 = t2 のときは条件は満たされており、unify rest を返せば良�
 を返す。
 t1、t2 がそれぞれ TyVar num 、tyy のとき、research\_ftv num tyy を評価して、解説にあるとおり、これが true のときは
 エラーを発生させる。false のとき、解説にあるとおり、 (num, tyy) は答えの型代入の一要素になり、また残りにその型代入を
-行ったリストを再帰的に評価するので、先ほど定義した map\_subst を利用して、unify (map\_subst [(num, tyy)] rest)
+行ったリストを再帰的に評価するので、先ほど定義した map\_subst を利用して、
+(num, tyy) :: (unify (map\_subst [(num, tyy)] rest))
 を返す。t1、t2 がそれぞれ tyy、TyVar num のときも同様である。
 t1、t2 がそれぞれ TyList ty1、TyList ty2 のときは、ty1 と ty2 が等しい必要があるので、それを rest に含めたリストを
 再帰的に評価すればよく、unify ((ty1, ty2) :: rest) を返せば良い。これで unify の実装は完了する。
 \section{Exercise \ 4.3.4}
-unify の第一引数のリストに含まれる (TyVar num, tyy) について、num が tyy に完全に含まれるとき、まずこれが必ず等しくならない
+unify の第一引数のリストに含まれる (TyVar num, tyy) について、num が tyy に真に含まれるとき、まずこれが必ず等しくならない
 ことは明らかである。（方程式 a = a + b (ただし、b != 0) が成り立たないのと原理的に同じである。）よって、
 型代入に (num, tyy) を含めてしまうと、tyy の中の num を tyy で置き換える、という操作を型代入が起きるたびに繰り返され、また型代入ではエラーが起きることはないので、間違った結果が返ってくる。
 \section{Exercise \ 4.3.5}
@@ -163,8 +164,8 @@ IfExp(exp1, exp2, exp3) について型推論の手続きを与えると以下�
 \end{equation}
 \begin{equation}
   \begin{split}
-    5. \ \ \ &新しい型変数 \tau3 を得、S1 \cup S2 \cup (TyVar num, TyFun(\tau2, \tau3)) \\ &を単一化し、
-    型代入S4を得、S4,　\tau3 を出力として返す。
+    5. \ \ \ &新しい型変数 \tau3 を得、S1 \cup S2 \cup (TyVar \ num, \ TyFun(\tau2, \tau3)) \\ &を単一化し、
+    型代入S4を得、S4,\tau3 を出力として返す。
   \end{split}
 \end{equation}
 \\
@@ -174,7 +175,389 @@ IfExp(exp1, exp2, exp3) について型推論の手続きを与えると以下�
 これは map\_subst そのものである。
 次に、先ほどの型推論の実装であるが、基本的には手続き通りに実装すれば良い。ただし、単一化をする際の入力となるリストは、
 先ほどの補助関数 eqs\_of\_subst を利用して型代入のリストの型を変換してから unify に渡す必要があることに注意する。
-AppExp に関して少し補足すると、ty1 の形として許されるのは、TyFun、TyVar num　の２つである。TyVar num についてだが、
-ty1 はこの段階で初めて関数型であることが決まり、最終的に返す型はまだ確定していないので、新しい型変数を作る
+AppExp に関して少し補足すると、ty1 の形として許されるのは、TyFun、TyVar num の２つである。TyVar num についてだが、ty1 はこの段階で初めて関数型であることが決まり、最終的に返す型はまだ確定していないので、新しい型変数を作る
 必要がある。
-\enddocument}
+\section{Exercise \ 4.3.6}
+let rec 式の型推論の手続きを与えると以下のようになる。\\
+LetRecExp(id, para, exp1, exp2) を処理することを考える。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ &新しい型変数 \ \tau1 、\tau2 \  を得、新しい型変数 \tau3 \ を \\ &
+    TyFun(\tau1, \tau2) \ で束縛する。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ &\Gamma \ を、 \tau1  で束縛された para 、TyFun(\tau1, \tau2) で束縛された id \\ &
+    で拡張した新しい環境 N\Gamma を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &N\Gamma 、exp1 を入力として、型推論を行い、S1、\tau4 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    4. \ \ \ &N\Gamma 、exp2 を入力として、型推論を行い、S2、\tau5 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    5. \ \ \ S1 \cup S2 \cup (\tau2, \tau4) を単一化し、型代入S3を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    6. \ \ \ S3、exp2 を出力として返す。
+  \end{split}
+\end{equation}
+実装は手続き通りに行えばよく、特に注意するべきこともない。
+\section{Exercise 4.3.7}
+リストの型推論の手続きを与えると以下のようになる。
+ListExp(exp1, exp2)を処理することを考える。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ \Gamma、exp1 を入力として、型推論を行い、\ S1、\tau1 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ \Gamma、exp2 を入力として、型推論を行い、\ S2、\tau2 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &\tau2 が \ TyList \ ty1　のとき手続き4へ、
+    \\ & そうでないときは手続き5へ
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    4. \ \ \ &S1 \cup S2 \cup (ty1, \tau1) を単一化し、型代入S3を得、\\ &
+    S3、ty2 \ を出力として返す。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    5. \ \ \ &S1 \cup S2 \cup (TyList \ \tau1, \tau2) を単一化し、型代入S4を得、\\ &
+    S4、TyList \ \tau1 \ を出力として返す。
+  \end{split}
+\end{equation}
+手続き3の場合分けについてだが、リストの後続がリスト型か、型変数であるかで場合分けしている。
+型変数である場合は、この段階でリスト型に決定している。また、場合分けの後者は、型変数、リスト型以外の
+場合でもマッチするが、その場合は全て unify error が発生する。
+\\
+\\
+マッチ構文の型推論の手続きを与えると以下のようになる。\\
+MatchExp(exp1, exp2, id1, id2, exp3)を処理することを考える。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ \Gamma、exp1 を入力として、型推論を行い、\ S1、\tau1 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ \Gamma、exp2 を入力として、型推論を行い、\ S2、\tau2 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &\tau1 が TyList \ ty であるとき手続き4へ \\ &
+    \tau1 が TyVar \ num であるとき手続き7へ \\ &
+    そうでないときはエラー発生
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    4. \ \ \ &\Gamma をtyで束縛されたid1、TyList \ tyで束縛されたid2で拡張した \\ &
+    新しい環境 N\Gamma を得る。手続き5へ
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    5. \ \ \ &N\Gamma、exp3 を入力として、型推論を行い、S3、\tau3 \ を得る。\\ &
+    手続き6へ
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    6. \ \ \ &S1 \cup S2 \cup S3 \cup (\tau2, \tau3) を単一化し、型代入S4を得、\\ &
+    S4、\tau2 \ を出力として返す。手続きを終了する。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    7. \ \ \ &新しい型変数 domty1 を得、\Gamma を domty1 で束縛されたid1、\\ &
+    TyList \ domty1 で束縛されたid2で拡張した環境 N\Gamma を得る。\\ &
+    手続き8へ
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    8. \ \ \ &N\Gamma、exp3 を入力として、型推論を行い、\ S5、\tau3 \ を得る。\\ &
+    手続き9へ
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    9. \ \ \ &S1 \cup S2 \cup S5 \cup (\tau2, \tau3) \cup (TyVar \ num, TyList \ domty1) を単一化し、\\ &
+    型代入S6を得、S6、\tau2 を返す。手続きを終了する。
+  \end{split}
+\end{equation}
+手続き4での場合分けであるが、これもリストの型推論と同様で、リスト型か型変数であるかで場合分けしている。
+また後者の場合、リストの型がまだわからないので、新しい型変数domty1を作っている。またTyVar num がdomty1のリスト型
+であるとして整合性が取れるかを判断するため、単一化の条件に(TyVar num, TyList domty1)を加えている。
+\chapter{多相的letの型推論}
+\section{Exercise 4.4.1}
+まず解説されていない全ての補助関数を定義する。
+ひとつ目はfreevar\_tyscを定義する。これは型スキーム$\sigma$を受け取り、$\sigma$の中の自由変数の集合をリスト
+として返す関数である。受け取る型スキームをTyScheme(tyvarlist ,ty)とする。match構文を使い、
+このtyの形で場合分けする。TyInt、TyBoolのときは空リストを返す。TyFun(ty1, ty2)、TyList ty1のときは、それぞれ
+フィールド値に自由変数が含まれる場合があるので、それぞれ、\\
+(freevar\_tysc (TyScheme(tyvarlist, ty1))) @ (freevar\_tysc (TyScheme(tyvarlist, ty2)))、\\
+freevar\_tysc(TyScheme(tyvarlist , ty1))
+を返せば良い。\\
+TyVar num のときは、これが自由変数であれば[num]を返さなければならなく、そうでない時、すなわちtyvarlist
+に含まれるときには空リストを返せば良い。num が tyvarlist に含まれるかどうかの判定にはList.mem関数を利用する。
+これで実装は完了する。\\
+ふたつ目はfreevar\_tyenvを定義する。これは現在の型環境$\Gamma$から、$\Gamma$に含まれる全ての
+自由変数の集合をMySet型として返すような関数である。そこでまず、Environmemt.mlに新しい
+関数getschemelistを定義する。これは、タプルを要素とするような環境から、全ての要素の第二要素をリスト型
+として返すような関数である。すなわち、getschemelistに型環境$\Gamma$をわたすと、$\Gamma$に含まれる
+全ての型スキームの集合をかえす。freevar\_tyenvでは、まずgetschemelistを使って型スキームのリスト集合を
+schemelist に格納し、freevar\_tyenv の中で再帰関数 freevar\_tyenvrec を定義する。これは、型スキームのリスト集合
+を受け取って、そこに含まれる全ての自由変数の集合をMySet型として返す。slist を受け取るとすると、match構文
+で slist を一要素ずつ処理する。型スキームから自由変数の集合を取り出すのに freevar\_tysc関数を、リストを統合して
+MySet型を返すのにMySet.insertlistを利用する。これで freevar\_tyenvrec を定義でき、最終的に freevar\_tyenvrec
+に schemelist を渡せば、freevar\_tyenv の実装が完了する。また、freevar\_tyenv 関数は、closure 関数の中で
+S$\Gamma$に出現する全ての自由変数の集合を求める際に利用する。
+\\
+\\
+次に、let式の型推論の手続きを与えると以下のようになる。\\
+LetInExp(id, exp1, exp2)を処理することを考える。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ &\Gamma、exp1 を入力として型推論を行い、\ S1、\tau1 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+      2. \ \ \ &\Gamma、\tau1、S1 \ を入力として、closure関数を呼び出し、\\ &型スキーム \sigma を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &\Gamma を \sigma で拡張した環境 N\Gamma を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    4. \ \ \ &N\Gamma、exp2 を入力として型推論を行い、\ S2、\tau2 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    5. \ \ \ &S1 \cup S2 を単一化し、型代入S3を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    6. \ \ \ &\Gamma、S3、\tau2 を出力として返す。
+  \end{split}
+\end{equation}
+次にlet宣言の型推論の手続きを与えると以下のようになる。
+Decl(id, exp)を処理することを考える。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ &\Gamma、exp を入力として型推論を行い、\ S1、\tau1 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ &\Gamma、S1、\tau1 \ を入力として、closure関数を呼び出し、\\ &
+    型スキーム \ \sigma1 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &\Gamma を \sigma1 で束縛されたidで拡張した環境、\\ &
+    S1、\tau1を出力として返す。
+  \end{split}
+\end{equation}
+
+\section{Exercise 4.4.2}
+まず簡単な補助関数 unionscheme を定義する。これは、型スキームを２つ引数で受け取り、
+それぞれの多相的な型変数を統合したリストを返すような関数である。実装は簡単なので説明は省略する。
+let rec 式の型推論の手続きを与えると以下のようになる。
+LetRecExp(id, para, exp1, exp2)を処理することを考える。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ 新しい型変数 domty1、domty2 を作る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ &\Gamma を、TyScheme([], domty1)で束縛された para、\\ &
+    TyScheme([], TyFun(domty1, domty2))で束縛された id \\ &
+    で拡張した環境 N\Gamma を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &N\Gamma、exp1 を入力として型推論を行い、\ S1、\tau1 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    4. \ \ \ &S1 \cup (domty2, \tau1)を単一化し、型代入 S2 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    5. \ \ \ &domty1、domty2 それぞれに型代入を適用して、ty1、ty2 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    6. \ \ \ &\Gamma、ty1、S2 を入力として closure関数を呼び出し、\\ &
+    型スキーム\sigma1 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    7. \ \ \ &\Gamma、ty2、S2 を入力として closure関数を呼び出し、\\ &
+    型スキーム\sigma2 を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    8. \ \ \ &\Gamma をTyScheme(unionscheme \ \sigma1 \  \sigma2, \ TyFun(ty1, ty2)) \\ &
+    で束縛されたidで拡張した環境N\Gamma2を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    9. \ \ \ &\Gamma、exp2 を入力として型推論を行い、\ S4、\tau2 \ を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    10. \ \ \ S2、S4を単一化し、型代入S5を得る。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    11. \ \ \ \Gamma、S5、\tau2 を出力として返す。
+  \end{split}
+\end{equation}
+手続きは基本的に今まで通りだが、手続き5、6の説明を補足する。ここでは、closure に domty を渡さずに、
+一旦型代入した ty を渡している。これは、closure の中で、受け取った引数の型に型代入を行っていないからである。
+(closure関数の中で型代入を行っても良いが、どの道ty1、ty2は必要になる。)
+\\
+次に、let rec 宣言の型推論の手続きを与えると以下のようになる。
+RecDecl(id, para, exp1)を処理することを考える。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ LetRecExpの手続きの1〜7を行う。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. &\Gamma を(TyScheme(unionscheme \ \sigma1 \ \sigma2, \ TyFun(ty1, ty2)) \\ &
+    で束縛されたidで拡張した環境、S2、TyFun(ty1, ty2) を返す。
+  \end{split}
+\end{equation}
+LetRecExpの処理とほぼ同じであり、説明は特にない。
+\chapter{その他}
+この章では、chap03-4までの問題で追加で実装した問題や、他に自分で追加した機能について解説する。
+\section{Exercise 3.6.1}
+まず、字句解析にMATCH、WITH、PAIPUを追加する。
+次に構文解析に規則 MatchExpr を追加する。
+これはそのままmacth構文にマッチするようにすればよく、以下のようになる。
+\begin{equation}
+  \begin{split}
+    &MATCH \ e1=Expr \ WITH \ MDRPAREN \ MDLPAREN \\ &
+    \ RARROW \ e2=Expr \ PAIPU \ id1=ID \ COROCORO \ id2=ID \\ & \
+    RARROW \ e3=Expr \ \{ \ MatchExp(e1, \ e2, \ id1, \ id2, \ e3) \ \}
+  \end{split}
+\end{equation}
+この還元時アクションになっている、MatchExpの定義は、\\
+MatchExp * exp * exp * id * id * exp となっている。
+次に、これのevalでの評価について解説する。\\
+MatchExp(exp1, exp2, id1, id2, exp3) を評価するとする。
+まず、exp1 の評価結果をe1に束縛し、それをmatch構文で場合分けする。まずe1の型として許されるのは、
+NilV、Cons(e11, e12)のいずれかの場合である。どちらでもない時にはエラーを発生させる。
+e1がNilVのときは、評価結果はexp2を評価した結果を返せば良い。\\
+e1がCons(e11, e12)のときは、id1 が e11、id2 が e12 になるので、その２つの変数で拡張した新しい環境のもとで、
+exp3 を評価し、その結果を返すようにすれば良い。これで実装は完了する。
+\section{その他の追加機能}
+まず、評価結果を出力することを考える。そのために、typing.mlに空の環境の参照 idenv を定義する。
+これは、一度の評価が終わった時点で新しく定義された全ての変数と型が格納される。
+すなわち、ty\_decl の評価結果を返す前に、
+\begin{equation}
+  \begin{split}
+    idenv \ \colon = \ Environment.extend \ id \ ty \ !tyenv;
+  \end{split}
+\end{equation}
+という一文を入れる(Exp eを除く)。これにより、新しく評価された変数とその型を格納できる。
+次に、cui.mlで結果を出力するための関数print\_localenvを説明する。
+これは、引数としてtmp\_localenvというものを持つ。これは、evalで新しく宣言された全ての変数とその評価結果のタプル
+のリストになる。また、evalではlocalenvという変数と評価結果のタプルのリストをグローバルとして定義している。
+print\_localenv は、tmp\_localenv の中身をmatch構文を使って一要素ずつ評価する。そこで、型を出力する際に
+先ほどの idenv の中を Environment.lookup 関数を使って探しに行く。見つからない場合は式の型を返すので、ty を
+そのまま返す。最後にidenvに空の環境を破壊的代入をすることで、次の評価に備えて初期化する。
+RecAndLetの型推論の手続きを与えると以下のようになる。
+RecAndLet(id, para, exp1, exp2)を処理することを考える。
+\begin{equation}
+  \begin{split}
+    1. \ \ \ RecDeclの型推論の手続きの1を行う。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    2. \ \ \ &\Gamma を、TyScheme(unionscheme \ \sigma1 \ \sigma2, \ TyFun(ty1, ty2)) \\ &
+    で束縛したidで拡張した環境を N\Gamma とする。
+  \end{split}
+\end{equation}
+\begin{equation}
+  \begin{split}
+    3. \ \ \ &ty\_decl \ N\Gamma \ exp2を返す。
+  \end{split}
+\end{equation}
+基本的には、RecDeclとほぼ同じである。しかし、このままでは相互再帰が定義できない。例えば、以下のような式を宣言
+したいとする。
+\begin{equation}
+  \begin{split}
+    let \ f \ = \ fun \ n \ \to \ g \ n \ and \ g \ = \ fun \ n \to \ f \ n
+  \end{split}
+\end{equation}
+これを構文解析すると、以下のようになる。
+\begin{equation}
+  \begin{split}
+    AndLet(f, \ Fun&Exp(n, \ AppExp(Var \ g, \ Var \ n)), \\ &Decl(g, \ FunExp(n, \ AppExp(Var \ f, \ Var \ n))))
+  \end{split}
+\end{equation}
+これを評価していくと、一番目のAppExpで g が見つからないと怒られる。
+そこで、補助関数をいくつか実装する。まず、eval.mlにgetVar関数を定義する。これは、exp 型の値を受け取って、
+その中に現れる全ての変数をリストとして返すような関数である。実装は単純であるので、説明は省略する。
+次に、assigntyvar関数を定義する。これは、id型のリストと型環境を受け取って、まだ環境に入っていない
+idに対して、新しく型変数を作ってそのidに対応させ、それらの変数で拡張された型環境を返すような関数である。
+実装は単純であるので、説明は省略する。
+次に、AppExp の処理を変更する。すなわち、初めのexp1、exp2の処理をtry構文で囲み、Environment.Not\_bound のエラーが
+発生したときに、assigintyvar 関数に tyenv と (Eval.getVar exp1) を渡して返ってきた環境のもとで、
+exp1 を再び評価する。これにより、まだ定義されていない変数の型をとりあえず型変数で置くことができる。exp2 でも
+同様である。これにより、相互再帰関数も実装できる。
+\chapter{終わりに}
+\section{工夫した点}
+工夫した点として、初めの方に型を出力するようにcui.mlを変更したことである。これによって型が予期せぬ型になって
+いるときにデバッグをするのが楽になった。また、型推論のパートでは型推論を行わなければならない exp型 の評価が
+比較的少なかったが、eval.mlで定義されている exp型 の評価を書いていないと、宣言できないものが出てくるので、
+eval.mlで評価した exp型、program型は typing.ml でも全て評価するようにした。これによって定義したものは
+しっかり宣言、評価ができるようになった。
+\section{感想}
+全体としては、比較的楽しく実装できた。しかしLR構文解析を完全に理解ができておらず、パーズできない理由などがわからずに苦労した時があったので、構文解析の勉強が必要だと思った。
+また、型推論パートで難しかった点としては、let多相の型推論の実装で、補助関数などの機能を、全体的に繋げるのに
+少し時間がかかった。また、let rec 多相では、型代入を一部行っていないなどで、かなりデバッグに時間がかかったの
+はきつかった。インタプリタ実験はCPU実験より100倍楽しかったので、次はコンパイラを作ったりもしてみたいと思った。
+\end{document}

@@ -69,8 +69,8 @@ let pp_ty ty = print_string (string_of_ty ty)
 
 let rec freevar_tyenv tyenv = 
 	let schemelist = Environment.getschemelist tyenv in
-	let rec freevar_tyenvrec tyenv2 = 
-		match tyenv2 with
+	let rec freevar_tyenvrec slist = 
+		match slist with
 			[] -> MySet.empty
 		| TyScheme(tyvarlist, tyy) :: rest -> MySet.insertlist (freevar_tyenvrec rest) (freevar_tysc (TyScheme(tyvarlist, tyy)))
 	in freevar_tyenvrec schemelist
@@ -90,7 +90,9 @@ let unionScheme (TyScheme(tysc1, _)) (TyScheme(tysc2, _)) = tysc1 @ tysc2
 let rec assigntyvar tyenv idl = 
 	match idl with
 			[] -> tyenv
-		| id :: rest -> assigntyvar (Environment.extend id (TyScheme([], TyVar (fresh_tyvar ()))) tyenv) rest
+		      | id :: rest ->
+                         try let _ = Environment.lookup id tyenv in assigntyvar tyenv rest with Environment.Not_bound ->
+                                 assigntyvar (Environment.extend id (TyScheme([], TyVar (fresh_tyvar ()))) tyenv) rest
 
 let ty_prim op ty1 ty2 = match op with
 		Plus -> ([(ty1, TyInt); (ty2, TyInt)], TyInt)
@@ -202,7 +204,7 @@ let rec ty_exp tyenv = function
 			in
 			let (_, s2, ty2) = 
 				try ty_exp tyenv exp2 with Environment.Not_bound -> 
-					let tyenv = assigntyvar tyenv (Eval.getVar exp2) in ty_exp tyenv exp2 
+					let tyenv = assigntyvar tyenv (Eval.getVar exp2)  in ty_exp tyenv exp2 
 			in
 			(match ty1 with
 					TyFun(tyy1, tyy2) ->
@@ -218,8 +220,8 @@ let rec ty_exp tyenv = function
 			let (_, s1, ty1) = ty_exp tyenv e1 in
 			let (_, s2, ty2) = ty_exp tyenv e2 in
 				(match ty2 with
-						TyList (TyVar num) -> 
-								let eqs1 = [(TyVar num, ty1)] in
+						TyList ty3 -> 
+								let eqs1 = [(ty3, ty1)] in
 								let eqs = (eqs_of_subst s1) @ (eqs_of_subst s2) @ eqs1 in
 								let s3 = unify eqs in (tyenv, s3, subst_type s3 (TyList ty1))
 					|   _ -> 

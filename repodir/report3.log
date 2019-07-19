@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2019.3.15)  18 JUL 2019 17:17
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015/Debian) (preloaded format=platex 2019.3.15)  19 JUL 2019 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -177,14 +177,32 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 第 2 章
 [3
 
-] [4] [5] [6] (./report3.aux) ) 
+] [4] [5] [6] [7] [8]
+第 3 章
+
+Overfull \hbox (8.58955pt too wide) in paragraph at lines 313--339
+[]\OT1/cmr/m/n/10 (freevar[]tysc (TyScheme(tyvarlist, ty1))) @ (free-var[]tysc 
+(TyScheme(tyvarlist,
+ []
+
+[9
+
+] [10] [11]
+第 4 章
+[12
+
+] [13]
+第 5 章
+[14
+
+] (./report3.aux) ) 
 Here is how much of TeX's memory you used:
  1722 strings out of 494865
  20462 string characters out of 6179769
- 80757 words of memory out of 5000000
+ 81757 words of memory out of 5000000
  5164 multiletter control sequences out of 15000+600000
  16312 words of font info for 67 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
- 27i,15n,26p,350b,216s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,18n,26p,352b,216s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report3.dvi (6 pages, 21572 bytes).
+Output written on report3.dvi (14 pages, 49084 bytes).
