@@ -41,7 +41,7 @@ let initial_env =
 					(Environment.extend "iii" (IntV 3)
 						(Environment.extend "iv" (IntV 4) Environment.empty)))))
 
-let initial_tyenv =
-	Environment.extend "i" (TyScheme([], TyInt))
+let initial_tyenv = Environment.empty
+	(* Environment.extend "i" (TyScheme([], TyInt))
 		(Environment.extend "v" (TyScheme([], TyInt))
-			(Environment.extend "x" (TyScheme([], TyInt)) Environment.empty))
+			(Environment.extend "x" (TyScheme([], TyInt)) Environment.empty)) *)
